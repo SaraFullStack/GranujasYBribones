@@ -1,0 +1,2 @@
+C:\Angelote\UNIR\Clases\Proyecto Grupal I\UNIRVG-Developer\UNIR-VGDeveloper\Tapete\x64\Debug\Tapete.lib
+E:\Usuarios\Sara\Descargas\test\test\UNIR-VGDeveloper\Tapete\x64\Debug\Tapete.lib
