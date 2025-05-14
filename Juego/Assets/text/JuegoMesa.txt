@@ -1,0 +1,31 @@
+// proyecto: Grupal/Juego
+// archivo:   JuegosMesa.txt
+// versión:  1.0  (Mayo-2025)
+
+┌───────────┬──────────┬────────────┬───────────────┬────────────────────┐
+│ Personaje │   Rol    │ Iniciativa │ Puntos Acción │ Habilidad Especial │
+├───────────┼──────────┼────────────┼───────────────┼────────────────────┤
+│ Edward    │ Carry    │     20     │       7       │   <por definir>    │
+│ Victoria  │ Carry    │     17     │       7       │   <por definir>    │
+│ Balthazar │ Support  │     17     │       6       │   <por definir>    │
+│ Luciana   │ Support  │     19     │       6       │   <por definir>    │
+│ Buenavida │ Tanque   │     20     │       4       │   <por definir>    │
+│ Dorian    │ Tanque   │     19     │       4       │   <por definir>    │
+└───────────┴──────────┴────────────┴───────────────┴────────────────────┘
+
+Todos los piratas comparten estas habilidades básicas:
+ - Cañonazo (Coste 6, Alcance 12, Daño 40)
+ - Embestida (Coste 4, Alcance 1,   Daño 25)
+ - Abordaje  (Coste 7, Alcance 1,   Daño 50)
+
+• Algunos piratas (Carry) tienen más puntos de acción para actuar varias veces.  
+• Otros (Tanque) tienen mayor iniciativa o resistencias.  
+• Soporte equilibra ambas facetas.
+
+-- Objetos sorpresa en el mapa (10 tesoros repartidos) --
+//  5 Cofres Explosivos:
+//      • Al recogerlos, infligen 20 puntos de daño al barco enemigo.
+//
+//  5 Barriles de Reparación:
+//      • Al recogerlos, reparan 20 puntos de integridad del barco.
+

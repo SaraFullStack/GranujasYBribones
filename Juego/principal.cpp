@@ -1,6 +1,6 @@
 ﻿// proyecto: Grupal/Juego
 // arhivo:   principal.cpp
-// versión:  1.1  (9-Ene-2023)
+// versión:  2.1  (Abril-2025)
 
 
 #include "juego.h"
@@ -17,6 +17,7 @@ int main () {
                 break;
             }
         }
+
         delete juego;
         delete motor;
     } catch (const std::exception & excepcion) {

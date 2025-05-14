@@ -1,6 +1,6 @@
 ﻿// proyecto: Grupal/Juego      
 // arhivo:   juego1.h
-// versión:  1.1  (9-Ene-2023)
+// versión:  2.1  (Abril-2025)
 
 
 #pragma once
@@ -18,16 +18,16 @@
 using namespace tapete;
 
 
-#include "SucesosJuegoPares.h"
-#include "EstadoJuegoPares.h"
-#include "ModoJuegoPares.h"
+#include "eventos/SucesosJuegoPares.h"
+#include "estados/EstadoJuegoPares.h"
+#include "modos/ModoJuegoPares.h"
 
-#include "SucesosJuegoEquipo.h"
-#include "EstadoJuegoEquipo.h"
-#include "ModoJuegoEquipo.h"
+#include "eventos/SucesosJuegoEquipo.h"
+#include "estados/EstadoJuegoEquipo.h"
+#include "modos/ModoJuegoEquipo.h"
 
-#include "SucesosJuegoLibreDoble.h"
-#include "EstadoJuegoLibreDoble.h"
-#include "ModoJuegoLibreDoble.h"
+#include "eventos/SucesosJuegoLibreDoble.h"
+#include "estados/EstadoJuegoLibreDoble.h"
+#include "modos/ModoJuegoLibreDoble.h"
 
-#include "JuegoMesa.h"
+#include "core/JuegoMesa.h"

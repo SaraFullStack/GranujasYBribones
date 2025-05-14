@@ -121,7 +121,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>tapete.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>..\..\SFML-2.5.1\include;..\..\UNIR-2D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\..\SFML-2.5.1\include;..\..\UNIR-2D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -151,54 +151,103 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="ActorMusica.h" />
-    <ClInclude Include="ActorTablero.h" />
-    <ClInclude Include="ActorPersonaje.h" />
-    <ClInclude Include="CalculoCaminos.h" />
-    <ClInclude Include="CuadroIndica.h" />
-    <ClInclude Include="EscritorAyuda.h" />
-    <ClInclude Include="EstadoJuegoEquipo.h" />
-    <ClInclude Include="EstadoJuegoLibreDoble.h" />
-    <ClInclude Include="EstadoJuegoPares.h" />
-    <ClInclude Include="Excepciones.h" />
-    <ClInclude Include="EstadoJuegoComun.h" />
-    <ClInclude Include="GradoEfectividad.h" />
-    <ClInclude Include="Habilidad.h" />
-    <ClInclude Include="PresenciaHabilidades.h" />
-    <ClInclude Include="ListadoAyuda.h" />
-    <ClInclude Include="ModoJuegoBase.h" />
-    <ClInclude Include="ModoJuegoComun.h" />
-    <ClInclude Include="ModoJuegoEquipo.h" />
-    <ClInclude Include="ModoJuegoLibreDoble.h" />
-    <ClInclude Include="ModoJuegoPares.h" />
-    <ClInclude Include="SistemaAtaque.h" />
-    <ClInclude Include="SucesosJuegoComun.h" />
-    <ClInclude Include="SucesosJuegoEquipo.h" />
-    <ClInclude Include="SucesosJuegoLibreDoble.h" />
-    <ClInclude Include="SucesosJuegoPares.h" />
-    <ClInclude Include="TipoEstadistica.h" />
-    <ClInclude Include="ValidacionJuego.h" />
-    <ClInclude Include="VistaCaminoCeldas.h" />
-    <ClInclude Include="PresenciaTablero.h" />
-    <ClInclude Include="LadoTablero.h" />
-    <ClInclude Include="PresenciaActuante.h" />
-    <ClInclude Include="PresenciaPersonaje.h" />
-    <ClInclude Include="JuegoMesaBase.h" />
-    <ClInclude Include="RejillaTablero.h" />
+    <Filter Include="actores">
+      <UniqueIdentifier>{11111111-1111-1111-1111-111111111111}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{22222222-2222-2222-2222-222222222222}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="combate">
+      <UniqueIdentifier>{33333333-3333-3333-3333-333333333333}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="combate\habilidades">
+      <UniqueIdentifier>{44444444-4444-4444-4444-444444444444}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="combate\sistema">
+      <UniqueIdentifier>{55555555-5555-5555-5555-555555555555}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="combate\tipos">
+      <UniqueIdentifier>{66666666-6666-6666-6666-666666666666}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core">
+      <UniqueIdentifier>{77777777-7777-7777-7777-777777777777}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="estados">
+      <UniqueIdentifier>{88888888-8888-8888-8888-888888888888}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="eventos">
+      <UniqueIdentifier>{99999999-9999-9999-9999-999999999999}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="grid">
+      <UniqueIdentifier>{AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="modos">
+      <UniqueIdentifier>{BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ui">
+      <UniqueIdentifier>{CCCCCCCC-CCCC-CCCC-CCCC-CCCCCCCCCCCC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{DDDDDDDD-DDDD-DDDD-DDDD-DDDDDDDDDDDD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="validacion">
+      <UniqueIdentifier>{EEEEEEEE-EEEE-EEEE-EEEE-EEEEEEEEEEEE}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ClInclude Include="ui/PresenciaFicha.h" />
+    <ClInclude Include="actores/ActorObjetoRecolectable.h" />
+    <ClInclude Include="actores/ActorMusica.h" />
+    <ClInclude Include="actores/ActorTablero.h" />
+    <ClInclude Include="actores/ActorPersonaje.h" />
+    <ClInclude Include="grid/CalculoCaminos.h" />
+    <ClInclude Include="ui/CuadroIndica.h" />
+    <ClInclude Include="ui/EscritorAyuda.h" />
+    <ClInclude Include="estados/EstadoJuegoEquipo.h" />
+    <ClInclude Include="estados/EstadoJuegoLibreDoble.h" />
+    <ClInclude Include="estados/EstadoJuegoPares.h" />
+    <ClInclude Include="utils/Excepciones.h" />
+    <ClInclude Include="estados/EstadoJuegoComun.h" />
+    <ClInclude Include="combate/sistema/GradoEfectividad.h" />
+    <ClInclude Include="combate/habilidades/Habilidad.h" />
+    <ClInclude Include="ui/PresenciaHabilidades.h" />
+    <ClInclude Include="ui/ListadoAyuda.h" />
+    <ClInclude Include="modos/ModoJuegoBase.h" />
+    <ClInclude Include="modos/ModoJuegoComun.h" />
+    <ClInclude Include="modos/ModoJuegoEquipo.h" />
+    <ClInclude Include="modos/ModoJuegoLibreDoble.h" />
+    <ClInclude Include="modos/ModoJuegoPares.h" />
+    <ClInclude Include="combate/sistema/SistemaAtaque.h" />
+    <ClInclude Include="eventos/SucesosJuegoComun.h" />
+    <ClInclude Include="eventos/SucesosJuegoEquipo.h" />
+    <ClInclude Include="eventos/SucesosJuegoLibreDoble.h" />
+    <ClInclude Include="eventos/SucesosJuegoPares.h" />
+    <ClInclude Include="combate/tipos/TipoEstadistica.h" />
+    <ClInclude Include="validacion/ValidacionJuego.h" />
+    <ClInclude Include="ui/VistaCaminoCeldas.h" />
+    <ClInclude Include="ui/PresenciaTablero.h" />
+    <ClInclude Include="core/LadoTablero.h" />
+    <ClInclude Include="ui/PresenciaActuante.h" />
+    <ClInclude Include="ui/PresenciaPersonaje.h" />
+    <ClInclude Include="core/JuegoMesaBase.h" />
+    <ClInclude Include="grid/RejillaTablero.h" />
     <ClInclude Include="tapete.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ActorMusica.cpp" />
-    <ClCompile Include="CuadroIndica.cpp" />
-    <ClCompile Include="EscritorAyuda.cpp" />
-    <ClCompile Include="EstadoJuegoEquipo.cpp" />
-    <ClCompile Include="EstadoJuegoLibreDoble.cpp" />
-    <ClCompile Include="EstadoJuegoPares.cpp" />
-    <ClCompile Include="Excepciones.cpp" />
-    <ClCompile Include="EstadoJuegoComun.cpp" />
-    <ClCompile Include="GradoEfectividad.cpp" />
-    <ClCompile Include="Habilidad.cpp" />
-    <ClCompile Include="ListadoAyuda.cpp" />
+    <ClCompile Include="ui/PresenciaFicha.cpp" />
+    <ClCompile Include="actores/ActorObjetoRecolectable.cpp" />
+    <ClCompile Include="actores/ActorMusica.cpp" />
+    <ClCompile Include="ui/CuadroIndica.cpp" />
+    <ClCompile Include="ui/EscritorAyuda.cpp" />
+    <ClCompile Include="estados/EstadoJuegoEquipo.cpp" />
+    <ClCompile Include="estados/EstadoJuegoLibreDoble.cpp" />
+    <ClCompile Include="estados/EstadoJuegoPares.cpp" />
+    <ClCompile Include="utils/Excepciones.cpp" />
+    <ClCompile Include="estados/EstadoJuegoComun.cpp" />
+    <ClCompile Include="combate/sistema/GradoEfectividad.cpp" />
+    <ClCompile Include="combate/habilidades/Habilidad.cpp" />
+    <ClCompile Include="ui/ListadoAyuda.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -207,51 +256,48 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">tapete.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">tapete.h</PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="ActorTablero.cpp" />
-    <ClCompile Include="ActorPersonaje.cpp" />
-    <ClCompile Include="JuegoMesaBase.cpp" />
-    <ClCompile Include="PresenciaHabilidades.cpp" />
-    <ClCompile Include="PresenciaPersonaje.cpp" />
-    <ClCompile Include="PresenciaTablero.cpp" />
-    <ClCompile Include="ModoJuegoComun.cpp" />
-    <ClCompile Include="ModoJuegoEquipo.cpp" />
-    <ClCompile Include="ModoJuegoLibreDoble.cpp" />
-    <ClCompile Include="ModoJuegoPares.cpp" />
-    <ClCompile Include="RejillaTablero.cpp" />
-    <ClCompile Include="PresenciaActuante.cpp" />
-    <ClCompile Include="CalculoCaminos.cpp" />
-    <ClCompile Include="ModoJuegoBase.cpp" />
-    <ClCompile Include="SistemaAtaque.cpp" />
-    <ClCompile Include="SucesosJuegoComun.cpp" />
-    <ClCompile Include="SucesosJuegoEquipo.cpp" />
-    <ClCompile Include="SucesosJuegoLibreDoble.cpp" />
-    <ClCompile Include="SucesosJuegoPares.cpp" />
-    <ClCompile Include="TipoEstadistica.cpp" />
-    <ClCompile Include="ValidacionJuego.cpp" />
-    <ClCompile Include="VistaCaminoCeldas.cpp" />
+    <ClCompile Include="actores/ActorTablero.cpp" />
+    <ClCompile Include="actores/ActorPersonaje.cpp" />
+    <ClCompile Include="core/JuegoMesaBase.cpp" />
+    <ClCompile Include="ui/PresenciaHabilidades.cpp" />
+    <ClCompile Include="ui/PresenciaPersonaje.cpp" />
+    <ClCompile Include="ui/PresenciaTablero.cpp" />
+    <ClCompile Include="modos/ModoJuegoComun.cpp" />
+    <ClCompile Include="modos/ModoJuegoEquipo.cpp" />
+    <ClCompile Include="modos/ModoJuegoLibreDoble.cpp" />
+    <ClCompile Include="modos/ModoJuegoPares.cpp" />
+    <ClCompile Include="grid/RejillaTablero.cpp" />
+    <ClCompile Include="ui/PresenciaActuante.cpp" />
+    <ClCompile Include="grid/CalculoCaminos.cpp" />
+    <ClCompile Include="modos/ModoJuegoBase.cpp" />
+    <ClCompile Include="combate/sistema/SistemaAtaque.cpp" />
+    <ClCompile Include="eventos/SucesosJuegoComun.cpp" />
+    <ClCompile Include="eventos/SucesosJuegoEquipo.cpp" />
+    <ClCompile Include="eventos/SucesosJuegoLibreDoble.cpp" />
+    <ClCompile Include="eventos/SucesosJuegoPares.cpp" />
+    <ClCompile Include="combate/tipos/TipoEstadistica.cpp" />
+    <ClCompile Include="validacion/ValidacionJuego.cpp" />
+    <ClCompile Include="ui/VistaCaminoCeldas.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="bandera_derecha.png" />
-    <Image Include="bandera_izquierda.png" />
-    <Image Include="barras_larga_vida.png" />
-    <Image Include="barras_vida.png" />
-    <Image Include="boton_ayuda.png" />
-    <Image Include="digitos_display.png" />
-    <Image Include="ficha_azul.png" />
-    <Image Include="ficha_roja.png" />
-    <Image Include="interrogacion.png" />
-    <Image Include="marca_amarilla_corta.png" />
-    <Image Include="marco_75.png" />
-    <Image Include="marco_display.png" />
-    <Image Include="marco_habilidad.png" />
-    <Image Include="marco_personaje.png" />
-    <Image Include="microdiana.png" />
-    <Image Include="monitor_fondo.png" />
-    <Image Include="muro_piedra.png" />
-    <Image Include="panel_abajo.png" />
-    <Image Include="panel_lateral.png" />
-    <Image Include="piloto_colores.png" />
-    <Image Include="plancha_titulo.png" />
+    <Image Include="Assets/images/bandera_derecha.png" />
+    <Image Include="Assets/images/bandera_izquierda.png" />
+    <Image Include="Assets/images/barras_larga_vida.png" />
+    <Image Include="Assets/images/barras_vida.png" />
+    <Image Include="Assets/images/boton_ayuda.png" />
+    <Image Include="Assets/images/digitos_display.png" />
+    <Image Include="Assets/images/marca_amarilla_corta.png" />
+    <Image Include="Assets/images/marco_75.png" />
+    <Image Include="Assets/images/marco_display.png" />
+    <Image Include="Assets/images/marco_habilidad.png" />
+    <Image Include="Assets/images/marco_personaje.png" />
+    <Image Include="Assets/images/microdiana.png" />
+    <Image Include="Assets/images/monitor_fondo.png" />
+    <Image Include="Assets/images/muro_piedra.png" />
+    <Image Include="Assets/images/panel_abajo.png" />
+    <Image Include="Assets/images/panel_lateral.png" />
+    <Image Include="Assets/images/piloto_colores.png" />
+    <Image Include="Assets/images/plancha_titulo.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Descarga de repositorios de GitHub.odt" />
@@ -260,11 +306,11 @@
     <None Include="Habilidades ejemeplo.odt" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ProcesoJuegoEquipo.txt" />
-    <Text Include="ProcesoJuegoLibreDoble.txt" />
-    <Text Include="ProcesoJuegoPares.txt" />
-    <Text Include="Texto.txt" />
-    <Text Include="Texto1.txt" />
+    <Text Include="Assets/text/ProcesoJuegoEquipo.txt" />
+    <Text Include="Assets/text/ProcesoJuegoLibreDoble.txt" />
+    <Text Include="Assets/text/ProcesoJuegoPares.txt" />
+    <Text Include="Assets/text/Texto.txt" />
+    <Text Include="Assets/text/Texto1.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,6 +1,6 @@
 ﻿// proyecto: Grupal/Tapete
 // archivo:  tapete.h
-// versión:  1.1  (9-Ene-2023)
+// versión:  2.1  (Abril-2025)
 
 
 #pragma once
@@ -15,47 +15,49 @@ using Color  = unir2d::Color;
 
 #include <sstream>
 
-#include "LadoTablero.h"
-#include "TipoEstadistica.h"
-#include "Habilidad.h"
-#include "CuadroIndica.h"
+#include "core/LadoTablero.h"
+#include "combate/tipos/TipoEstadistica.h"
+#include "combate/habilidades/Habilidad.h"
+#include "ui/CuadroIndica.h"
 
-#include "Excepciones.h"
+#include "utils/Excepciones.h"
 
-#include "PresenciaPersonaje.h"
-#include "CalculoCaminos.h"
-#include "ActorPersonaje.h"
+#include "ui/PresenciaPersonaje.h"
+#include "grid/CalculoCaminos.h"
+#include "actores/ActorPersonaje.h"
 
-#include "PresenciaTablero.h"
-#include "RejillaTablero.h"
-#include "PresenciaHabilidades.h"
-#include "PresenciaActuante.h"
-#include "VistaCaminoCeldas.h"
-#include "ListadoAyuda.h"
-#include "ActorTablero.h"
+#include "ui/PresenciaTablero.h"
+#include "grid/RejillaTablero.h"
+#include "ui/PresenciaHabilidades.h"
+#include "ui/PresenciaActuante.h"
+#include "ui/VistaCaminoCeldas.h"
+#include "ui/PresenciaFicha.h"
+#include "ui/ListadoAyuda.h"
+#include "actores/ActorTablero.h"
+#include "actores/ActorObjetoRecolectable.h"
 
-#include "ActorMusica.h"
+#include "actores/ActorMusica.h"
 
-#include "GradoEfectividad.h"
-#include "SistemaAtaque.h"
-#include "EscritorAyuda.h"
-#include "ModoJuegoBase.h"
+#include "combate/sistema/GradoEfectividad.h"
+#include "combate/sistema/SistemaAtaque.h"
+#include "ui/EscritorAyuda.h"
+#include "modos/ModoJuegoBase.h"
 
-#include "SucesosJuegoComun.h"
-#include "EstadoJuegoComun.h"
-#include "ModoJuegoComun.h"
+#include "eventos/SucesosJuegoComun.h"
+#include "estados/EstadoJuegoComun.h"
+#include "modos/ModoJuegoComun.h"
 
-#include "SucesosJuegoPares.h"
-#include "EstadoJuegoPares.h"
-#include "ModoJuegoPares.h"
+#include "eventos/SucesosJuegoPares.h"
+#include "estados/EstadoJuegoPares.h"
+#include "modos/ModoJuegoPares.h"
 
-#include "SucesosJuegoEquipo.h"
-#include "EstadoJuegoEquipo.h"
-#include "ModoJuegoEquipo.h"
+#include "eventos/SucesosJuegoEquipo.h"
+#include "estados/EstadoJuegoEquipo.h"
+#include "modos/ModoJuegoEquipo.h"
 
-#include "SucesosJuegoLibreDoble.h"
-#include "EstadoJuegoLibreDoble.h"
-#include "ModoJuegoLibreDoble.h"
+#include "eventos/SucesosJuegoLibreDoble.h"
+#include "estados/EstadoJuegoLibreDoble.h"
+#include "modos/ModoJuegoLibreDoble.h"
 
-#include "ValidacionJuego.h"
-#include "JuegoMesaBase.h"
+#include "validacion/ValidacionJuego.h"
+#include "core/JuegoMesaBase.h"
