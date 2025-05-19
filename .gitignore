@@ -44,3 +44,6 @@
 *.opensdf
 *.VC.db
 *.VC.VC.opendb
+
+/x64/
+/Debug/
