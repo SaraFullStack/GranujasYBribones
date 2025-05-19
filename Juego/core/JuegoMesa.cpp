@@ -1353,49 +1353,41 @@ void JuegoMesa::preparaTablero () {
 
    
 
-    void JuegoMesa::termina () {
-        //
-        JuegoMesaBase::termina ();
-        //
-        Buenavida   = nullptr;
-        Luciana    = nullptr;
-        Victoria    = nullptr;
-        Edward    = nullptr;
-        Dorian     = nullptr;
-        Balthazar   = nullptr;
-        //
-        /*ataqueEspadaNormal   = nullptr;
-        ataqueArco           = nullptr;
-        ataqueEspadaPoderoso = nullptr;
-        defensaFerrea        = nullptr;
-        curacionSimple       = nullptr;
-        curacionGrupo        = nullptr;
-        proyectilMagico      = nullptr;
-        bolaFuego            = nullptr;*/
-        //
-        ataqueCuerpoACuerpo  = nullptr;
-        ataqueADistancia     = nullptr;
-        ataqueMagico         = nullptr;
-        defensaCuerpoACuerpo = nullptr;
-        defensaADistancia    = nullptr;
-        defensaMagica        = nullptr;
-        danoFisico           = nullptr;
-        danoMagico           = nullptr;
-        delete canionazo;  canionazo = nullptr;
-        delete embestida;  embestida = nullptr;
-        delete abordaje;   abordaje = nullptr;
+    void JuegoMesa::termina() {
+        JuegoMesaBase::termina();  // ¡MUY importante que sea lo primero!
 
-        //objetoTesoro->termina();        // libera internamente sus gráficos
-        //delete objetoTesoro;             // destruye la instancia
-        //objetoTesoro = nullptr;          // limpia el puntero
+        // Elimina tesoros (estos sí son tuyos)
         for (auto*& t : tesoros) {
             if (t) {
-				t->termina();        // libera internamente sus gráficos
+                t->termina();
                 delete t;
                 t = nullptr;
             }
         }
-        //tesoros.clear();
+
+        // No hagas delete de habilidades globales si ya fueron asignadas a personajes
+        canionazo = nullptr;
+        embestida = nullptr;
+        abordaje = nullptr;
+        reparacionBarco = nullptr;
+
+        // Elimina tipos solo si no fueron liberados por el motor (depende de si los pasaste a algún actor)
+        ataqueCuerpoACuerpo = nullptr;
+        ataqueADistancia = nullptr;
+        ataqueMagico = nullptr;
+        defensaCuerpoACuerpo = nullptr;
+        defensaADistancia = nullptr;
+        defensaMagica = nullptr;
+        danoFisico = nullptr;
+        danoMagico = nullptr;
+
+        // Punteros a personajes
+        Buenavida = nullptr;
+        Luciana = nullptr;
+        Victoria = nullptr;
+        Edward = nullptr;
+        Dorian = nullptr;
+        Balthazar = nullptr;
     }
 
 }
