@@ -1,50 +1,37 @@
-# Ignorar archivos de Visual Studio
-.vs/
-
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
-
+# General
 *.log
-*.debug
+*.tmp
+*.bak
+*.swp
 
-/Debug/
+# Build folders
+**/Debug/
+**/Release/
+**/x64/
+**/x86/
+build/
+
+# Binaries
+*.exe
+*.dll
+*.lib
 *.pdb
-*.ipch
+*.obj
+*.o
+*.ilk
+*.idb
+*.tlog
+
+# Visual Studio
+.vs/
 *.sdf
+*.suo
 *.opensdf
 *.VC.db
 *.VC.VC.opendb
 
-**/x64/
-**/Debug/
-
+# CMake (por si acaso)
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
