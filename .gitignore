@@ -33,3 +33,14 @@
 *.exe
 *.out
 *.app
+
+*.log
+*.debug
+
+/Debug/
+*.pdb
+*.ipch
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.VC.opendb
