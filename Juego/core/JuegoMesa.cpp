@@ -715,14 +715,27 @@ void JuegoMesa::preparaTablero () {
         abordaje->ponArchivosImagenes (carpeta_habilides_juego + "abordaje.png",      carpeta_habilides_juego + "fondo_5.png");
         abordaje->ponArchivoSonido (carpeta_sonidos_juego + "Magic Missiles.wav");
 
+
+        reparacionBarco = new Habilidad {
+            L"Reparación de barco",
+            EnfoqueHabilidad::si_mismo,
+            AccesoHabilidad::ninguno,
+            Antagonista::si_mismo
+        };
+        reparacionBarco->ponDescripcion(L"Repara pequeños daños en el casco, recuperando 5 puntos de vitalidad.");
+        reparacionBarco->ponArchivosImagenes(carpeta_habilides_juego + "reparar.png", carpeta_habilides_juego + "fondo_5.png");
+        reparacionBarco->ponArchivoSonido(carpeta_sonidos_juego + "Magic Missiles.wav");
+
         agregaHabilidad(canionazo);
         agregaHabilidad(embestida);
         agregaHabilidad(abordaje);
+        agregaHabilidad(reparacionBarco);
 
         for (auto * personaje : personajes()) {
             personaje->agregaHabilidad(canionazo);
             personaje->agregaHabilidad(embestida);
             personaje->agregaHabilidad(abordaje);
+            personaje->agregaHabilidad(reparacionBarco);
         }
         //
         /*******************************************************************************************
@@ -990,6 +1003,8 @@ void JuegoMesa::preparaTablero () {
         abordaje->asignaDefensa(defensaCuerpoACuerpo);
         abordaje->asignaDano(danoFisico, 50);
 
+        reparacionBarco->ponCoste(3); 
+        reparacionBarco->agregaEfectoDefensa(defensaCuerpoACuerpo, 5);
     }
 
 
