@@ -194,7 +194,6 @@
       <UniqueIdentifier>{EEEEEEEE-EEEE-EEEE-EEEE-EEEEEEEEEEEE}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
-
   <ItemGroup>
     <ClInclude Include="ui/PresenciaFicha.h" />
     <ClInclude Include="actores/ActorObjetoRecolectable.h" />
@@ -207,6 +206,7 @@
     <ClInclude Include="estados/EstadoJuegoEquipo.h" />
     <ClInclude Include="estados/EstadoJuegoLibreDoble.h" />
     <ClInclude Include="estados/EstadoJuegoPares.h" />
+    <ClInclude Include="ui\IntroJuegoImagen.h" />
     <ClInclude Include="utils/Excepciones.h" />
     <ClInclude Include="estados/EstadoJuegoComun.h" />
     <ClInclude Include="combate/sistema/GradoEfectividad.h" />
@@ -298,8 +298,18 @@
     <Image Include="Assets/images/panel_lateral.png" />
     <Image Include="Assets/images/piloto_colores.png" />
     <Image Include="Assets/images/plancha_titulo.png" />
+    <Image Include="Assets/images/portada.png" />
+    <Image Include="Assets\images\abordaje.png" />
+    <Image Include="Assets\images\arreglo.png" />
+    <Image Include="Assets\images\canonazo.png" />
+    <Image Include="Assets\images\embestida.png" />
+    <Image Include="Assets\images\estudio.png" />
+    <Image Include="Assets\images\mover.png" />
+    <Image Include="Assets\images\tesoro.png" />
+    <Image Include="Assets\images\trampa.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\sonidos\intro.ogg" />
     <None Include="Descarga de repositorios de GitHub.odt" />
     <None Include="Documento de trabajo UNIR 2D.odt" />
     <None Include="Documento trabajo UNIR 2D 2.odt" />

@@ -61,3 +61,4 @@ using Color  = unir2d::Color;
 
 #include "validacion/ValidacionJuego.h"
 #include "core/JuegoMesaBase.h"
+#include "ui/IntroJuegoImagen.h"
