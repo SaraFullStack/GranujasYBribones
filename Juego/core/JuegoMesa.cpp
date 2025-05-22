@@ -685,58 +685,65 @@ void JuegoMesa::preparaTablero () {
         /*******************************************************************************************
         /******************************************************************************************/
 
-        canionazo = new Habilidad {
-            L"Cañonazo",
-            EnfoqueHabilidad::personaje,
-            AccesoHabilidad::indirecto,
-            Antagonista::oponente
-        };
-        canionazo->ponDescripcion(L"Disparo de cañón de largo alcance que causa gran daño.");
-        canionazo->ponArchivosImagenes (carpeta_habilides_juego + "canionazo.png",      carpeta_habilides_juego + "fondo_5.png");
-        canionazo->ponArchivoSonido (carpeta_sonidos_juego + "Magic Missiles.wav");
+                canionazo = new Habilidad {
+                L"Cañonazo", 
+                EnfoqueHabilidad::personaje, 
+                AccesoHabilidad::indirecto, 
+                Antagonista::oponente};
+        canionazo->ponDescripcion (
+                L"Disparo de cañón de largo alcance que causa gran daño.");
+        canionazo->ponArchivosImagenes (
+                carpeta_habilides_juego + "canionazo.png", 
+                carpeta_habilides_juego + "fondo_5.png");
+        canionazo->ponArchivoSonido (
+                carpeta_sonidos_juego + "Magic Missiles.wav");
 
         embestida = new Habilidad {
-            L"Embestida",
-            EnfoqueHabilidad::personaje,
-            AccesoHabilidad::directo,
-            Antagonista::oponente
-        };
-        embestida->ponDescripcion(L"Ataque cuerpo a cuerpo que empuja al enemigo.");
-        embestida->ponArchivosImagenes (carpeta_habilides_juego + "embestida.png",      carpeta_habilides_juego + "fondo_5.png");
-        embestida->ponArchivoSonido (carpeta_sonidos_juego + "Magic Missiles.wav");
+                L"Embestida", 
+                EnfoqueHabilidad::personaje, 
+                AccesoHabilidad::directo, 
+                Antagonista::oponente};
+        embestida->ponDescripcion (
+                L"Ataque cuerpo a cuerpo que empuja al enemigo.");
+        embestida->ponArchivosImagenes (
+                carpeta_habilides_juego + "embestida.png", 
+                carpeta_habilides_juego + "fondo_5.png");
+        embestida->ponArchivoSonido (
+                carpeta_sonidos_juego + "Magic Missiles.wav");
 
         abordaje = new Habilidad {
-            L"Abordaje",
-            EnfoqueHabilidad::personaje,
-            AccesoHabilidad::directo,
-            Antagonista::oponente
-        };
-        abordaje->ponDescripcion(L"Permite invadir el barco enemigo y realizar un ataque especial.");
-        abordaje->ponArchivosImagenes (carpeta_habilides_juego + "abordaje.png",      carpeta_habilides_juego + "fondo_5.png");
-        abordaje->ponArchivoSonido (carpeta_sonidos_juego + "Magic Missiles.wav");
-
+                L"Abordaje", 
+                EnfoqueHabilidad::personaje, 
+                AccesoHabilidad::directo, 
+                Antagonista::oponente};
+        abordaje->ponDescripcion (
+                L"Permite invadir el barco enemigo y realizar un ataque especial.");
+        abordaje->ponArchivosImagenes (
+                carpeta_habilides_juego + "abordaje.png", 
+                carpeta_habilides_juego + "fondo_5.png");
+        abordaje->ponArchivoSonido (
+                carpeta_sonidos_juego + "Magic Missiles.wav");
 
         reparacionBarco = new Habilidad {
-            L"Reparación de barco",
-            EnfoqueHabilidad::si_mismo,
-            AccesoHabilidad::ninguno,
-            Antagonista::si_mismo
-        };
-        reparacionBarco->ponDescripcion(L"Repara pequeños daños en el casco, recuperando 5 puntos de vitalidad.");
-        reparacionBarco->ponArchivosImagenes(carpeta_habilides_juego + "reparar.png", carpeta_habilides_juego + "fondo_5.png");
-        reparacionBarco->ponArchivoSonido(carpeta_sonidos_juego + "Magic Missiles.wav");
+                L"Reparación de barco", 
+                EnfoqueHabilidad::si_mismo, 
+                AccesoHabilidad::ninguno, 
+                Antagonista::si_mismo};
+        reparacionBarco->ponDescripcion (
+                L"Repara pequeños daños en el casco, recuperando 5 puntos de vitalidad.");
+        reparacionBarco->ponArchivosImagenes (
+                carpeta_habilides_juego + "reparar.png", 
+                carpeta_habilides_juego + "fondo_5.png");
+        reparacionBarco->ponArchivoSonido (
+                carpeta_sonidos_juego + "Magic Missiles.wav");
 
-        agregaHabilidad(canionazo);
-        agregaHabilidad(embestida);
-        agregaHabilidad(abordaje);
-        agregaHabilidad(reparacionBarco);
+        agregaHabilidad (canionazo);
+        agregaHabilidad (embestida);
+        agregaHabilidad (abordaje);
+        agregaHabilidad (reparacionBarco);
 
-        for (auto * personaje : personajes()) {
-            personaje->agregaHabilidad(canionazo);
-            personaje->agregaHabilidad(embestida);
-            personaje->agregaHabilidad(abordaje);
-            personaje->agregaHabilidad(reparacionBarco);
-        }
+       
+
         //
         /*******************************************************************************************
         /******************************************************************************************/
@@ -853,6 +860,13 @@ void JuegoMesa::preparaTablero () {
         //Victoria ->agregaHabilidad (ataqueArco);
         //Victoria ->agregaHabilidad (ataqueEspadaPoderoso);
         //
+
+         for (auto * personaje : personajes()) {
+            personaje->agregaHabilidad (canionazo);
+            personaje->agregaHabilidad (embestida);
+            personaje->agregaHabilidad (abordaje);
+            personaje->agregaHabilidad (reparacionBarco);
+        }
         /*******************************************************************************************
         /******************************************************************************************/
     }
@@ -1060,33 +1074,39 @@ void JuegoMesa::preparaTablero () {
         Edward->agregaAtaque(ataqueADistancia, 75);
         Edward->agregaDefensa(defensaCuerpoACuerpo, 45);
         Edward->agregaDefensa(defensaADistancia, 60);
+        Edward->agregaReduceDano(danoFisico, 5);
 
         Victoria->agregaAtaque(ataqueCuerpoACuerpo, 45);
         Victoria->agregaAtaque(ataqueADistancia, 70);
         Victoria->agregaDefensa(defensaCuerpoACuerpo, 50);
         Victoria->agregaDefensa(defensaADistancia, 60);
+        Victoria->agregaReduceDano(danoFisico, 5);
 
         // Soportes: Balthazar, Luciana
         Balthazar->agregaAtaque(ataqueCuerpoACuerpo, 50);
         Balthazar->agregaAtaque(ataqueADistancia, 50);
         Balthazar->agregaDefensa(defensaCuerpoACuerpo, 55);
         Balthazar->agregaDefensa(defensaADistancia, 55);
+        Balthazar->agregaReduceDano(danoFisico, 12);
 
         Luciana->agregaAtaque(ataqueCuerpoACuerpo, 45);
         Luciana->agregaAtaque(ataqueADistancia, 50);
         Luciana->agregaDefensa(defensaCuerpoACuerpo, 55);
         Luciana->agregaDefensa(defensaADistancia, 60);
+        Luciana->agregaReduceDano(danoFisico, 12);
 
         // Tanques: Buenavida, Dorian
         Buenavida->agregaAtaque(ataqueCuerpoACuerpo, 80);
         Buenavida->agregaAtaque(ataqueADistancia, 30);
         Buenavida->agregaDefensa(defensaCuerpoACuerpo, 75);
         Buenavida->agregaDefensa(defensaADistancia, 60);
+        Buenavida->agregaReduceDano(danoFisico, 20);
 
         Dorian->agregaAtaque(ataqueCuerpoACuerpo, 75);
         Dorian->agregaAtaque(ataqueADistancia, 35);
         Dorian->agregaDefensa(defensaCuerpoACuerpo, 70);
         Dorian->agregaDefensa(defensaADistancia, 60);
+        Dorian->agregaReduceDano(danoFisico, 20);
 
         //
         /*******************************************************************************************
@@ -1227,16 +1247,10 @@ void JuegoMesa::preparaTablero () {
         //
         modo ()->configuraDesplaza (RejillaTablero::distanciaCeldas);
         //
-        Edward ->ponSitioFicha (Coord {35, 5});
-        Balthazar->ponSitioFicha (Coord {37, 5});
-        Buenavida->ponSitioFicha (Coord {39, 5});
-        Victoria ->ponSitioFicha (Coord {35, 45});
-        Luciana ->ponSitioFicha (Coord {37, 45});
-        Dorian  ->ponSitioFicha (Coord {39, 45});
-
         Edward->ponSitioFicha(Coord{ 35, 5 });
         Balthazar->ponSitioFicha(Coord{ 37, 5 });
         Buenavida->ponSitioFicha(Coord{ 39, 5 });
+
         Victoria->ponSitioFicha(Coord{ 35, 45 });
         Luciana->ponSitioFicha(Coord{ 37, 45 });
         Dorian->ponSitioFicha(Coord{ 39, 45 });
@@ -1262,9 +1276,9 @@ void JuegoMesa::preparaTablero () {
         tablero ()->asignaSonidoDesplaza  (carpeta_sonidos_juego + "SnowWalk.ogg",    100);
         tablero ()->asignaSonidoFracaso  (carpeta_sonidos_juego + "bad.ogg",    100);
         tablero ()->asignaSonidoExito  (carpeta_sonidos_juego + "yar.ogg",    100);
-        musica  ()->asignaMusica          (carpeta_sonidos_juego + "Track_1.ogg",     0);
+        musica  ()->asignaMusica          (carpeta_sonidos_juego + "Track_1.ogg",     100);
         //
-    agregaNombreAlumno (L"Sara Cubero García-Conde");
+        agregaNombreAlumno (L"Sara Cubero García-Conde");
         agregaNombreAlumno (L"Juan Carlos Jibaja");
         agregaNombreAlumno (L"Nahuel Alejandro Espeche");
         agregaNombreAlumno (L"Carlos Díez Navarro");
