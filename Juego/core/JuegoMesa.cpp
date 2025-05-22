@@ -1256,19 +1256,19 @@ void JuegoMesa::preparaTablero () {
         Dorian->ponSitioFicha(Coord{ 39, 45 });
 
         // ─── Tanques ──────────────────────
-        Buenavida->ponPuntosAccion(4);
+        Buenavida->ponPuntosAccion(8);
 
-        Dorian->ponPuntosAccion(4);
+        Dorian->ponPuntosAccion(8);
 
         // ─── Soportes ─────────────────────
-        Balthazar->ponPuntosAccion(6);
+        Balthazar->ponPuntosAccion(12);
 
-        Luciana->ponPuntosAccion(6);
+        Luciana->ponPuntosAccion(12);
 
         // ─── Carries ──────────────────────
-        Edward->ponPuntosAccion(7);
+        Edward->ponPuntosAccion(14);
 
-        Victoria->ponPuntosAccion(7);
+        Victoria->ponPuntosAccion(14);
 
 
         //
