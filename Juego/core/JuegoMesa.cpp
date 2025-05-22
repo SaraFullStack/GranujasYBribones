@@ -1276,7 +1276,7 @@ void JuegoMesa::preparaTablero () {
         tablero ()->asignaSonidoDesplaza  (carpeta_sonidos_juego + "SnowWalk.ogg",    100);
         tablero ()->asignaSonidoFracaso  (carpeta_sonidos_juego + "bad.ogg",    100);
         tablero ()->asignaSonidoExito  (carpeta_sonidos_juego + "yar.ogg",    100);
-        musica  ()->asignaMusica          (carpeta_sonidos_juego + "Track_1.ogg",     100);
+        musica  ()->asignaMusica          (carpeta_sonidos_juego + "SonidosPirata/Musica_de_fondo/la_balada_del_abismo_3.ogg",     100);
         //
         agregaNombreAlumno (L"Sara Cubero García-Conde");
         agregaNombreAlumno (L"Juan Carlos Jibaja");
