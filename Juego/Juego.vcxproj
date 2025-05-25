@@ -165,29 +165,42 @@
     <ClInclude Include="juego.h" />
     <ClInclude Include="core\JuegoMesa.h" />
   </ItemGroup>
-   <ItemGroup>
+  <ItemGroup>
     <Filter Include="core">
       <UniqueIdentifier>{11111111-1111-1111-1111-111111111111}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Assets\activos\bribones.png" />
     <Image Include="Assets\activos\estampas_fondo.png" />
-    <Image Include="Assets\habilidades\arco_flecha.png" />
-    <Image Include="Assets\habilidades\bola_fuego.png" />
-    <Image Include="Assets\habilidades\cristales.png" />
+    <Image Include="Assets\activos\granujas.png" />
+    <Image Include="Assets\activos\suerte.png" />
+    <Image Include="Assets\habilidades\abordaje.png" />
+    <Image Include="Assets\habilidades\ancla.png" />
+    <Image Include="Assets\habilidades\boxeo.png" />
+    <Image Include="Assets\habilidades\canionazo.png" />
+    <Image Include="Assets\habilidades\cuchillo.png" />
+    <Image Include="Assets\habilidades\embestida.png" />
     <Image Include="Assets\habilidades\escudo.png" />
     <Image Include="Assets\habilidades\espada.png" />
-    <Image Include="Assets\habilidades\espada_poderosa.png" />
     <Image Include="Assets\habilidades\fondo_5.png" />
-    <Image Include="Assets\habilidades\vela.png" />
-    <Image Include="Assets\habilidades\vela_triple.png" />
+    <Image Include="Assets\habilidades\pistola.png" />
+    <Image Include="Assets\habilidades\ponche.png" />
+    <Image Include="Assets\habilidades\reparar.png" />
+    <Image Include="Assets\habilidades\tornado.png" />
     <Image Include="Assets\retratos\buenavida.png" />
+    <Image Include="Assets\retratos\carry.png" />
+    <Image Include="Assets\retratos\carry2.png" />
     <Image Include="Assets\retratos\luciana.png" />
     <Image Include="Assets\retratos\Hunter_75.png" />
     <Image Include="Assets\retratos\dorian.png" />
     <Image Include="Assets\retratos\edward.png" />
     <Image Include="Assets\retratos\patrek_75.png" />
     <Image Include="Assets\retratos\balthazar.png" />
+    <Image Include="Assets\retratos\support.png" />
+    <Image Include="Assets\retratos\support2.png" />
+    <Image Include="Assets\retratos\tanke.png" />
+    <Image Include="Assets\retratos\tanke2.png" />
     <Image Include="Assets\retratos\victoria.png" />
   </ItemGroup>
   <ItemGroup>

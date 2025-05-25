@@ -1319,13 +1319,13 @@ namespace tapete {
             // ——— Restaurar puntos de acción según cada personaje ———
             const std::wstring nombre = persj->nombre();
             if (nombre == L"Dorian" || nombre == L"Buenavida") {
-                persj->ponPuntosAccion(4);
-            }
-            else if (nombre == L"Balthazar" || nombre == L"Luciana") {
                 persj->ponPuntosAccion(6);
             }
+            else if (nombre == L"Balthazar" || nombre == L"Luciana") {
+                persj->ponPuntosAccion(8);
+            }
             else if (nombre == L"Edward" || nombre == L"Victoria") {
-                persj->ponPuntosAccion(7);
+                persj->ponPuntosAccion(9);
             }
             else {
                 // más personajes
