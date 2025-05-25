@@ -1,4 +1,4 @@
-﻿// proyecto: Grupal/Juego
+// proyecto: Grupal/Juego
 // arhivo:   JuegoMesa.h
 // versión:  2.1  (Abril-2025)
 
@@ -93,18 +93,16 @@ namespace juego {
         la lista de habilidades diseñadas para el juego.
 
         *******************************************************************************************/
-        /*Habilidad * ataqueEspadaNormal {}; 
-        Habilidad * ataqueArco {};
-        Habilidad * ataqueEspadaPoderoso {};
-        Habilidad * defensaFerrea {};
-        Habilidad * curacionSimple {};
-        Habilidad * curacionGrupo {};
-        Habilidad * proyectilMagico {};
-        Habilidad * bolaFuego {};*/
         Habilidad * canionazo {};
         Habilidad * embestida {};
         Habilidad * abordaje {};
-        Habilidad* reparacionBarco {};
+        Habilidad * reparacionBarco {};
+        Habilidad * sangradoMortal;
+        Habilidad * oleadaMetralla;
+        Habilidad * golpeDevastador;
+        Habilidad * punoCorsario;
+        Habilidad * tornado;
+        Habilidad * golpeAncla;
 
         /*******************************************************************************************
         /******************************************************************************************/
@@ -135,12 +133,9 @@ namespace juego {
         *******************************************************************************************/
         TipoAtaque *  ataqueCuerpoACuerpo {};
         TipoAtaque *  ataqueADistancia {};
-        TipoAtaque *  ataqueMagico {};
         TipoDefensa * defensaCuerpoACuerpo {};
         TipoDefensa * defensaADistancia {};
-        TipoDefensa * defensaMagica {};
         TipoDano *    danoFisico {};
-        TipoDano *    danoMagico {};
         /*******************************************************************************************
         /******************************************************************************************/
 

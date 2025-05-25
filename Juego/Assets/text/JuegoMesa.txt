@@ -1,31 +1,65 @@
 // proyecto: Grupal/Juego
 // archivo:   JuegosMesa.txt
-// versión:  1.0  (Mayo-2025)
+// versión:  1.4  (Mayo-2025)
 
-┌───────────┬──────────┬────────────┬───────────────┬────────────────────┐
-│ Personaje │   Rol    │ Iniciativa │ Puntos Acción │ Habilidad Especial │
-├───────────┼──────────┼────────────┼───────────────┼────────────────────┤
-│ Edward    │ Carry    │     20     │       7       │   <por definir>    │
-│ Victoria  │ Carry    │     17     │       7       │   <por definir>    │
-│ Balthazar │ Support  │     17     │       6       │   <por definir>    │
-│ Luciana   │ Support  │     19     │       6       │   <por definir>    │
-│ Buenavida │ Tanque   │     20     │       4       │   <por definir>    │
-│ Dorian    │ Tanque   │     19     │       4       │   <por definir>    │
-└───────────┴──────────┴────────────┴───────────────┴────────────────────┘
+Características del juego:
+- Mapa generado proceduralmente en cada partida, con simetría equitativa y equilibrio para ambos equipos.
+- Obstáculos (islas) y tesoros distribuidos de forma justa.
 
-Todos los piratas comparten estas habilidades básicas:
- - Cañonazo (Coste 6, Alcance 12, Daño 40)
- - Embestida (Coste 4, Alcance 1,   Daño 25)
- - Abordaje  (Coste 7, Alcance 1,   Daño 50)
+┌───────────┬──────────┬────────────┬───────────────┬───────────────────────────────┐
+│ Personaje │   Rol    │ Iniciativa │ Puntos Acción │ Habilidad Especial            │
+├───────────┼──────────┼────────────┼───────────────┼───────────────────────────────┤
+│ Edward    │ Carry    │     20     │       9       │ Sangrado Mortal               │
+│ Victoria  │ Carry    │     17     │       9       │ Puño del Corsario             │
+│ Balthazar │ Support  │     17     │       8       │ Oleada de Metralla            │
+│ Luciana   │ Support  │     19     │       8       │ Efecto Tornado                │
+│ Buenavida │ Tanque   │     20     │       6       │ Golpes Devastadores           │
+│ Dorian    │ Tanque   │     19     │       6       │ Golpe de Ancla                │
+└───────────┴──────────┴────────────┴───────────────┴───────────────────────────────┘
 
-• Algunos piratas (Carry) tienen más puntos de acción para actuar varias veces.  
-• Otros (Tanque) tienen mayor iniciativa o resistencias.  
-• Soporte equilibra ambas facetas.
+Habilidades básicas compartidas por todos:
+- **Cañonazo**  
+  • Coste 6, Alcance 12  
+  • Tipo Ataque: A distancia, Tipo Defensa: A distancia  
+  • Daño físico: 40  
+- **Embestida**  
+  • Coste 4, Alcance 1  
+  • Tipo Ataque: Cuerpo a cuerpo, Tipo Defensa: Cuerpo a cuerpo  
+  • Daño físico: 25  
+- **Abordaje**  
+  • Coste 7, Alcance 1  
+  • Tipo Ataque: Cuerpo a cuerpo, Tipo Defensa: Cuerpo a cuerpo  
+  • Daño físico: 50  
+- **Reparación de barco**  
+  • Coste 3  
+  • Efecto defensa cuerpo a cuerpo: +5 puntos  
 
--- Objetos sorpresa en el mapa (10 tesoros repartidos) --
-//  5 Cofres Explosivos:
-//      • Al recogerlos, infligen 20 puntos de daño al barco enemigo.
-//
-//  5 Barriles de Reparación:
-//      • Al recogerlos, reparan 20 puntos de integridad del barco.
+Habilidades especiales (recargables cada partida):
+- **Edward – Sangrado Mortal**  
+  • Coste 5, Alcance 5  
+  • Tipo Ataque: A distancia, Tipo Defensa: A distancia  
+  • Daño físico: 29  
+- **Balthazar – Oleada de Metralla**  
+  • Coste 7, Alcance 5, Radio 5  
+  • Tipo Ataque: Cuerpo a cuerpo, Tipo Defensa: Cuerpo a cuerpo  
+  • Daño físico: 38  
+- **Buenavida – Golpes Devastadores**  
+  • Coste 5, Alcance 5, Radio 5  
+  • Tipo Ataque: Cuerpo a cuerpo, Tipo Defensa: Cuerpo a cuerpo  
+  • Daño físico: 26  
+- **Victoria – Puño del Corsario**  
+  • Coste 6, Alcance 45, Radio 5  
+  • Tipo Ataque: Cuerpo a cuerpo, Tipo Defensa: Cuerpo a cuerpo  
+  • Daño físico: 32  
+- **Luciana – Efecto Tornado**  
+  • Coste 6, Alcance 5, Radio 5  
+  • Tipo Ataque: Cuerpo a cuerpo, Tipo Defensa: Cuerpo a cuerpo  
+  • Daño físico: 34  
+- **Dorian – Golpe de Ancla**  
+  • Coste 4, Alcance 5, Radio 5  
+  • Tipo Ataque: Cuerpo a cuerpo, Tipo Defensa: Cuerpo a cuerpo  
+  • Daño físico: 27  
 
+Objetos sorpresa en el mapa (10 tesoros repartidos):
+- 5 Cofres Explosivos: al recogerlos, infligen 20 puntos de daño.  
+- 5 Barriles de Reparación: al recogerlos, restauran 20 puntos de vitalidad.  
