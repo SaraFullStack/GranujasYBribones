@@ -546,30 +546,30 @@ namespace juego
 
 
         // Seleccion SFX
-        Edward    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Dorian    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Balthazar    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Buenavida    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Luciana    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Victoria    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
+        Edward    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/EdwardRojo/Edward1.ogg", 100);
+        Dorian    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/Dorian/Dorian1.ogg", 100);
+        Balthazar    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazar1.ogg", 100);
+        Buenavida    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/LucianaOeste/Luciana0.ogg", 100);
+        Luciana    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/LucianaVientos/Lucianavientos1.ogg", 100);
+        Victoria    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/Victoria/Victoria1.ogg", 100);
 
 
         // Seleccion SFX
-        Edward    -> asignaSeleccionSFX  (carpeta_sonidos_juego + "SonidosPirata/Dorian/Dorianpresentacion.ogg", 100);
-        Dorian    -> asignaSeleccionSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
+        Edward    -> asignaSeleccionSFX  (carpeta_sonidos_juego + "SonidosPirata/EdwardRojo/Edwardpresentacion.ogg", 100);
+        Dorian    -> asignaSeleccionSFX  (carpeta_sonidos_juego + "SonidosPirata/Dorian/Dorianpresentacion.ogg", 100);
         Balthazar    -> asignaSeleccionSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Buenavida    -> asignaSeleccionSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Luciana    -> asignaSeleccionSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Victoria    -> asignaSeleccionSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
+        Buenavida    -> asignaSeleccionSFX  (carpeta_sonidos_juego + "SonidosPirata/LucianaVientos/Lucianavientospresentacion.ogg", 100);
+        Luciana    -> asignaSeleccionSFX  (carpeta_sonidos_juego + "SonidosPirata/LucianaOeste/Lucianapresentacion.ogg", 100);
+        Victoria    -> asignaSeleccionSFX  (carpeta_sonidos_juego + "SonidosPirata/Victoria/Victoriapresentacion.ogg", 100);
 
 
         // Seleccion SFX
-        Edward    -> asignaDesplazamientoSFX  (carpeta_sonidos_juego + "SonidosPirata/LucianaVientos/Lucianavientospresentacion.ogg", 100);
-        Dorian    -> asignaDesplazamientoSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Balthazar    -> asignaDesplazamientoSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Buenavida    -> asignaDesplazamientoSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Luciana    -> asignaDesplazamientoSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Victoria    -> asignaDesplazamientoSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
+        Edward    -> asignaDesplazamientoSFX  (carpeta_sonidos_juego + "SonidosPirata/EdwardRojo/Edward2.ogg", 100);
+        Dorian    -> asignaDesplazamientoSFX    (carpeta_sonidos_juego + "SonidosPirata/Dorian/Dorian2.ogg", 100);
+        Balthazar    -> asignaDesplazamientoSFX (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazar2.ogg", 100);
+        Buenavida    -> asignaDesplazamientoSFX  (carpeta_sonidos_juego + "SonidosPirata/LucianaOeste/Luciana1.ogg", 100);
+        Luciana    -> asignaDesplazamientoSFX  (carpeta_sonidos_juego + "SonidosPirata/LucianaVientos/Lucianavientos2.ogg", 100);
+        Victoria    -> asignaDesplazamientoSFX  (carpeta_sonidos_juego + "SonidosPirata/Victoria/Victoria2.ogg", 100);
 
         //
         agregaPersonaje(Edward);
