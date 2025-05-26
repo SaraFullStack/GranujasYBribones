@@ -549,8 +549,8 @@ namespace juego
         Edward    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/EdwardRojo/Edward1.ogg", 100);
         Dorian    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/Dorian/Dorian1.ogg", 100);
         Balthazar    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazar1.ogg", 100);
-        Buenavida    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/LucianaOeste/Luciana0.ogg", 100);
-        Luciana    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/LucianaVientos/Lucianavientos1.ogg", 100);
+        Buenavida    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/LucianaOeste/Luciana5.ogg", 100);
+        Luciana    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/LucianaVientos/Lucianavientos2.ogg", 100);
         Victoria    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/Victoria/Victoria1.ogg", 100);
 
 
@@ -567,8 +567,8 @@ namespace juego
         Edward    -> asignaDesplazamientoSFX  (carpeta_sonidos_juego + "SonidosPirata/EdwardRojo/Edward2.ogg", 100);
         Dorian    -> asignaDesplazamientoSFX    (carpeta_sonidos_juego + "SonidosPirata/Dorian/Dorian2.ogg", 100);
         Balthazar    -> asignaDesplazamientoSFX (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazar2.ogg", 100);
-        Buenavida    -> asignaDesplazamientoSFX  (carpeta_sonidos_juego + "SonidosPirata/LucianaOeste/Luciana1.ogg", 100);
-        Luciana    -> asignaDesplazamientoSFX  (carpeta_sonidos_juego + "SonidosPirata/LucianaVientos/Lucianavientos2.ogg", 100);
+        Buenavida    -> asignaDesplazamientoSFX  (carpeta_sonidos_juego + "SonidosPirata/LucianaOeste/Luciana2.ogg", 100);
+        Luciana    -> asignaDesplazamientoSFX  (carpeta_sonidos_juego + "SonidosPirata/LucianaVientos/Lucianavientos3.ogg", 100);
         Victoria    -> asignaDesplazamientoSFX  (carpeta_sonidos_juego + "SonidosPirata/Victoria/Victoria2.ogg", 100);
 
         //
