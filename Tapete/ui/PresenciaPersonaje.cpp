@@ -33,7 +33,8 @@ namespace tapete {
         //preparaHabilidadesActuante (actor_personaje);
         //
         preparaFicha ();
-    }
+        preparaSFX ();
+}
 
 
     void PresenciaPersonaje::libera () {
@@ -75,6 +76,7 @@ namespace tapete {
         //
         delete textura_retrato;
         textura_retrato = nullptr;
+        liberaSFXs();
     }
 
 
@@ -266,6 +268,27 @@ namespace tapete {
         throw std::logic_error (mensaje);
     }
 
+    void PresenciaPersonaje::preparaSFX() {
+        sonido_personaje = new unir2d::Sonido();
+        sonido_personaje->carga(actor_personaje->archivo_personaje_sfx);
+        sonido_personaje->ponVolumen(actor_personaje->volumen_personaje_sfx);
 
+        sonido_seleccion = new unir2d::Sonido();
+        sonido_seleccion->carga(actor_personaje->archivo_seleccion_sfx);
+        sonido_seleccion->ponVolumen(actor_personaje->volumen_seleccion_sfx);
+
+        sonido_desplazamiento = new unir2d::Sonido();
+        sonido_desplazamiento->carga(actor_personaje->archivo_desplazamiento_sfx);
+        sonido_desplazamiento->ponVolumen(actor_personaje->volumen_desplazamiento_sfx);
+
+    }
+    void PresenciaPersonaje::liberaSFXs() {
+        delete sonido_personaje;
+        sonido_personaje = nullptr;
+        delete sonido_seleccion;
+        sonido_seleccion = nullptr;
+        delete sonido_desplazamiento;
+        sonido_desplazamiento = nullptr;
+    }
 }
 

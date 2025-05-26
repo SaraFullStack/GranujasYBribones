@@ -325,6 +325,7 @@ namespace tapete {
         presnc.refrescaBarraVida ();
         juego_->tablero ()->rejilla ().marcaCelda (personaje->sitioFicha (), ModoJuegoBase::color_elegido); 
         juego_->tablero ()->emiteSonidoEstablece ();
+        presnc.personaje ()->emitePersonajeSFX ();
     }
 
 
@@ -459,7 +460,8 @@ namespace tapete {
         PresenciaActuante & presnc_ataca = juego_->tablero ()->presencia (atacante_->ladoTablero ());
         presnc_ataca.marcaRetrato ();
         juego_->tablero ()->emiteSonidoEstablece ();
-    }
+        presnc_ataca.personaje ()->emiteSeleccionSFX ();
+}
 
 
     void ModoJuegoBase::estableceModoAccionHabilidad (int indice_habilidad) {
@@ -1319,13 +1321,13 @@ namespace tapete {
             // ——— Restaurar puntos de acción según cada personaje ———
             const std::wstring nombre = persj->nombre();
             if (nombre == L"Dorian" || nombre == L"Buenavida") {
-                persj->ponPuntosAccion(6);
-            }
-            else if (nombre == L"Balthazar" || nombre == L"Luciana") {
                 persj->ponPuntosAccion(8);
             }
+            else if (nombre == L"Balthazar" || nombre == L"Luciana") {
+                persj->ponPuntosAccion(12);
+            }
             else if (nombre == L"Edward" || nombre == L"Victoria") {
-                persj->ponPuntosAccion(9);
+                persj->ponPuntosAccion(14);
             }
             else {
                 // más personajes
