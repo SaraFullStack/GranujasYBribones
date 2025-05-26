@@ -543,34 +543,6 @@ namespace juego
         Buenavida->ponIniciativa(20);
         Luciana->ponIniciativa(19);
         Victoria->ponIniciativa(17);
-
-
-        // Seleccion SFX
-        Edward    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Dorian    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Balthazar    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Buenavida    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Luciana    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Victoria    -> asignaPersonajeSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-
-
-        // Seleccion SFX
-        Edward    -> asignaSeleccionSFX  (carpeta_sonidos_juego + "SonidosPirata/Dorian/Dorianpresentacion.ogg", 100);
-        Dorian    -> asignaSeleccionSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Balthazar    -> asignaSeleccionSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Buenavida    -> asignaSeleccionSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Luciana    -> asignaSeleccionSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Victoria    -> asignaSeleccionSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-
-
-        // Seleccion SFX
-        Edward    -> asignaDesplazamientoSFX  (carpeta_sonidos_juego + "SonidosPirata/LucianaVientos/Lucianavientospresentacion.ogg", 100);
-        Dorian    -> asignaDesplazamientoSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Balthazar    -> asignaDesplazamientoSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Buenavida    -> asignaDesplazamientoSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Luciana    -> asignaDesplazamientoSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-        Victoria    -> asignaDesplazamientoSFX  (carpeta_sonidos_juego + "SonidosPirata/Balthazar/Balthazarpresentacion.ogg", 100);
-
         //
         agregaPersonaje(Edward);
         agregaPersonaje(Balthazar);
@@ -728,7 +700,7 @@ namespace juego
         // Balthazar: Oleada de metralla
         oleadaMetralla = new Habilidad{
             L"Oleada de metralla",
-            EnfoqueHabilidad::personaje,
+            EnfoqueHabilidad::area,
             AccesoHabilidad::indirecto,
             Antagonista::oponente};
         oleadaMetralla->ponDescripcion(
@@ -756,7 +728,7 @@ namespace juego
         // Victoria: Explosión de pólvora
         punoCorsario = new Habilidad{
             L"Puño del Corsario",
-            EnfoqueHabilidad::personaje,
+            EnfoqueHabilidad::area,
             AccesoHabilidad::directo,
             Antagonista::oponente};
         punoCorsario->ponDescripcion(
@@ -987,19 +959,19 @@ namespace juego
         parámetro del tipo (puntero) 'TipoAtaque'.
 
         *******************************************************************************************/
-        canionazo->ponCoste(8);
+        canionazo->ponCoste(6);
         canionazo->ponAlcance(12);
         canionazo->asignaAtaque(ataqueADistancia);
         canionazo->asignaDefensa(defensaADistancia);
         canionazo->asignaDano(danoFisico, 40);
 
-        embestida->ponCoste(8);
+        embestida->ponCoste(4);
         embestida->ponAlcance(1);
         embestida->asignaAtaque(ataqueCuerpoACuerpo);
         embestida->asignaDefensa(defensaCuerpoACuerpo);
         embestida->asignaDano(danoFisico, 25);
 
-        abordaje->ponCoste(8);
+        abordaje->ponCoste(7);
         abordaje->ponAlcance(1);
         abordaje->asignaAtaque(ataqueCuerpoACuerpo);
         abordaje->asignaDefensa(defensaCuerpoACuerpo);
@@ -1011,22 +983,25 @@ namespace juego
         // Equipo Izquierda
 
         // Edward "El Rojo" Drake – Sangrado Mortal
-        sangradoMortal->ponCoste(8);
+        sangradoMortal->ponCoste(5);
         sangradoMortal->ponAlcance(5);                    // alcance a 5 casillas
+        oleadaMetralla->ponRadioAlcance (5);
         sangradoMortal->asignaAtaque(ataqueADistancia);   // ← cambias a distancia
         sangradoMortal->asignaDefensa(defensaADistancia); // ← cambias a distancia
         sangradoMortal->asignaDano(danoFisico, 29);
 
         // Balthazar Flint – Oleada de metralla
-        oleadaMetralla->ponCoste(12); // antes 6
+        oleadaMetralla->ponCoste(7); // antes 6
         oleadaMetralla->ponAlcance(5);
+        oleadaMetralla->ponRadioAlcance (5);
         oleadaMetralla->asignaAtaque(ataqueCuerpoACuerpo);
         oleadaMetralla->asignaDefensa(defensaCuerpoACuerpo);
         oleadaMetralla->asignaDano(danoFisico, 38); // antes 35
 
         // Marca "Buenavida" Vane – Carga de espolón
-        golpeDevastador->ponCoste(14); // antes 4
+        golpeDevastador->ponCoste(5); // antes 4
         golpeDevastador->ponAlcance(5);
+        golpeDevastador->ponRadioAlcance (5);
         golpeDevastador->asignaAtaque(ataqueCuerpoACuerpo);
         golpeDevastador->asignaDefensa(defensaCuerpoACuerpo);
         golpeDevastador->asignaDano(danoFisico, 26); // antes 25
@@ -1034,22 +1009,25 @@ namespace juego
         // Equipo Derecha
 
         // Victoria Crown – Puño Corsario
-        punoCorsario->ponCoste(14);        // antes 7
+        punoCorsario->ponCoste(6);        // antes 7
         punoCorsario->ponAlcance(45);      // antes 3
+        punoCorsario->ponRadioAlcance (5);
         punoCorsario->asignaAtaque(ataqueCuerpoACuerpo);
         punoCorsario->asignaDefensa(defensaCuerpoACuerpo);
         punoCorsario->asignaDano(danoFisico, 32); // antes 40
 
         // Luciana "De los Vientos" Graves – Tornado
-        tornado->ponCoste(12);    // igual
+        tornado->ponCoste(6);    // igual
         tornado->ponAlcance(5); // antes 12
+        tornado->ponRadioAlcance (5);
         tornado->asignaAtaque(ataqueCuerpoACuerpo);
         tornado->asignaDefensa(defensaCuerpoACuerpo);
         tornado->asignaDano(danoFisico, 34); // antes 30
 
         // Capitana Dorian Blackwater – Golpe de ancla
-        golpeAncla->ponCoste(8); // antes 5
+        golpeAncla->ponCoste(4); // antes 5
         golpeAncla->ponAlcance(5);
+        golpeAncla->ponRadioAlcance (5);
         golpeAncla->asignaAtaque(ataqueCuerpoACuerpo);
         golpeAncla->asignaDefensa(defensaCuerpoACuerpo);
         golpeAncla->asignaDano(danoFisico, 27); // antes 20
@@ -1290,19 +1268,19 @@ namespace juego
         Dorian->ponSitioFicha(Coord{39, 45});
 
         // ─── Tanques ──────────────────────
-        Buenavida->ponPuntosAccion(8);
+        Buenavida->ponPuntosAccion(6);
 
-        Dorian->ponPuntosAccion(8);
+        Dorian->ponPuntosAccion(6);
 
         // ─── Soportes ─────────────────────
-        Balthazar->ponPuntosAccion(12);
+        Balthazar->ponPuntosAccion(8);
 
-        Luciana->ponPuntosAccion(12);
+        Luciana->ponPuntosAccion(8);
 
         // ─── Carries ──────────────────────
-        Edward->ponPuntosAccion(14);
+        Edward->ponPuntosAccion(9);
 
-        Victoria->ponPuntosAccion(14);
+        Victoria->ponPuntosAccion(9);
 
         //
         tablero()->asignaSonidoEstablece(carpeta_sonidos_juego + "Metal Click.wav", 100);
