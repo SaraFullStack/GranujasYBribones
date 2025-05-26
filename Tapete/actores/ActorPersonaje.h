@@ -98,6 +98,26 @@ namespace tapete {
         int puntosAccionEnJuego () const;
         void ponPuntosAccionEnJuego (int valor);
 
+        //  Listado de asignacion y emision de cada tipo SFX por personaje
+        // Retrato SFX
+        const string& archivoPersonajeSFX(); // ruta archivo SFX
+        int volumenPersonajeSFX(); //Controla el volumen SFX
+        void asignaPersonajeSFX(const string& archivo_establece, int volumen); // Setter del volumen y el archivo SFX a las variables privadas
+        void emitePersonajeSFX(); // Ejecuta el sonido asignado al personaje en presenciapersonaje
+
+        // Selección SFX
+        const string& archivoSeleccionSFX();
+        int volumenSeleccionSFX(); 
+        void asignaSeleccionSFX(const string& archivo_establece, int volumen); 
+        void emiteSeleccionSFX(); 
+
+        // Desplazamiento SFX
+        const string& archivoDesplazamientoSFX(); 
+        int volumenDesplazamientoSFX(); 
+        void asignaDesplazamientoSFX(const string& archivo_establece, int volumen); 
+        void emiteDesplazamientoSFX();
+        
+
     protected:
 
         void inicia () override;
@@ -106,6 +126,17 @@ namespace tapete {
         void actualiza (double tiempo_seg) override;
 
     private:
+
+        // Listado variables que controlan el volumen y ruta del archivo de cada uno de los SFX
+        // Retrato SFX
+        string archivo_personaje_sfx{};
+        int    volumen_personaje_sfx{};
+        // Selección SFX
+        string archivo_seleccion_sfx{};
+        int    volumen_seleccion_sfx{};
+        // Desplazamiento SFX
+        string archivo_desplazamiento_sfx{};
+        int    volumen_desplazamiento_sfx{};
 
         JuegoMesaBase * juego_ {}; 
 

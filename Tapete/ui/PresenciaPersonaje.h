@@ -75,6 +75,15 @@ namespace tapete {
 
         static void aserta (bool expresion, const string & mensaje);
 
+        unir2d::Sonido *                sonido_personaje      {};
+        unir2d::Sonido *                sonido_seleccion      {};
+        unir2d::Sonido *                sonido_desplazamiento {};
+        inline static unir2d::Textura * textura_retrato_muerto{};
+        unir2d::Imagen *                imagen_retrato_muerto {};
+
+        void preparaSFX (); //cargamos los sonidos en cada puntero
+        void liberaSFXs();  //para liberar los SFXs en el metodo libera()
+
 
         friend class ActorPersonaje;
 
