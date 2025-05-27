@@ -735,7 +735,7 @@ namespace tapete {
     //----------------------------------------------------------------------------------------------
 
 
-    void ModoJuegoBase::validaHabilidadSimple (bool & uso_valido, int & puntos_en_juego) {
+void ModoJuegoBase::validaHabilidadSimple (bool & uso_valido, int & puntos_en_juego) {
         // solo usado en 'ModoJuegoComun'
         //      
         asertaHabilidadSimple ("validaHabilidadSimple");
@@ -772,8 +772,7 @@ namespace tapete {
         presnc_ataca.iluminaPuntosAccion (atacante_->puntosAccion (), 0);
     }
 
-
-    void ModoJuegoBase::aplicaHabilidadSimple () {
+ void ModoJuegoBase::aplicaHabilidadSimple () {
         // solo usado en 'ModoJuegoComun'
         //
         asertaHabilidadSimple ("aplicaHabilidadSimple");
@@ -795,7 +794,7 @@ namespace tapete {
         //
         juego_->tablero ()->emiteSonidoHabilidad (habilidad_accion);
     }
-
+    
 
     void ModoJuegoBase::asertaHabilidadSimple (const string & metodo) {
         aserta (atacante_ != nullptr,           metodo, "atacante no asignado");
@@ -919,32 +918,50 @@ namespace tapete {
     }
 
 
-    void ModoJuegoBase::atacaOponente () {
+    void ModoJuegoBase::atacaOponente() {
         // solo usado en 'ModoJuegoComun'
-        //
-        asertaHabilidadOponente ("atacaOponente", oponente_);
-        //
-        juego_->sistemaAtaque ().calcula (atacante_, habilidad_accion, oponente_, valor_aleatorio_100);
-        //
-        if (habilidadAccion ()->tipoAcceso () == AccesoHabilidad::directo) {
-            VistaCaminoCeldas & vista_camino = juego_->tablero ()->vistaCamino ();
-            vista_camino.vaciaCamino ();
+        asertaHabilidadOponente("atacaOponente", oponente_);
+        int coste = habilidad_accion->coste();
+
+        int rnd = (coste == 1 ? 100 : valor_aleatorio_100);
+
+        // 1) Cálculo del efecto de la habilidad
+        juego_->sistemaAtaque().calcula(atacante_, habilidad_accion, oponente_, rnd);
+
+        // 2) Consumo de puntos de acción:
+        //    - si coste()==1, gasta TODO lo que quede
+        //    - en otro caso, gasta sólo ese coste
+        int paAntes  = atacante_->puntosAccion();
+        int paAGastar = (coste == 1 ? paAntes : coste);
+        atacante_->ponPuntosAccion(paAntes - paAGastar);
+        atacante_->ponPuntosAccionEnJuego(0);
+
+        // 3) Si ya no puede actuar o está KO, oscurecer retrato
+        if (atacante_->puntosAccion() == 0 || atacante_->vitalidad() == 0) {
+            atacante_->presencia().oscureceRetrato();
         }
-        if (oponente_->ladoTablero () != atacante_->ladoTablero ()) {
-            PresenciaActuante & presnc_opone = juego_->tablero ()->presencia (oponente_->ladoTablero ());
-            if (presnc_opone.visible ()) {
-                presnc_opone.oculta ();
-            }
-            juego_->tablero ()->rejilla ().desmarcaCelda (oponente_->sitioFicha ());
+
+        // 4) Limpiar ruta si era acceso directo
+        if (habilidadAccion()->tipoAcceso() == AccesoHabilidad::directo) {
+            juego_->tablero()->vistaCamino().vaciaCamino();
         }
-        //
-        refrescaBarrasVida ();
-        //
-        refrescaPuntosAccion ();
-        //presnc_ataca.desmarca ();
-        //
-        juego_->tablero ()->emiteSonidoHabilidad (habilidad_accion);
+
+        // 5) Ocultar oponente y desmarcar celda
+        if (oponente_->ladoTablero() != atacante_->ladoTablero()) {
+            PresenciaActuante &pres_opone =
+                juego_->tablero()->presencia(oponente_->ladoTablero());
+            if (pres_opone.visible()) pres_opone.oculta();
+            juego_->tablero()->rejilla().desmarcaCelda(oponente_->sitioFicha());
+        }
+
+        // 6) Actualizar barras de vida y PA en pantalla
+        refrescaBarrasVida();
+        refrescaPuntosAccion();
+
+        // 7) Reproducir sonido de la habilidad
+        juego_->tablero()->emiteSonidoHabilidad(habilidad_accion);
     }
+
 
 
     void ModoJuegoBase::asertaHabilidadOponente (const string & metodo, ActorPersonaje * oponentable) {

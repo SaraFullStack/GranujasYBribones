@@ -661,7 +661,7 @@ namespace juego
         canionazo = new Habilidad{
             L"Cañonazo",
             EnfoqueHabilidad::personaje,
-            AccesoHabilidad::indirecto,
+            AccesoHabilidad::directo,
             Antagonista::oponente};
         canionazo->ponDescripcion(
             L"Disparo de cañón de largo alcance que causa gran daño.");
@@ -715,7 +715,7 @@ namespace juego
         sangradoMortal = new Habilidad{
             L"Sangrado mortal",
             EnfoqueHabilidad::personaje,
-            AccesoHabilidad::directo,
+            AccesoHabilidad::indirecto,
             Antagonista::oponente};
         sangradoMortal->ponDescripcion(
             L"Edward corta a su enemigo causando daño a un enemigo.");
@@ -743,7 +743,7 @@ namespace juego
         golpeDevastador = new Habilidad{
             L"Golpes devastadores",
             EnfoqueHabilidad::personaje,
-            AccesoHabilidad::directo,
+            AccesoHabilidad::indirecto,
             Antagonista::oponente};
         golpeDevastador->ponDescripcion(
             L"Buenavida golpea fuertemente empujando y dañando al enemigo.");
@@ -757,7 +757,7 @@ namespace juego
         punoCorsario = new Habilidad{
             L"Puño del Corsario",
             EnfoqueHabilidad::personaje,
-            AccesoHabilidad::directo,
+            AccesoHabilidad::indirecto,
             Antagonista::oponente};
         punoCorsario->ponDescripcion(
             L"Victoria asesta un puño empapado en ron, embistiendo al enemigo como un navío.");
@@ -785,7 +785,7 @@ namespace juego
         golpeAncla = new Habilidad{
             L"Golpe de ancla",
             EnfoqueHabilidad::personaje,
-            AccesoHabilidad::directo,
+            AccesoHabilidad::indirecto,
             Antagonista::oponente};
         golpeAncla->ponDescripcion(
             L"Dorian usa su ancla como mazo y golpea a un enemigo cercano con gran fuerza.");
@@ -1010,22 +1010,24 @@ namespace juego
 
         // Equipo Izquierda
 
+        //Los coste 1, gastan todos los puntos pero aplican críticos
+
         // Edward "El Rojo" Drake – Sangrado Mortal
-        sangradoMortal->ponCoste(8);
+        sangradoMortal->ponCoste(1);
         sangradoMortal->ponAlcance(5);                    // alcance a 5 casillas
         sangradoMortal->asignaAtaque(ataqueADistancia);   // ← cambias a distancia
         sangradoMortal->asignaDefensa(defensaADistancia); // ← cambias a distancia
         sangradoMortal->asignaDano(danoFisico, 29);
 
         // Balthazar Flint – Oleada de metralla
-        oleadaMetralla->ponCoste(12); // antes 6
+        oleadaMetralla->ponCoste(1); // antes 6
         oleadaMetralla->ponAlcance(5);
         oleadaMetralla->asignaAtaque(ataqueCuerpoACuerpo);
         oleadaMetralla->asignaDefensa(defensaCuerpoACuerpo);
         oleadaMetralla->asignaDano(danoFisico, 38); // antes 35
 
         // Marca "Buenavida" Vane – Carga de espolón
-        golpeDevastador->ponCoste(14); // antes 4
+        golpeDevastador->ponCoste(1); // antes 4
         golpeDevastador->ponAlcance(5);
         golpeDevastador->asignaAtaque(ataqueCuerpoACuerpo);
         golpeDevastador->asignaDefensa(defensaCuerpoACuerpo);
@@ -1034,21 +1036,21 @@ namespace juego
         // Equipo Derecha
 
         // Victoria Crown – Puño Corsario
-        punoCorsario->ponCoste(14);        // antes 7
+        punoCorsario->ponCoste(1);        // antes 7
         punoCorsario->ponAlcance(45);      // antes 3
         punoCorsario->asignaAtaque(ataqueCuerpoACuerpo);
         punoCorsario->asignaDefensa(defensaCuerpoACuerpo);
         punoCorsario->asignaDano(danoFisico, 32); // antes 40
 
         // Luciana "De los Vientos" Graves – Tornado
-        tornado->ponCoste(12);    // igual
+        tornado->ponCoste(1);    // igual
         tornado->ponAlcance(5); // antes 12
         tornado->asignaAtaque(ataqueCuerpoACuerpo);
         tornado->asignaDefensa(defensaCuerpoACuerpo);
         tornado->asignaDano(danoFisico, 34); // antes 30
 
         // Capitana Dorian Blackwater – Golpe de ancla
-        golpeAncla->ponCoste(8); // antes 5
+        golpeAncla->ponCoste(1); // antes 5
         golpeAncla->ponAlcance(5);
         golpeAncla->asignaAtaque(ataqueCuerpoACuerpo);
         golpeAncla->asignaDefensa(defensaCuerpoACuerpo);
