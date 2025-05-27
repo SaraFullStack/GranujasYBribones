@@ -1283,12 +1283,31 @@ namespace tapete {
                       L"la ayuda."},
                     {  }     );
             break;
-        case EstadoJuegoComun::finalPartida:
-            juego ()->tablero ()->escribeMonitor (std::vector <wstring>
-                    { L"Agotados todos los rondas de juego",
-                      L"La partida ha terminado."            },
-                    {}                                         );
+        case EstadoJuegoComun::finalPartida: {
+            // Detecta quién ha ganado
+            bool izquierdaDerrotada = true;
+            bool derechaDerrotada   = true;
+
+            for (auto* p : juego()->personajes()) {
+                if (p->vitalidad() > 0) {
+                    if (p->ladoTablero() == LadoTablero::Izquierda)
+                        izquierdaDerrotada = false;
+                    else if (p->ladoTablero() == LadoTablero::Derecha)
+                        derechaDerrotada = false;
+                }
+            }
+
+            std::vector<std::wstring> mensaje;
+            if (izquierdaDerrotada)
+                mensaje = { L"¡Bribones ganan!", L"Pulsa ESC para salir" };
+            else if (derechaDerrotada)
+                mensaje = { L"¡Granujas ganan!", L"Pulsa ESC para salir" };
+            else
+                mensaje = { L"Agotadas todas las rondas.", L"La partida ha terminado." };
+
+            juego()->tablero()->escribeMonitor(mensaje, {});
             break;
+        }
         default:
             assert (false);
             break;

@@ -193,6 +193,32 @@ namespace tapete {
             validaAtributos ();
             informaProceso ("asumeHabilidad");
             escribeEstado ();
+            
+            bool izquierdaViva = false;
+            bool derechaViva = false;
+
+            for (ActorPersonaje* p : juego()->personajes()) {
+                if (p->vitalidad() > 0) {
+                    if (p->ladoTablero() == LadoTablero::Izquierda)
+                        izquierdaViva = true;
+                    else if (p->ladoTablero() == LadoTablero::Derecha)
+                        derechaViva = true;
+                }
+            }
+
+            if (!izquierdaViva || !derechaViva) {
+                juego()->tablero()->escribeMonitor(
+                    std::vector<std::wstring>{
+                    (!izquierdaViva)
+                        ? L"¡Bribones ganan!"
+                        : L"¡Granujas ganan!"
+                },
+                    std::vector<std::wstring>{}
+                );
+
+                estado().transita(EstadoJuegoPares::finalPartida);
+                return;
+            }
         } catch (const std::exception & excepcion) {
             excepciona ("asumeHabilidad", excepcion);
         }
