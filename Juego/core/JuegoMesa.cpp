@@ -669,7 +669,7 @@ namespace juego
             carpeta_habilides_juego + "canionazo.png",
             carpeta_habilides_juego + "fondo_5.png");
         canionazo->ponArchivoSonido(
-            carpeta_sonidos_juego + "Magic Missiles.wav");
+            carpeta_sonidos_juego + "SonidosPirata/Habilidades/Canonazo.wav");
 
         embestida = new Habilidad{
             L"Embestida",
