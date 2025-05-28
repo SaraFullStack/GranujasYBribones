@@ -28,7 +28,7 @@ namespace tapete {
             //
             assert (ModoJuegoBase::cuentaPersonajesIgual ());
             ModoJuegoBase::iniciaRondas ();
-            //
+            ModoJuegoBase::atenuaMusica();
             estado ().transita (EstadoJuegoPares::inicioRonda);
             validaAtributos ();
             informaProceso ("entraPartida");
@@ -44,7 +44,6 @@ namespace tapete {
             validaEstado ({ EstadoJuegoPares::inicioRonda }); 
                             //  sin elegidos, sin atacante
             //
-            ModoJuegoBase::atenuaMusica ();
             estado ().transita (EstadoJuegoPares::inicioTurnoNoElegidos);
             validaAtributos ();
             informaProceso ("entraTurnoEleccion");
