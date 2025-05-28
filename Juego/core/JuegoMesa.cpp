@@ -250,7 +250,7 @@ namespace juego
             carpeta_habilides_juego + "canionazo.png",
             carpeta_habilides_juego + "fondo_5.png");
         canionazo->ponArchivoSonido(
-            carpeta_sonidos_juego + "Magic Missiles.wav");
+            carpeta_sonidos_juego + "SonidosPirata/Habilidades/Canonazo.wav");
 
         embestida = new Habilidad{
             L"Embestida",
@@ -263,7 +263,7 @@ namespace juego
             carpeta_habilides_juego + "embestida.png",
             carpeta_habilides_juego + "fondo_5.png");
         embestida->ponArchivoSonido(
-            carpeta_sonidos_juego + "Magic Missiles.wav");
+            carpeta_sonidos_juego + "SonidosPirata/Habilidades/Embestida.wav");
 
         abordaje = new Habilidad{
             L"Abordaje",
@@ -276,7 +276,7 @@ namespace juego
             carpeta_habilides_juego + "abordaje.png",
             carpeta_habilides_juego + "fondo_5.png");
         abordaje->ponArchivoSonido(
-            carpeta_sonidos_juego + "Magic Missiles.wav");
+            carpeta_sonidos_juego + "SonidosPirata/Habilidades/Abordaje.wav");
 
         reparacionBarco = new Habilidad{
             L"Reparación de barco",
@@ -289,7 +289,7 @@ namespace juego
             carpeta_habilides_juego + "reparar.png",
             carpeta_habilides_juego + "fondo_5.png");
         reparacionBarco->ponArchivoSonido(
-            carpeta_sonidos_juego + "Magic Missiles.wav");
+            carpeta_sonidos_juego + "SonidosPirata/Habilidades/Reparacion.wav");
 
         sangradoMortal = new Habilidad{
             L"Sangrado mortal",
@@ -302,7 +302,7 @@ namespace juego
             carpeta_habilides_juego + "cuchillo.png",
             carpeta_habilides_juego + "fondo_5.png");
         sangradoMortal->ponArchivoSonido(
-            carpeta_sonidos_juego + "Magic Missiles.wav");
+            carpeta_sonidos_juego + "SonidosPirata/Habilidades/EdwardSangrado.wav");
 
         oleadaMetralla = new Habilidad{
             L"Oleada de metralla",
@@ -315,7 +315,7 @@ namespace juego
             carpeta_habilides_juego + "pistola.png",
             carpeta_habilides_juego + "fondo_5.png");
         oleadaMetralla->ponArchivoSonido(
-            carpeta_sonidos_juego + "Magic Missiles.wav");
+            carpeta_sonidos_juego + "SonidosPirata/Habilidades/BalthazarMetralla.wav");
 
         golpeDevastador = new Habilidad{
             L"Golpes devastadores",
@@ -328,7 +328,7 @@ namespace juego
             carpeta_habilides_juego + "boxeo.png",
             carpeta_habilides_juego + "fondo_5.png");
         golpeDevastador->ponArchivoSonido(
-            carpeta_sonidos_juego + "Magic Missiles.wav");
+            carpeta_sonidos_juego + "SonidosPirata/Habilidades/BuenavidaGolpeEspolon.wav");
 
         punoCorsario = new Habilidad{
             L"Puño del Corsario",
@@ -341,7 +341,7 @@ namespace juego
             carpeta_habilides_juego + "ponche.png",
             carpeta_habilides_juego + "fondo_5.png");
         punoCorsario->ponArchivoSonido(
-            carpeta_sonidos_juego + "Magic Missiles.wav");
+            carpeta_sonidos_juego + "SonidosPirata/Habilidades/VictoriaPuno.wav");
 
         tornado = new Habilidad{
             L"Efecto tornado",
@@ -354,7 +354,7 @@ namespace juego
             carpeta_habilides_juego + "tornado.png",
             carpeta_habilides_juego + "fondo_5.png");
         tornado->ponArchivoSonido(
-            carpeta_sonidos_juego + "Magic Missiles.wav");
+            carpeta_sonidos_juego + "SonidosPirata/Habilidades/LucianaTornado.wav");
 
         golpeAncla = new Habilidad{
             L"Golpe de ancla",
@@ -367,8 +367,9 @@ namespace juego
             carpeta_habilides_juego + "ancla.png",
             carpeta_habilides_juego + "fondo_5.png");
         golpeAncla->ponArchivoSonido(
-            carpeta_sonidos_juego + "Magic Missiles.wav");
-
+            carpeta_sonidos_juego + "SonidosPirata/Habilidades/DorianAncla.wav");
+            
+        
         agregaHabilidad(canionazo);
         agregaHabilidad(embestida);
         agregaHabilidad(abordaje);
