@@ -1,30 +1,24 @@
 ﻿// proyecto: Grupal/Tapete
-// arhivo:   SucesosJuegoLibreDoble.cpp
+// archivo   SucesosJuegoLibreDoble.cpp
 // versión:  2.1  (Abril-2025)
-
 
 #include "tapete.h"
 
-
 namespace tapete {
-
 
     SucesosJuegoLibreDoble::SucesosJuegoLibreDoble (JuegoMesaBase * juego, ModoJuegoLibreDoble * modo) :
         SucesosJuegoComun (juego, modo) { 
     }
 
-
     ModoJuegoLibreDoble * SucesosJuegoLibreDoble::modo () {
         return static_cast <ModoJuegoLibreDoble *> (SucesosJuegoComun::modo ());
     }
-
 
     void SucesosJuegoLibreDoble::iniciado () {
         if (modo ()->estado () == EstadoJuegoComun::inicial) {
             modo ()->entraPartida ();
         }
     }
-
 
     void SucesosJuegoLibreDoble::personajeSeleccionado (ActorPersonaje * personaje) {
         switch (modo ()->estado ()) {
@@ -37,33 +31,25 @@ namespace tapete {
         }
     }
 
-
-    // si estamos en 'inicioTurnoConfirmacion' y el suceso es 'actuanteSeleccionado':
-    // se inserta el suceso previo 'pulsadoEspacio'
     void SucesosJuegoLibreDoble::actuanteSeleccionado (LadoTablero lado) {
         assert (lado != LadoTablero::nulo);
         if (modo ()->estado () == EstadoJuegoLibreDoble::inicioTurnoConfirmacion) {
-            //-----------------------------------------------------------
-            // se efectuan dos transiciones seguidas:
+
             if (modo ()->ladoEquipoActual () != lado) {
                 return;
             }
             modo ()->entraInicioJugada ();
             modo ()->entraAccionDesplazam ();
             return;
-            //-----------------------------------------------------------
+
         }
         SucesosJuegoComun::actuanteSeleccionado (lado);
     }
 
-
-    // si estamos en 'inicioTurnoConfirmacion' y el suceso es 'habilidadSeleccionada':
-    // se inserta el suceso previo 'pulsadoEspacio'
     void SucesosJuegoLibreDoble::habilidadSeleccionada (LadoTablero lado, int indice_habilidad) {
         assert (lado != LadoTablero::nulo);
         if (modo ()->estado () == EstadoJuegoLibreDoble::inicioTurnoConfirmacion) {
-            //-----------------------------------------------------------
-            // se efectuan dos transiciones seguidas:
+
             if (modo ()->ladoEquipoActual () != lado) {
                 return;
             }
@@ -73,11 +59,10 @@ namespace tapete {
             modo ()->entraInicioJugada ();
             modo ()->entraAccionHabilidad (indice_habilidad);
             return;
-            //-----------------------------------------------------------
+
         }
         SucesosJuegoComun::habilidadSeleccionada (lado, indice_habilidad);
     }
-
 
     void SucesosJuegoLibreDoble::pulsadoEspacio () {
         switch (modo ()->estado ()) {
@@ -105,7 +90,6 @@ namespace tapete {
         unir2d::Teclado::consume (unir2d::Tecla::espacio);
     }
 
-
     void SucesosJuegoLibreDoble::pulsadoEscape () {
         switch (modo ()->estado ()) {
         case EstadoJuegoLibreDoble::inicioTurnoConfirmacion:
@@ -118,8 +102,4 @@ namespace tapete {
         unir2d::Teclado::consume (unir2d::Tecla::escape);
     }
 
-
 }
-
-
-

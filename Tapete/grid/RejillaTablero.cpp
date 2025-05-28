@@ -1,13 +1,10 @@
 ﻿// proyecto: Grupal/Tapete
-// arhivo:   RejillaTablero.cpp
+// archivo   RejillaTablero.cpp
 // versión:  2.1  (Abril-2025)
-
 
 #include "tapete.h"
 
-
 namespace tapete {
-    
 
     Vector RejillaTablero::centroHexagono (Coord centro) {
         float x =   1.5f * centro.coln () - 0.5f;
@@ -16,7 +13,6 @@ namespace tapete {
         y *= ladoHexagono;
         return Vector {x, y};
     }
-
 
     Vector RejillaTablero::verticeHexagono (Coord centro, int posicion) {
         float x =    1.5f * centro.coln ();
@@ -41,30 +37,26 @@ namespace tapete {
         return Vector {x, y};
     }
 
-
     RejillaTablero::RejillaTablero (ActorTablero * actor_tablero) {
         this->actor_tablero = actor_tablero;
     }
-
 
     RejillaTablero::~RejillaTablero () {
         this->actor_tablero = nullptr;
     }
 
-
     void RejillaTablero::localizaCelda (Vector punto, Coord & localizada) {
-        // este es difícil de entender, ver 'centroHexagono'
-        //
+
         float x = punto.x ();
         float y = punto.y ();
         if (x < 0.0f || y < 0.0f) {
             localizada = Coord {0, 0};
             return;
         }
-        //
+
         x /= RejillaTablero::ladoHexagono;
         x -= 0.5f;
-        //
+
         int coln_1;
         if (x < 0.0f) {
             coln_1 = 1;
@@ -76,7 +68,7 @@ namespace tapete {
             localizada = Coord {0, 0};
             return;
         }
-        //
+
         int coln_2;
         if (x < 0.0f) {
             coln_2 = 0;
@@ -92,7 +84,7 @@ namespace tapete {
                 }
             }
         }
-        //
+
         y /= RejillaTablero::ladoHexagono;
         y /= RejillaTablero::seno60;
         int fila_1;
@@ -111,12 +103,7 @@ namespace tapete {
         if (fila_2 > RejillaTablero::filas - 1) {
             fila_2 = 0;
         }
-        //
-        // fila_1: es impar
-        // fila_2: si no es 0, es par
-        // coln_1: es par o impar 
-        // coln_2: si no es 0, es coln_1 + 1
-        //
+
         if (fila_2 == 0 && coln_2 == 0) {
             if (coln_1 % 2 == 0) {
                 localizada = Coord {0, 0};
@@ -125,7 +112,7 @@ namespace tapete {
             }
             return;
         }
-        //
+
         if (fila_2 == 0) {
             if (coln_1 % 2 == 0) {
                 localizada = Coord {fila_1, coln_2};
@@ -134,7 +121,7 @@ namespace tapete {
             }
             return;
         }
-        //
+
         if (coln_2 == 0) {
             if (coln_1 % 2 == 0) {
                 localizada = Coord {fila_2, coln_1};
@@ -143,7 +130,7 @@ namespace tapete {
             }
             return;
         }
-        //
+
         Coord coord_1 {0, 0};
         Coord coord_2 {0, 0};
         if (coln_1 % 2 == 0) {
@@ -164,9 +151,8 @@ namespace tapete {
         }
     }
 
-
     void RejillaTablero::prepara () {
-        //------------------------------------------------------------
+
         trazos_rejilla = new unir2d::Trazos {};
         trazos_rejilla->ponPosicion (PresenciaTablero::regionRejilla.posicion ());
         Color color {0x80, 0xC0, 0x80};
@@ -205,17 +191,14 @@ namespace tapete {
                 fila_par = true;
             }
         }
-        //------------------------------------------------------------
+
         trazos_marcaje = new unir2d::Trazos {};
         trazos_marcaje->ponPosicion (PresenciaTablero::regionRejilla.posicion ());
         cambio_trazos_marcaje = false;
-        //trazaHexagono (Coord {4, 4});
-        //------------------------------------------------------------
-        //
+
         actor_tablero->agregaDibujo (trazos_rejilla);
         actor_tablero->agregaDibujo (trazos_marcaje);
     }
-
 
     void RejillaTablero::libera () {
         delete trazos_marcaje;
@@ -224,11 +207,9 @@ namespace tapete {
         trazos_rejilla = nullptr;
     }
 
-
     void RejillaTablero::marcaCelda (Coord posicion, Color color) {
         marcaCelda (posicion, color, false);
     }
-
 
     void RejillaTablero::marcaCelda (Coord posicion, Color color, bool grueso) {
         std::vector <MarcajeCelda>::iterator iter = buscaMarcaCelda (posicion);
@@ -242,7 +223,6 @@ namespace tapete {
         cambio_trazos_marcaje = true;
     }
 
-
     void RejillaTablero::desmarcaCelda (Coord posicion) {
         std::vector <MarcajeCelda>::iterator iter = buscaMarcaCelda (posicion);
         if (iter == marcaje_celdas.end ()) {
@@ -252,12 +232,10 @@ namespace tapete {
         cambio_trazos_marcaje = true;
     }
 
-
     void RejillaTablero::desmarcaCeldas () {
         marcaje_celdas.clear ();
         cambio_trazos_marcaje = true;
     }
-
 
     std::vector <RejillaTablero::MarcajeCelda>::iterator RejillaTablero::buscaMarcaCelda (Coord posicion) {
         for (std::vector <MarcajeCelda>::iterator iter = marcaje_celdas.begin (); iter < marcaje_celdas.end (); ++ iter) {
@@ -268,7 +246,6 @@ namespace tapete {
         return marcaje_celdas.end (); 
     }
 
-
     void RejillaTablero::refrescaMarcaje () {
         if (! cambio_trazos_marcaje) {
             return;
@@ -278,7 +255,6 @@ namespace tapete {
             trazaHexagono (marcj);
         }
     }
-
 
     void RejillaTablero::trazaHexagono (const MarcajeCelda & marcaje) {
         Vector centro = centroHexagono (marcaje.posicion);
@@ -316,7 +292,4 @@ namespace tapete {
         }
     }
 
-
 }
-
-

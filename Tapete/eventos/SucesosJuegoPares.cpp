@@ -1,30 +1,24 @@
 ﻿// proyecto: Grupal/Tapete
-// arhivo:   SucesosJuegoPares.cpp
+// archivo   SucesosJuegoPares.cpp
 // versión:  2.1  (Abril-2025)
-
 
 #include "tapete.h"
 
-
 namespace tapete {
-
 
     SucesosJuegoPares::SucesosJuegoPares (JuegoMesaBase * juego, ModoJuegoPares * modo) :
         SucesosJuegoComun (juego, modo) { 
     }
 
-
     ModoJuegoPares * SucesosJuegoPares::modo () {
         return static_cast <ModoJuegoPares *> (SucesosJuegoComun::modo ());
     }
-
 
     void SucesosJuegoPares::iniciado () {
         if (modo ()->estado () == EstadoJuegoComun::inicial) {
             modo ()->entraPartida ();
         }
     }
-
 
     void SucesosJuegoPares::personajeSeleccionado (ActorPersonaje * personaje) {
         switch (modo ()->estado ()) {
@@ -39,7 +33,6 @@ namespace tapete {
             break;
         }
     }
-
 
     void SucesosJuegoPares::pulsadoEspacio () {
         switch (modo ()->estado ()) {
@@ -70,7 +63,6 @@ namespace tapete {
         unir2d::Teclado::consume (unir2d::Tecla::espacio);
     }
 
-
     void SucesosJuegoPares::pulsadoEscape () {
         switch (modo ()->estado ()) {
         case EstadoJuegoPares::inicioTurnoConfirmacion:
@@ -83,7 +75,4 @@ namespace tapete {
         unir2d::Teclado::consume (unir2d::Tecla::escape);
     }
 
-
 }
-
-

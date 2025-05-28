@@ -2,16 +2,13 @@
 // archivo:  tapete.h
 // versión:  2.1  (Abril-2025)
 
-
 #pragma once
-
 
 #include <UNIR-2D.h>
 using Vector = unir2d::Vector;
-using Coord  = unir2d::Coord;
+using Coord = unir2d::Coord;
 using Region = unir2d::Region;
-using Color  = unir2d::Color;
-
+using Color = unir2d::Color;
 
 #include <sstream>
 

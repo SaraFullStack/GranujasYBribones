@@ -1,5 +1,5 @@
 ﻿// proyecto: Grupal/Tapete
-// arhivo:   SucesosJuegoLibreDoble.h
+// archivo   SucesosJuegoLibreDoble.h
 // versión:  2.1  (Abril-2025)
 
 

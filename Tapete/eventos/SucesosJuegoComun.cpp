@@ -1,35 +1,28 @@
 ﻿// proyecto: Grupal/Tapete
-// arhivo:   SucesosJuegoComun.cpp
+// archivo   SucesosJuegoComun.cpp
 // versión:  2.1  (Abril-2025)
-
 
 #include "tapete.h"
 
-
 namespace tapete {
-
 
     SucesosJuegoComun::SucesosJuegoComun (JuegoMesaBase * juego, ModoJuegoComun * modo) { 
         this->juego_   = juego;
         this->modo_ = modo;
     }
 
-
     SucesosJuegoComun::~SucesosJuegoComun () {
         this->modo_ = nullptr;
         this->juego_   = nullptr;
     }
 
-
     JuegoMesaBase * SucesosJuegoComun::juego () {
         return juego_;
     }
 
-
     ModoJuegoComun * SucesosJuegoComun::modo () {
         return modo_;
     }
-
 
     void SucesosJuegoComun::terminado () {
         if (modo ()->estado () != EstadoJuegoComun::inicial &&
@@ -37,7 +30,6 @@ namespace tapete {
             modo ()->saltaFinalJuego ();
         }
     }
-
 
     void SucesosJuegoComun::entrandoActuante (LadoTablero lado) {
         assert (lado != LadoTablero::nulo);
@@ -50,7 +42,6 @@ namespace tapete {
         }
     }
 
-
     void SucesosJuegoComun::saliendoActuante (LadoTablero lado) {
         assert (lado != LadoTablero::nulo);
         if (modo ()->estado () != EstadoJuegoComun::inicial &&
@@ -61,7 +52,6 @@ namespace tapete {
             modo ()->desanunciaActuante (lado);
         }
     }
-
 
     void SucesosJuegoComun::entrandoHabilidad (LadoTablero lado, int indice) {
         assert (lado != LadoTablero::nulo);
@@ -78,7 +68,6 @@ namespace tapete {
         }
     }
 
-
     void SucesosJuegoComun::saliendoHabilidad (LadoTablero lado, int indice) {
         assert (lado != LadoTablero::nulo);
         if (modo ()->estado () != EstadoJuegoComun::inicial &&
@@ -94,7 +83,6 @@ namespace tapete {
         }
     }
 
-
     void SucesosJuegoComun::entrandoFicha (ActorPersonaje * personaje) {
         if (modo ()->estado () != EstadoJuegoComun::inicial &&
             modo ()->estado () != EstadoJuegoComun::terminal  ) {
@@ -104,7 +92,6 @@ namespace tapete {
             modo ()->marcaFichaCamino (personaje);
         }
     }
-
 
     void SucesosJuegoComun::saliendoFicha (ActorPersonaje * personaje) {
         if (modo ()->estado () != EstadoJuegoComun::inicial &&
@@ -116,20 +103,17 @@ namespace tapete {
         }
     }
 
-
     void SucesosJuegoComun::entrandoCelda (Coord celda) {
         if (modo ()->estado () == EstadoJuegoComun::marcacionCaminoFicha) {
             modo ()->marcaCeldaCamino (celda);
         }
     }
 
-
     void SucesosJuegoComun::saliendoCelda (Coord celda) {
         if (modo ()->estado () == EstadoJuegoComun::marcacionCaminoFicha) {
             modo ()->desmarcaCeldaCamino (celda);
         }
     }
-
 
     void SucesosJuegoComun::personajeSeleccionado (ActorPersonaje * personaje) {
         switch (modo ()->estado ()) {
@@ -143,7 +127,6 @@ namespace tapete {
             break;
         }
     }
-
 
     void SucesosJuegoComun::actuanteSeleccionado (LadoTablero lado) {
         assert (lado != LadoTablero::nulo);
@@ -166,7 +149,6 @@ namespace tapete {
             break;
         }
     }
-
 
     void SucesosJuegoComun::habilidadSeleccionada (LadoTablero lado, int indice_habilidad) {
         assert (lado != LadoTablero::nulo);
@@ -222,23 +204,17 @@ namespace tapete {
         }
     }
 
-
     void SucesosJuegoComun::fichaSeleccionada (ActorPersonaje * personaje) {
-        // reenvia al método de 'suceso externo':
+
         personajeSeleccionado (personaje);
     }
 
-
-    // si estamos en 'inicioJugada' y el suceso es 'fichaPulsada':
-    // se insertan los sucesos previos: 'actuanteSeleccionado' y 'entrandoFicha'
-    // con la condicion de que sea la ficha del atacante
     void SucesosJuegoComun::fichaPulsada (ActorPersonaje * personaje) {
         if (modo ()->estado () == EstadoJuegoComun::inicioJugada) {
             if (personaje == modo ()->atacante ()) {
-                // se efectuan dos transiciones seguidas:
-                //cambiado: SucesosJuegoComun::actuanteSeleccionado (personaje->ladoTablero ());
+
                 modo ()->entraAccionDesplazam ();
-                //cambiado: SucesosJuegoComun::entrandoFicha (personaje);
+
                 modo ()->marcaFichaCamino (personaje);
             }
         }
@@ -250,7 +226,6 @@ namespace tapete {
         }
     }
 
-
     void SucesosJuegoComun::celdaSeleccionada (Coord celda) {
         switch (modo ()->estado ()) {
         case EstadoJuegoComun::preparacionHabilidadArea:
@@ -260,22 +235,20 @@ namespace tapete {
         }
     }
 
-
     void SucesosJuegoComun::celdaPulsada (Coord celda) {
         if (modo ()->estado () == EstadoJuegoComun::marcacionCaminoFicha) {
             if (celda == modo ()->atacante ()->sitioFicha ()) {
-                // es un clic de repetición, hay que ignorarlo
+
                 return;
             }
             if (modo ()->etapasCamino ().size () > 0 &&
                 modo ()->etapasCamino ().back () == celda) {
-                // es un clic de repetición, hay que ignorarlo
+
                 return;
             }
             modo ()->fijaCeldaCamino (celda);
         }
     }
-
 
     void SucesosJuegoComun::ayudaSeleccionada () {
         if (modo ()->estado () != EstadoJuegoComun::inicial        &&
@@ -287,7 +260,6 @@ namespace tapete {
         }
         unir2d::Raton::consumePulsado (unir2d::BotonRaton::izquierda);
     }
-
 
     void SucesosJuegoComun::pulsadoEspacio () {
         switch (modo ()->estado ()) {
@@ -302,7 +274,6 @@ namespace tapete {
             break;
         }
     }
-
 
     void SucesosJuegoComun::pulsadoEscape () {
         switch (modo ()->estado ()) {
@@ -327,7 +298,6 @@ namespace tapete {
         }
     }
 
-
     void SucesosJuegoComun::pulsadoArriba () {
         if (modo ()->estado () == EstadoJuegoComun::mostrandoAyuda) {
             modo ()->subeAyuda ();
@@ -335,14 +305,12 @@ namespace tapete {
         }
     }
 
-
     void SucesosJuegoComun::pulsadoAbajo () {
         if (modo ()->estado () == EstadoJuegoComun::mostrandoAyuda) {
             modo ()->bajaAyuda ();
             unir2d::Teclado::consume (unir2d::Tecla::abajo);
         }
     }
-
 
     void SucesosJuegoComun::alarmaCalculo (unir2d::Tiempo & tiempo) {
         switch (modo ()->estado ()) {
@@ -355,6 +323,4 @@ namespace tapete {
         }
     }
 
-
 }
-

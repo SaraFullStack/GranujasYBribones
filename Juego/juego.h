@@ -1,22 +1,13 @@
-﻿// proyecto: Grupal/Juego      
-// arhivo:   juego1.h
+﻿// proyecto: Grupal/Juego
+// archivo   juego1.h
 // versión:  2.1  (Abril-2025)
-
 
 #pragma once
 
-
 #include <UNIR-2D.h>
-//using string = std::string;
-//using Vector = unir2d::Vector;
-//using Coord  = unir2d::Coord;
-//using Region = unir2d::Region;
-//using Color  = unir2d::Color;
-
 
 #include <tapete.h>
 using namespace tapete;
-
 
 #include "eventos/SucesosJuegoPares.h"
 #include "estados/EstadoJuegoPares.h"

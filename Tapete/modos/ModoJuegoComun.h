@@ -1,5 +1,5 @@
 ﻿// proyecto: Grupal/Tapete
-// arhivo:   ModoJuegoComun.h
+// archivo   ModoJuegoComun.h
 // versión:  2.1  (Abril-2025)
 
 

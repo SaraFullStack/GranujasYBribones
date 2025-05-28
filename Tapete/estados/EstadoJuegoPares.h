@@ -1,40 +1,46 @@
 ﻿// proyecto: Grupal/Tapete
-// arhivo:   EstadoJuegoPares.h
+// archivo:  EstadoJuegoPares.h
 // versión:  2.1  (Abril-2025)
-
 
 #pragma once
 
+namespace tapete
+{
 
-namespace tapete {
-
-
-    class EstadoJuegoPares : public EstadoJuegoComun {
+    /// <summary>Gestiona los estados de juego en modalidad de pares, extendiendo EstadoJuegoComun.</summary>
+    class EstadoJuegoPares : public EstadoJuegoComun
+    {
     public:
+        /// <summary>Código de estado que marca el inicio de una ronda.</summary>
+        static constexpr int inicioRonda = finalPartida + 1;
 
-        static constexpr int inicioRonda             = finalPartida + 1;
-
-        static constexpr int inicioTurnoNoElegidos   = finalPartida + 2;
-        static constexpr int inicioTurnoElegidoUno   = finalPartida + 3;
+        /// <summary>Código que marca el inicio de turno cuando ningún jugador ha sido elegido.</summary>
+        static constexpr int inicioTurnoNoElegidos = finalPartida + 2;
+        /// <summary>Código que marca el inicio de turno cuando un jugador ha sido elegido.</summary>
+        static constexpr int inicioTurnoElegidoUno = finalPartida + 3;
+        /// <summary>Código que marca el inicio de confirmación de turno.</summary>
         static constexpr int inicioTurnoConfirmacion = finalPartida + 4;
 
-        static constexpr int agotadosPuntosAccion    = finalPartida + 5;
-        static constexpr int finalTurno              = finalPartida + 6;
-        
+        /// <summary>Código que indica que se han agotado los puntos de acción.</summary>
+        static constexpr int agotadosPuntosAccion = finalPartida + 5;
+        /// <summary>Código que marca el final del turno.</summary>
+        static constexpr int finalTurno = finalPartida + 6;
 
-        EstadoJuegoPares (int codigo);
+        /// <summary>Constructor que inicializa el estado con un código específico.</summary>
+        EstadoJuegoPares(int codigo);
 
-        void transita (const EstadoJuegoPares & destino);
+        /// <summary>Realiza la transición de este estado al estado destino en modalidad de pares.</summary>
+        /// <param name="destino">Estado destino para la transición.</param>
+        void transita(const EstadoJuegoPares &destino);
 
     private:
+        /// <summary>Valida que la transición al estado destino sea permitida.</summary>
+        /// <param name="destino">Estado común destino a validar.</param>
+        void valida(const EstadoJuegoComun &destino) override;
 
-        void valida (const EstadoJuegoComun & destino) override;
-
-        const string nombre () const override;
-
+        /// <summary>Obtiene el nombre textual del estado para logging.</summary>
+        /// <returns>Nombre del estado.</returns>
+        const string nombre() const override;
     };
 
-
 }
-
-

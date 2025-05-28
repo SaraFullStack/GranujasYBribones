@@ -1,71 +1,70 @@
 ﻿// proyecto: Grupal/Tapete
-// arhivo:   ActorMusica.cpp
+// archivo   ActorMusica.cpp
 // versión:  2.1  (Abril-2025)
-
 
 #include "tapete.h"
 
+namespace tapete
+{
 
-namespace tapete {
-
-
-    ActorMusica::ActorMusica (JuegoMesaBase * juego) {
-        this->juego            = juego;
+    ActorMusica::ActorMusica(JuegoMesaBase *juego)
+    {
+        this->juego = juego;
     }
 
-
-    ActorMusica::~ActorMusica () {
+    ActorMusica::~ActorMusica()
+    {
         juego = nullptr;
     }
 
-
-    string ActorMusica::archivoMusica () {
+    string ActorMusica::archivoMusica()
+    {
         return archivo_musica;
     }
 
-
-    int ActorMusica::volumenMusica () {
+    int ActorMusica::volumenMusica()
+    {
         return volumen_musica;
     }
 
-
-    void ActorMusica::asignaMusica (const string & archivo, int volumen) {
+    void ActorMusica::asignaMusica(const string &archivo, int volumen)
+    {
         archivo_musica = archivo;
         volumen_musica = volumen;
     }
 
-
-    void ActorMusica::inicia () {
-        musica = new unir2d::Sonido {};
-        musica->abre       (archivo_musica);
-        musica->ponVolumen (volumen_musica);
+    void ActorMusica::inicia()
+    {
+        musica = new unir2d::Sonido{};
+        musica->abre(archivo_musica);
+        musica->ponVolumen(volumen_musica);
     }
 
-
-    void ActorMusica::termina () {
+    void ActorMusica::termina()
+    {
         delete musica;
         musica = nullptr;
     }
 
-
-    void ActorMusica::actualiza (double tiempo_seg) {
-        if (! iniciada) {
-            musica->suena ();
+    void ActorMusica::actualiza(double tiempo_seg)
+    {
+        if (!iniciada)
+        {
+            musica->suena();
             iniciada = true;
             return;
-        } 
-        if (! musica->sonando ()) {
-            musica->repite ();
+        }
+        if (!musica->sonando())
+        {
+            musica->repite();
         }
     }
 
-
-    void ActorMusica::bajaMusica () {
-        int volumen = musica->volumen ();
-        volumen = static_cast <int> (volumen * 0.3f);
-        musica->ponVolumen (volumen);
+    void ActorMusica::bajaMusica()
+    {
+        int volumen = musica->volumen();
+        volumen = static_cast<int>(volumen * 0.3f);
+        musica->ponVolumen(volumen);
     }
 
-
 }
-

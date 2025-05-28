@@ -1,5 +1,5 @@
 ﻿// proyecto: Grupal/Tapete
-// arhivo:   ModoJuegoPares.h
+// archivo   ModoJuegoPares.h
 // versión:  2.1  (Abril-2025)
 
 

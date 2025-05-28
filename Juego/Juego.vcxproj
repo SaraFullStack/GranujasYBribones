@@ -204,12 +204,17 @@
     <Image Include="Assets\retratos\victoria.png" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Assets\text\JuegoMesa.txt" />
     <Text Include="text/JuegoMesa.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tapete\Tapete.vcxproj">
       <Project>{24523d1c-f21f-4933-b7df-a0d4aca16e90}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="fuentes\Kingthings Petrock.ttf" />
+    <Font Include="fuentes\timesbi.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

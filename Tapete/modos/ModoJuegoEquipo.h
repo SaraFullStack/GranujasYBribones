@@ -1,5 +1,5 @@
 ﻿// proyecto: Grupal/Tapete
-// arhivo:   ModoJuegoEquipo.h
+// archivo   ModoJuegoEquipo.h
 // versión:  2.1  (Abril-2025)
 
 

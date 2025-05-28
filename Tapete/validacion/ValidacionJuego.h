@@ -1,5 +1,5 @@
 // proyecto: Grupal/Tapete
-// arhivo:   ValidacionJuego.h
+// archivo   ValidacionJuego.h
 // versión:  2.1  (Abril-2025)
 
 

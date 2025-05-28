@@ -1,5 +1,5 @@
 ﻿// proyecto: Grupal/Tapete
-// arhivo:   SucesosJuegoPares.h
+// archivo   SucesosJuegoPares.h
 // versión:  2.1  (Abril-2025)
 
 

@@ -2,65 +2,72 @@
 #include "tapete.h"
 #include "ActorObjetoRecolectable.h"
 
-namespace tapete {
+namespace tapete
+{
 
     ActorObjetoRecolectable::ActorObjetoRecolectable(
-        JuegoMesaBase* juego,
+        JuegoMesaBase *juego,
         Coord posicion,
-        const std::string& archivo
-    ) : juego{ juego }, pos{ posicion }, archivo_ficha{ archivo } {
+        const std::string &archivo) : juego{juego}, pos{posicion}, archivo_ficha{archivo}
+    {
     }
 
-    ActorObjetoRecolectable::~ActorObjetoRecolectable() {
+    ActorObjetoRecolectable::~ActorObjetoRecolectable()
+    {
         juego = nullptr;
     }
 
-    void ActorObjetoRecolectable::inicia() {
-        // 1) Fija el sistema de coordenadas local, igual que en Personaje
-        ponPosicion(Vector{ 0, 0 });
+    void ActorObjetoRecolectable::inicia()
+    {
 
-        // 2) Calcula el centro en rejilla�
+        ponPosicion(Vector{0, 0});
+
         Vector centro = juego->tablero()->rejilla().centroHexagono(pos);
 
-        // 3) �y despl�zalo dentro de la regi�n central del tablero
         centro += PresenciaTablero::regionRejilla.posicion();
 
-        // 4) Carga y registra la ficha
-        ficha.ponArchivoFicha(archivo_ficha);  // carga textura + registra dibujo
-        //ficha.ponCentro(centro);               // posiciona la imagen
+        ficha.ponArchivoFicha(archivo_ficha);
+
         ficha.posicionaEnCelda(pos);
-        ficha.muestra();                       // la hace visible
+        ficha.muestra(); // la hace visible
     }
 
-    void ActorObjetoRecolectable::actualiza(double /*tiempo_seg*/) {
-    if (recogido) return;
-            Vector c = juego->tablero()->rejilla().centroHexagono(pos)
-                + PresenciaTablero::regionRejilla.posicion();
-            ficha.posicionaEnCelda(pos);//ficha.ponCentro(c);
-            }
+    void ActorObjetoRecolectable::actualiza(double)
+    {
+        if (recogido)
+            return;
+        Vector c = juego->tablero()->rejilla().centroHexagono(pos) + PresenciaTablero::regionRejilla.posicion();
+        ficha.posicionaEnCelda(pos);
+    }
 
-    void ActorObjetoRecolectable::termina() {
+    void ActorObjetoRecolectable::termina()
+    {
         ficha.oculta();
     }
 
-    void ActorObjetoRecolectable::ponEfecto(TipoEfectoObjeto tipo_, int valor_) {
+    void ActorObjetoRecolectable::ponEfecto(TipoEfectoObjeto tipo_, int valor_)
+    {
         tipo = tipo_;
         valor = valor_;
     }
 
-    ActorObjetoRecolectable::TipoEfectoObjeto ActorObjetoRecolectable::tipoEfecto() const {
+    ActorObjetoRecolectable::TipoEfectoObjeto ActorObjetoRecolectable::tipoEfecto() const
+    {
         return tipo;
     }
 
-    int ActorObjetoRecolectable::valorEfecto() const {
+    int ActorObjetoRecolectable::valorEfecto() const
+    {
         return valor;
     }
 
-    bool ActorObjetoRecolectable::estaRecogido() const {
+    bool ActorObjetoRecolectable::estaRecogido() const
+    {
         return recogido;
     }
 
-    Coord ActorObjetoRecolectable::sitioFicha() const {
+    Coord ActorObjetoRecolectable::sitioFicha() const
+    {
         return pos;
     }
 

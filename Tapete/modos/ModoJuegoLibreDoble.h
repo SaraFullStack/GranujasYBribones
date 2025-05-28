@@ -1,5 +1,5 @@
 ﻿// proyecto: Grupal/Tapete
-// arhivo:   ModoJuegoLibreDoble.h
+// archivo   ModoJuegoLibreDoble.h
 // versión:  2.1  (Abril-2025)
 
 

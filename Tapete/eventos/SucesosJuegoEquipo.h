@@ -1,5 +1,5 @@
 ﻿// proyecto: Grupal/Tapete
-// arhivo:   SucesosJuegoEquipo.h
+// archivo   SucesosJuegoEquipo.h
 // versión:  2.1  (Abril-2025)
 
 
