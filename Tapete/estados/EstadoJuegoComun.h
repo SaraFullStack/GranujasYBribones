@@ -6,89 +6,153 @@
 
 namespace tapete
 {
-
     class EstadoJuegoComun
     {
     public:
-        /// <summary>Código del estado inicial del juego.</summary>
+        /*!
+         * \brief Código del estado inicial del juego.
+         */
         static constexpr int inicial = 0;
-        /// <summary>Código del estado terminal del juego.</summary>
+        /*!
+         * \brief Código del estado terminal del juego.
+         */
         static constexpr int terminal = 1;
-
-        /// <summary>Código para el inicio de una nueva jugada.</summary>
+        /*!
+         * \brief Código para el inicio de una nueva jugada.
+         */
         static constexpr int inicioJugada = 2;
-
-        /// <summary>Código para la preparación del desplazamiento de fichas.</summary>
+        /*!
+         * \brief Código para la preparación del desplazamiento de fichas.
+         */
         static constexpr int preparacionDesplazamiento = 3;
-        /// <summary>Código para la marcación del camino de ficha.</summary>
+        /*!
+         * \brief Código para la marcación del camino de ficha.
+         */
         static constexpr int marcacionCaminoFicha = 4;
-
-        /// <summary>Código cuando la habilidad simple es inválida.</summary>
+        /*!
+         * \brief Código cuando la habilidad simple es inválida.
+         */
         static constexpr int habilidadSimpleInvalida = 5;
-        /// <summary>Código para confirmar una habilidad simple.</summary>
+        /*!
+         * \brief Código para confirmar una habilidad simple.
+         */
         static constexpr int habilidadSimpleConfirmacion = 6;
-        /// <summary>Código para mostrar el resultado de la habilidad simple.</summary>
+        /*!
+         * \brief Código para mostrar el resultado de la habilidad simple.
+         */
         static constexpr int habilidadSimpleResultado = 7;
-
-        /// <summary>Código para preparar la habilidad de oponente.</summary>
+        /*!
+         * \brief Código para preparar la habilidad de oponente.
+         */
         static constexpr int preparacionHabilidadOponente = 8;
-        /// <summary>Código cuando la habilidad de oponente es inválida.</summary>
+        /*!
+         * \brief Código cuando la habilidad de oponente es inválida.
+         */
         static constexpr int oponenteHabilidadInvalido = 9;
-        /// <summary>Código para confirmar la habilidad de oponente.</summary>
+        /*!
+         * \brief Código para confirmar la habilidad de oponente.
+         */
         static constexpr int oponenteHabilidadConfirmacion = 10;
-        /// <summary>Código cuando la habilidad de oponente está calculando.</summary>
+        /*!
+         * \brief Código cuando la habilidad de oponente está calculando.
+         */
         static constexpr int oponenteHabilidadCalculando = 11;
-        /// <summary>Código para mostrar el resultado de la habilidad de oponente.</summary>
+        /*!
+         * \brief Código para mostrar el resultado de la habilidad de oponente.
+         */
         static constexpr int oponenteHabilidadResultado = 12;
-
-        /// <summary>Código para preparar una habilidad de área.</summary>
+        /*!
+         * \brief Código para preparar una habilidad de área.
+         */
         static constexpr int preparacionHabilidadArea = 13;
-        /// <summary>Código cuando la habilidad de área es inválida.</summary>
+        /*!
+         * \brief Código cuando la habilidad de área es inválida.
+         */
         static constexpr int areaHabilidadInvalida = 14;
-        /// <summary>Código para confirmar una habilidad de área.</summary>
+        /*!
+         * \brief Código para confirmar una habilidad de área.
+         */
         static constexpr int areaHabilidadConfirmacion = 15;
-        /// <summary>Código cuando la habilidad de área está calculando.</summary>
+        /*!
+         * \brief Código cuando la habilidad de área está calculando.
+         */
         static constexpr int areaHabilidadCalculando = 16;
-        /// <summary>Código para mostrar el resultado de la habilidad de área.</summary>
+        /*!
+         * \brief Código para mostrar el resultado de la habilidad de área.
+         */
         static constexpr int areaHabilidadResultado = 17;
-
-        /// <summary>Código para el modo de ayuda en pantalla.</summary>
+        /*!
+         * \brief Código para el modo de ayuda en pantalla.
+         */
         static constexpr int mostrandoAyuda = 18;
-
-        /// <summary>Código para el estado de final de partida.</summary>
+        /*!
+         * \brief Código para el estado de final de partida.
+         */
         static constexpr int finalPartida = 19;
 
-        /// <summary>Constructor por defecto: inicializa el estado con <c>inicial</c>.</summary>
+        /*!
+         * \brief Constructor por defecto: inicializa el estado con inicial.
+         */
         explicit EstadoJuegoComun();
-        /// <summary>Constructor desde un código específico.</summary>
+        /*!
+         * \brief Constructor desde un código específico.
+         * \param codigo Código de estado.
+         */
         EstadoJuegoComun(int codigo);
 
-        /// <summary>Conversion a entero para obtener el código de estado.</summary>
+        /*!
+         * \brief Conversión a entero para obtener el código de estado.
+         * \return Código de estado.
+         */
         operator int() const;
 
-        /// <summary>Realiza la transición al estado destino.</summary>
+        /*!
+         * \brief Realiza la transición al estado destino.
+         * \param destino Estado destino.
+         */
         void transita(const EstadoJuegoComun &destino);
 
-        /// <summary>Conserva el estado especificado sin transición.</summary>
+        /*!
+         * \brief Conserva el estado especificado sin transición.
+         * \param estado Estado a conservar.
+         */
         void conserva(const EstadoJuegoComun &estado);
 
-        /// <summary>Devuelve el nombre textual del estado.</summary>
+        /*!
+         * \brief Devuelve el nombre textual del estado.
+         * \return Nombre del estado.
+         */
         virtual const std::string nombre() const;
 
     protected:
-        /// <summary>Activar o desactivar trazado de transiciones.</summary>
+        /*!
+         * \brief Activar o desactivar trazado de transiciones.
+         */
         inline static bool traza_transitos = true;
 
-        /// <summary>Establece el código interno del estado.</summary>
+        /*!
+         * \brief Establece el código interno del estado.
+         * \param valor Nuevo código.
+         */
         void ponCodigo(int valor);
 
-        /// <summary>Valida la transición al estado destino; lanza si inválida.</summary>
+        /*!
+         * \brief Valida la transición al estado destino; lanza si inválida.
+         * \param destino Estado destino.
+         */
         virtual void valida(const EstadoJuegoComun &destino);
-        /// <summary>Asserción para la condición de transición.</summary>
+
+        /*!
+         * \brief Asserción para la condición de transición.
+         * \param destino Estado destino.
+         * \param condicion Condición a validar.
+         */
         void aserta(const EstadoJuegoComun &destino, bool condicion) const;
 
     private:
-        /// <summary>Código interno que representa el estado actual.</summary>
+        /*!
+         * \brief Código interno que representa el estado actual.
+         */
         int codigo;
 
         // Se deshabilitan constructores y operadores de copia/movimiento
@@ -97,5 +161,5 @@ namespace tapete
         EstadoJuegoComun &operator=(const EstadoJuegoComun &) = delete;
         EstadoJuegoComun &operator=(EstadoJuegoComun &&) = delete;
     };
-
+    
 }

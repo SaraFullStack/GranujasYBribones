@@ -26,107 +26,259 @@ namespace tapete
     class JuegoMesaBase : public unir2d::JuegoBase
     {
     public:
-        /// <summary>Obtiene la ruta de la carpeta de activos compartidos.</summary>
+        /*!
+         * \brief Obtiene la ruta de la carpeta de activos compartidos.
+         * \return Ruta de la carpeta de activos.
+         */
         static const std::string &carpetaActivos();
 
-        /// <summary>Devuelve el tablero del juego.</summary>
+        /*!
+         * \brief Devuelve el tablero del juego.
+         * \return Puntero al tablero.
+         */
         ActorTablero *tablero();
-        /// <summary>Devuelve la lista de personajes.</summary>
+
+        /*!
+         * \brief Devuelve la lista de personajes.
+         * \return Vector de punteros a personajes.
+         */
         const std::vector<ActorPersonaje *> &personajes() const;
-        /// <summary>Devuelve los personajes de un lado específico del tablero.</summary>
+
+        /*!
+         * \brief Devuelve los personajes de un lado específico del tablero.
+         * \param lado Lado del tablero.
+         * \return Vector de punteros a personajes.
+         */
         const std::vector<ActorPersonaje *> &personajes(LadoTablero lado) const;
-        /// <summary>Devuelve la lista de habilidades disponibles.</summary>
+
+        /*!
+         * \brief Devuelve la lista de habilidades disponibles.
+         * \return Vector de punteros a habilidades.
+         */
         const std::vector<Habilidad *> &habilidades() const;
-        /// <summary>Devuelve los tipos de ataque registrados.</summary>
+
+        /*!
+         * \brief Devuelve los tipos de ataque registrados.
+         * \return Vector de punteros a tipos de ataque.
+         */
         const std::vector<TipoAtaque *> &ataques() const;
-        /// <summary>Devuelve los tipos de defensa registrados.</summary>
+
+        /*!
+         * \brief Devuelve los tipos de defensa registrados.
+         * \return Vector de punteros a tipos de defensa.
+         */
         const std::vector<TipoDefensa *> &defensas() const;
-        /// <summary>Devuelve los tipos de daño registrados.</summary>
+
+        /*!
+         * \brief Devuelve los tipos de daño registrados.
+         * \return Vector de punteros a tipos de daño.
+         */
         const std::vector<TipoDano *> &danos() const;
-        /// <summary>Accede al gestor de música.</summary>
+
+        /*!
+         * \brief Accede al gestor de música.
+         * \return Puntero al actor de música.
+         */
         ActorMusica *musica();
-        /// <summary>Devuelve los nombres de los alumnos.</summary>
+
+        /*!
+         * \brief Devuelve los nombres de los alumnos.
+         * \return Vector de nombres.
+         */
         const std::vector<std::wstring> &nombresAlumnos() const;
-        /// <summary>Devuelve el curso académico actual.</summary>
+
+        /*!
+         * \brief Devuelve el curso académico actual.
+         * \return Cadena con el curso académico.
+         */
         const std::wstring &cursoAcademico() const;
-        /// <summary>Accede al sistema de sucesos del juego.</summary>
+
+        /*!
+         * \brief Accede al sistema de sucesos del juego.
+         * \return Puntero al sistema de sucesos.
+         */
         SucesosJuegoComun *sucesos();
-        /// <summary>Accede al modo de juego activo.</summary>
+
+        /*!
+         * \brief Accede al modo de juego activo.
+         * \return Puntero al modo de juego.
+         */
         ModoJuegoBase *modo();
-        /// <summary>Accede al sistema de ataque.</summary>
+
+        /*!
+         * \brief Accede al sistema de ataque.
+         * \return Referencia al sistema de ataque.
+         */
         SistemaAtaque &sistemaAtaque();
-        /// <summary>Accede al tiempo de cálculo interno.</summary>
+
+        /*!
+         * \brief Accede al tiempo de cálculo interno.
+         * \return Referencia al objeto de tiempo.
+         */
         unir2d::Tiempo &tiempoCalculo();
 
-        /// <summary>Agrega un objeto recolectable al juego.</summary>
+        /*!
+         * \brief Agrega un objeto recolectable al juego.
+         * \param obj Puntero al objeto recolectable.
+         */
         void agregaObjeto(ActorObjetoRecolectable *obj);
-        /// <summary>Evento virtual que se ejecuta después de mover un personaje.</summary>
+
+        /*!
+         * \brief Evento virtual que se ejecuta después de mover un personaje.
+         * \param personaje Puntero al personaje que se ha movido.
+         */
         virtual void despuesDeMover(ActorPersonaje *personaje) {}
 
     protected:
-        /// <summary>Destructor protegido.</summary>
+        /*!
+         * \brief Destructor protegido.
+         */
         ~JuegoMesaBase();
-        /// <summary>Inicializa el juego.</summary>
+
+        /*!
+         * \brief Inicializa el juego.
+         */
         void inicia() override;
-        /// <summary>Finaliza el juego.</summary>
+
+        /*!
+         * \brief Finaliza el juego.
+         */
         void termina() override;
-        /// <summary>Lógica antes de la actualización por frame.</summary>
+
+        /*!
+         * \brief Lógica antes de la actualización por frame.
+         * \param tiempo_seg Tiempo en segundos.
+         */
         void preactualiza(double tiempo_seg) override;
-        /// <summary>Lógica después de la actualización por frame.</summary>
+
+        /*!
+         * \brief Lógica después de la actualización por frame.
+         * \param tiempo_seg Tiempo en segundos.
+         */
         void posactualiza(double tiempo_seg) override;
 
-        /// <summary>Configura el tablero; debe implementarse en derivadas.</summary>
+        /*!
+         * \brief Configura el tablero; debe implementarse en derivadas.
+         */
         virtual void preparaTablero() = 0;
-        /// <summary>Configura los personajes; debe implementarse en derivadas.</summary>
+
+        /*!
+         * \brief Configura los personajes; debe implementarse en derivadas.
+         */
         virtual void preparaPersonajes() = 0;
-        /// <summary>Configura las habilidades; debe implementarse en derivadas.</summary>
+
+        /*!
+         * \brief Configura las habilidades; debe implementarse en derivadas.
+         */
         virtual void preparaHabilidades() = 0;
-        /// <summary>Configura los tipos de estadística; debe implementarse en derivadas.</summary>
+
+        /*!
+         * \brief Configura los tipos de estadística; debe implementarse en derivadas.
+         */
         virtual void preparaTiposEstadisticas() = 0;
-        /// <summary>Asigna habilidades a personajes; debe implementarse en derivadas.</summary>
+
+        /*!
+         * \brief Asigna habilidades a personajes; debe implementarse en derivadas.
+         */
         virtual void agregaHabilidadesPersonajes() = 0;
-        /// <summary>Asigna estadísticas a personajes; debe implementarse en derivadas.</summary>
+
+        /*!
+         * \brief Asigna estadísticas a personajes; debe implementarse en derivadas.
+         */
         virtual void agregaEstadisticasPersonajes() = 0;
-        /// <summary>Asigna estadísticas a habilidades; debe implementarse en derivadas.</summary>
+
+        /*!
+         * \brief Asigna estadísticas a habilidades; debe implementarse en derivadas.
+         */
         virtual void agregaEstadisticasHabilidades() = 0;
-        /// <summary>Configura el sistema de ataque; debe implementarse en derivadas.</summary>
+
+        /*!
+         * \brief Configura el sistema de ataque; debe implementarse en derivadas.
+         */
         virtual void preparaSistemaAtaque() = 0;
-        /// <summary>Configuraciones adicionales del juego; debe implementarse en derivadas.</summary>
+
+        /*!
+         * \brief Configuraciones adicionales del juego; debe implementarse en derivadas.
+         */
         virtual void configuraJuego() = 0;
 
-        /// <summary>Agrega el tablero a la gestión interna.</summary>
+        /*!
+         * \brief Agrega el tablero a la gestión interna.
+         * \param valor Puntero al tablero.
+         */
         void agregaTablero(ActorTablero *valor);
-        /// <summary>Agrega un personaje a la gestión interna.</summary>
+
+        /*!
+         * \brief Agrega un personaje a la gestión interna.
+         * \param elemento Puntero al personaje.
+         */
         void agregaPersonaje(ActorPersonaje *elemento);
-        /// <summary>Agrega una habilidad a la gestión interna.</summary>
+
+        /*!
+         * \brief Agrega una habilidad a la gestión interna.
+         * \param elemento Puntero a la habilidad.
+         */
         void agregaHabilidad(Habilidad *elemento);
-        /// <summary>Agrega un tipo de ataque a la gestión interna.</summary>
+
+        /*!
+         * \brief Agrega un tipo de ataque a la gestión interna.
+         * \param elemento Puntero al tipo de ataque.
+         */
         void agregaAtaque(TipoAtaque *elemento);
-        /// <summary>Agrega un tipo de defensa a la gestión interna.</summary>
+
+        /*!
+         * \brief Agrega un tipo de defensa a la gestión interna.
+         * \param elemento Puntero al tipo de defensa.
+         */
         void agregaDefensa(TipoDefensa *elemento);
-        /// <summary>Agrega un tipo de daño a la gestión interna.</summary>
+
+        /*!
+         * \brief Agrega un tipo de daño a la gestión interna.
+         * \param elemento Puntero al tipo de daño.
+         */
         void agregaDano(TipoDano *elemento);
-        /// <summary>Agrega un grado de efectividad al sistema de ataque.</summary>
+
+        /*!
+         * \brief Agrega un grado de efectividad al sistema de ataque.
+         * \param elemento Puntero al grado de efectividad.
+         */
         void agregaEfectividad(GradoEfectividad *elemento);
-        /// <summary>Agrega música al juego.</summary>
+
+        /*!
+         * \brief Agrega música al juego.
+         * \param valor Puntero al actor de música.
+         */
         void agregaMusica(ActorMusica *valor);
-        /// <summary>Configura sucesos y modo de juego.</summary>
+
+        /*!
+         * \brief Configura sucesos y modo de juego.
+         * \param sucesos Puntero al sistema de sucesos.
+         * \param modo Puntero al modo de juego.
+         */
         void configura(SucesosJuegoComun *sucesos, ModoJuegoBase *modo);
-        /// <summary>Agrega el nombre de un alumno.</summary>
+
+        /*!
+         * \brief Agrega el nombre de un alumno.
+         * \param nombre Nombre del alumno.
+         */
         void agregaNombreAlumno(const std::wstring &nombre);
-        /// <summary>Establece el curso académico.</summary>
+
+        /*!
+         * \brief Establece el curso académico.
+         * \param curso Cadena con el curso académico.
+         */
         void indicaCursoAcademico(const std::wstring &curso);
 
     private:
         static std::string carpeta_activos_comun;
 
-        std::vector<IntroJuegoImagen *> imgs_;               ///< img_intro0_ … img_intro8_
-        IntroJuegoImagen *img_actual_intro_{nullptr};        ///< imagen actual de la intro
-        int currentIntroIdx_{0};                             ///< índice de la intro
-        bool espacio_pulsado_intro_{false};                  ///< estado de tecla espacio
-        unir2d::Sonido *musica_intro_{nullptr};              ///< música de la intro
+        std::vector<IntroJuegoImagen *> imgs_;        ///< img_intro0_ … img_intro8_
+        IntroJuegoImagen *img_actual_intro_{nullptr}; ///< imagen actual de la intro
+        int currentIntroIdx_{0};                      ///< índice de la intro
+        bool espacio_pulsado_intro_{false};           ///< estado de tecla espacio
+        unir2d::Sonido *musica_intro_{nullptr};       ///< música de la intro
 
-        EstadoIntro estado_intro_{EstadoIntro::Logo};        ///< estado actual de la intro
+        EstadoIntro estado_intro_{EstadoIntro::Logo}; ///< estado actual de la intro
 
         ActorTablero *tablero_{nullptr};
         std::vector<ActorPersonaje *> personajes_;
@@ -143,14 +295,24 @@ namespace tapete
         ValidacionJuego valida_{this};
         SucesosJuegoComun *sucesos_{nullptr};
         ModoJuegoBase *modo_{nullptr};
-        SistemaAtaque ataque_{this};                        ///< sistema de ataque del juego
-        unir2d::Tiempo tiempo_calculo{};                     ///< tiempo interno para cálculos
+        SistemaAtaque ataque_{this};     ///< sistema de ataque del juego
+        unir2d::Tiempo tiempo_calculo{}; ///< tiempo interno para cálculos
 
-        /// <summary>Ajusta la región de la ventana según la posición y tamaño.</summary>
+        /*!
+         * \brief Ajusta la región de la ventana según la posición y tamaño.
+         * \param pos Posición.
+         * \param tam Tamaño.
+         */
         void regionVentana(Vector &pos, Vector &tam) const override;
-        /// <summary>Procesa la entrada de teclado.</summary>
+
+        /*!
+         * \brief Procesa la entrada de teclado.
+         */
         void controlTeclado();
-        /// <summary>Procesa eventos de tiempo.</summary>
+
+        /*!
+         * \brief Procesa eventos de tiempo.
+         */
         void controlTiempo();
     };
 

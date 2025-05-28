@@ -6,21 +6,21 @@
 
 namespace tapete
 {
-
-    /// <summary>Define los lados posibles del tablero.</summary>
     enum class LadoTablero
     {
-        /// <summary>Representa el lado izquierdo.</summary>
+        /* \brief Representa el lado izquierdo. */
         Izquierda,
-        /// <summary>Representa el lado derecho.</summary>
+        /* \brief Representa el lado derecho. */
         Derecha,
-        /// <summary>Valor nulo o indefinido.</summary>
+        /* \brief Valor nulo o indefinido. */
         nulo
     };
 
-    /// <summary>Devuelve el lado opuesto dado uno válido.</summary>
-    /// <param name="lado">Lado actual del tablero (no debe ser nulo).</param>
-    /// <returns>El lado contrario (Izquierda ↔ Derecha).</returns>
+    /*
+     * \brief Devuelve el lado opuesto dado uno válido.
+     * \param lado Lado actual del tablero (no debe ser nulo).
+     * \return El lado contrario (Izquierda ↔ Derecha).
+     */
     inline LadoTablero opuesto(LadoTablero lado)
     {
         assert(lado != LadoTablero::nulo);
@@ -33,5 +33,4 @@ namespace tapete
             return LadoTablero::Izquierda;
         }
     }
-
 }

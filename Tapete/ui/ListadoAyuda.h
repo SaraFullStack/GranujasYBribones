@@ -1,87 +1,147 @@
-﻿// proyecto: Grupal/Tapete
-// archivo:  ListadoAyuda.h
-// versión:  2.1  (Abril-2025)
-
+﻿/// @file ListadoAyuda.h
+/// @brief Clase para gestionar y mostrar un listado de ayuda con desplazamiento y estilos.
+/// @project Grupal/Tapete
+/// @version 2.1 (Abril-2025)
 
 #pragma once
 
-
 namespace tapete {
 
+class ActorTablero;
 
-    class ActorTablero;
+/**
+ * @brief Muestra un panel de ayuda desplazable con estilos de texto.
+ *
+ * Permite escribir líneas de ayuda en negrita o claro, gestionar saltos de línea,
+ * borrar contenido, desplazar el listado y mostrar/ocultar el panel.
+ */
+class ListadoAyuda {
+public:
+    static constexpr int lineasTextoListado = 56; ///< Número máximo de líneas de ayuda
 
+    /**
+     * @brief Activa el estilo de texto en negrita.
+     */
+    void enNegrita();
 
-    class ListadoAyuda {
-    public:
+    /**
+     * @brief Activa el estilo de texto claro (no negrita).
+     */
+    void enClaro();
 
-        static constexpr int lineasTextoListado = 56;
+    /**
+     * @brief Escribe un texto y avanza a la siguiente línea.
+     * @param texto Cadena de texto C wide string.
+     */
+    void escribe(const wchar_t* texto);
 
-        // Establece que las proximas escrituras sean en negrita o en claro.
-        void enNegrita ();
-        void enClaro ();
-        // Escribe y salta de línea.
-        void escribe (const wchar_t * texto);
-        void escribe (const wstring & texto);
-        void saltaLinea ();
-        void borra ();
-        int  linea ();
+    /**
+     * @brief Escribe un texto y avanza a la siguiente línea.
+     * @param texto Cadena de texto wstring.
+     */
+    void escribe(const std::wstring& texto);
 
-        void deslizaArriba ();
-        void deslizaAbajo ();
+    /**
+     * @brief Inserta un salto de línea sin escribir texto.
+     */
+    void saltaLinea();
 
-        void muestra ();
-        void oculta ();
+    /**
+     * @brief Borra todo el contenido del listado.
+     */
+    void borra();
 
-    private:
+    /**
+     * @brief Obtiene la línea actual donde se escribirá el siguiente texto.
+     * @return Índice de la línea actual.
+     */
+    int linea();
 
-        static constexpr Vector tamano {600, 800};
-        static constexpr Vector posicion {PresenciaTablero::regionRejilla.posicion () + 
-                                          0.5f * PresenciaTablero::tamanoRejilla - 
-                                          0.5f * tamano                                };
-        static constexpr Region region {posicion, tamano};
-        static constexpr int cuentaBoquetes = 40;
-        static constexpr int cuentaTrazos   = 80;
+    /**
+     * @brief Desplaza el listado hacia arriba.
+     */
+    void deslizaArriba();
 
+    /**
+     * @brief Desplaza el listado hacia abajo.
+     */
+    void deslizaAbajo();
 
-        ActorTablero * actor_tablero;
+    /**
+     * @brief Hace visible el panel de ayuda.
+     */
+    void muestra();
 
-        bool visible {};  
+    /**
+     * @brief Oculta el panel de ayuda.
+     */
+    void oculta();
 
-        unir2d::Rectangulo *                           papel;
-        std::array <unir2d::Circulo *, cuentaBoquetes> boquetes_izqrd;
-        std::array <unir2d::Circulo *, cuentaBoquetes> boquetes_derch;
-        unir2d::Trazos *                               trazos_izqrd;
-        unir2d::Trazos *                               trazos_derch;
-        unir2d::Rectangulo *                           sombra_derch;
-        unir2d::Rectangulo *                           sombra_abajo;
+private:
+    static constexpr Vector tamano{600, 800}; ///< Tamaño del panel de ayuda
+    static constexpr Vector posicion{PresenciaTablero::regionRejilla.posicion() +
+                                     0.5f * PresenciaTablero::tamanoRejilla -
+                                     0.5f * tamano};                  ///< Posición centrada en la rejilla
+    static constexpr Region region{posicion, tamano}; ///< Región completa del panel de ayuda
+    static constexpr int cuentaBoquetes = 40;         ///< Número de boquetes en bordes
+    static constexpr int cuentaTrazos = 80;           ///< Número de trazos para sombreado
 
-        std::array <unir2d::Texto *, lineasTextoListado> texto_claro {};
-        std::array <unir2d::Texto *, lineasTextoListado> texto_oscuro {};
-        unir2d::Texto *                                  sigue_arriba {};
-        unir2d::Texto *                                  sigue_abajo {};
+    ActorTablero* actor_tablero; ///< Puntero al actor del tablero para coordinación
 
-        std::vector <bool>    negrita_linea {};
-        std::vector <wstring> cadena_linea {}; 
+    bool visible{}; ///< Indica si el panel está visible
 
-        int  linea_actual {};
-        bool negrita_actual {};
-        int  bajante {};
+    unir2d::Rectangulo* papel;                                 ///< Fondo del listado
+    std::array<unir2d::Circulo*, cuentaBoquetes> boquetes_izqrd;///< Boquetes en borde izquierdo
+    std::array<unir2d::Circulo*, cuentaBoquetes> boquetes_derch;///< Boquetes en borde derecho
+    unir2d::Trazos* trazos_izqrd;                               ///< Sombreado izquierdo
+    unir2d::Trazos* trazos_derch;                               ///< Sombreado derecho
+    unir2d::Rectangulo* sombra_derch;                           ///< Sombra lateral derecha
+    unir2d::Rectangulo* sombra_abajo;                           ///< Sombra inferior
 
+    std::array<unir2d::Texto*, lineasTextoListado> texto_claro; ///< Texto en estilo claro
+    std::array<unir2d::Texto*, lineasTextoListado> texto_oscuro;///< Texto en estilo negrita
+    unir2d::Texto* sigue_arriba;                                ///< Indicador de más arriba
+    unir2d::Texto* sigue_abajo;                                 ///< Indicador de más abajo
 
-        explicit ListadoAyuda (ActorTablero * actor_tablero);
-        ~ListadoAyuda ();
+    std::vector<bool> negrita_linea; ///< Estado de negrita de cada línea
+    std::vector<std::wstring> cadena_linea; ///< Contenido de cada línea
 
-        void prepara ();
-        void libera ();
+    int linea_actual{};   ///< Índice de línea donde escribir
+    bool negrita_actual{};///< Estilo de escritura actual
+    int bajante{};        ///< Offset de desplazamiento vertical
 
-        void escribeLineas ();
-        void escribeSigue ();
+    /**
+     * @brief Constructor privado, inicializa con el actor de tablero.
+     * @param actor_tablero Puntero al actor del tablero.
+     */
+    explicit ListadoAyuda(ActorTablero* actor_tablero);
 
+    /**
+     * @brief Destructor, libera todos los recursos gráficos.
+     */
+    ~ListadoAyuda();
 
-        friend class ActorTablero;
+    /**
+     * @brief Carga recursos gráficos e inicializa estructuras.
+     */
+    void prepara();
 
-    };
+    /**
+     * @brief Libera recursos gráficos e imágenes.
+     */
+    void libera();
 
+    /**
+     * @brief Renderiza todas las líneas en pantalla.
+     */
+    void escribeLineas();
 
-}
+    /**
+     * @brief Renderiza indicadores de desplazamiento si aplica.
+     */
+    void escribeSigue();
+
+    friend class ActorTablero; ///< ActorTablero gestiona la creación y destrucción
+};
+
+} // namespace tapete

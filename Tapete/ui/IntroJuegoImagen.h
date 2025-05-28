@@ -8,40 +8,63 @@
 using namespace unir2d;
 
 
+/* 
+ * \class IntroJuegoImagen
+ * \brief Gestiona la animación y visualización de una imagen de introducción en el juego.
+ *
+ * Permite mostrar imágenes animadas (tilesheet) con desplazamiento vertical y sincronización opcional con sonido.
+ * Gestiona la carga de texturas, la animación por fotogramas, la reproducción de sonido y el ciclo de vida de los recursos gráficos.
+ * Utilizado para la pantalla de introducción o escenas animadas en el juego.
+ */
 class IntroJuegoImagen : public ActorBase {
 private:
+    Textura* textura;                  /*!< Puntero a la textura de la imagen. */
+    Imagen* imagen;                    /*!< Puntero al objeto imagen. */
 
-    Textura* textura;
-    Imagen* imagen;
+    float posicion_x = 0;              /*!< Posición X actual de la imagen. */
+    float posicion_y = 0;              /*!< Posición Y actual de la imagen. */
+    float posicionInicialX;            /*!< Posición X inicial de la imagen. */
+    float posicionInicialY;            /*!< Posición Y inicial de la imagen. */
+    float velocidadDesplazamientoArriba; /*!< Velocidad de desplazamiento vertical. */
+    int numeroDeFotogramasColumnas;    /*!< Número de columnas de fotogramas en el tilesheet. */
+    int numeroDeFotogramasFilas;       /*!< Número de filas de fotogramas en el tilesheet. */
+    int numeroDeFotogramas;            /*!< Número total de fotogramas. */
+    int ultimoFotogramaReproducido = 0;/*!< Último fotograma reproducido. */
+    bool bucle;                        /*!< Indica si la animación es en bucle. */
+    bool conSonido;                    /*!< Indica si la animación tiene sonido asociado. */
+    string pathSonido;                 /*!< Ruta del archivo de sonido. */
+    Sonido* ptr_sonido;                /*!< Puntero al objeto de sonido. */
 
-    // posición en la que aparece la imagen en el eje_x y eje_y
-    float posicion_x = 0;
-    float posicion_y = 0;
-    float posicionInicialX;
-    float posicionInicialY;
-    float velocidadDesplazamientoArriba;
-    int numeroDeFotogramasColumnas;
-    int numeroDeFotogramasFilas;
-    int numeroDeFotogramas;
-    int ultimoFotogramaReproducido = 0;
-    bool bucle;
-    bool conSonido;
-    string pathSonido;
-    Sonido* ptr_sonido;
-
-
-    // controla si el caballo anda o está parado
-    //bool animando;
-
+    /*!
+     * \brief Inicializa la animación y recursos asociados.
+     */
     void inicia() override;
+
+    /*!
+     * \brief Libera los recursos gráficos y de sonido.
+     */
     void termina() override;
+
+    /*!
+     * \brief Actualiza la animación y posición de la imagen.
+     * \param tiempo_seg Tiempo transcurrido en segundos.
+     */
     void actualiza(double tiempo_seg) override;
 
 public:
-    // constructor
+    /*!
+     * \brief Constructor de la clase IntroJuegoImagen.
+     * \param pathArchivo Ruta del archivo de imagen.
+     * \param posicionInicialX Posición X inicial.
+     * \param posicionInicialY Posición Y inicial.
+     * \param velocidadDesplazamientoArriba Velocidad de desplazamiento vertical.
+     * \param numeroDeFotogramasColumnas Número de columnas de fotogramas.
+     * \param numeroDeFotogramasFilas Número de filas de fotogramas.
+     * \param bucle Indica si la animación es en bucle.
+     * \param pathSonido Ruta del archivo de sonido (opcional).
+     */
     IntroJuegoImagen(const string pathArchivo, float posicionInicialX = 0,
         float posicionInicialY = 0, float velocidadDesplazamientoArriba = 0, int numeroDeFotogramasColumnas = 0, int numeroDeFotogramasFilas = 0, bool bucle = false, string pathSonido = "");
-
 };
 
 
@@ -59,8 +82,6 @@ inline IntroJuegoImagen::IntroJuegoImagen(const string pathArchivo, float posici
 
     textura = new Textura{};
     imagen = new Imagen{};
-    //std::filesystem::path archivo = std::filesystem::current_path();
-    //archivo = archivo / "imagenes" / nombreArchivo;
     textura->carga(pathArchivo);
     imagen->asigna(textura);
     agregaDibujo(imagen);
@@ -114,10 +135,7 @@ inline void IntroJuegoImagen::actualiza(double tiempo_seg) {
             fila++;
             puntero -= numeroDeFotogramasColumnas;
         }
-        //std::cout << "c=" << columna << " f=" << fila << std::endl;
         imagen->seleccionaEstampa(fila, columna);
-        // deja en pausa 1 segundo el último fotograma
-        //if(indice == numeroDeFotogramas)
 
     }
 

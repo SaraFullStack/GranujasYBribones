@@ -30,91 +30,228 @@ namespace tapete
     class Habilidad
     {
     public:
-        /// <summary>Constructor que inicializa la habilidad con su nombre, enfoque, acceso y antagonista.</summary>
+        /*!
+         * \brief Constructor que inicializa la habilidad con su nombre, enfoque, acceso y antagonista.
+         * \param nombre Nombre de la habilidad.
+         * \param tipo_accion Tipo de enfoque de la habilidad.
+         * \param tipo_acceso Tipo de acceso de la habilidad.
+         * \param antagonista Antagonista de la habilidad.
+         */
         explicit Habilidad(
             const std::wstring &nombre,
             EnfoqueHabilidad tipo_accion,
             AccesoHabilidad tipo_acceso,
             Antagonista antagonista);
-        /// <summary>Destructor de la clase Habilidad.</summary>
+
+        /*!
+         * \brief Destructor de la clase Habilidad.
+         */
         ~Habilidad();
 
-        /// <summary>Obtiene el nombre de la habilidad.</summary>
+        /*!
+         * \brief Obtiene el nombre de la habilidad.
+         * \return Nombre de la habilidad.
+         */
         const std::wstring &nombre() const;
-        /// <summary>Obtiene el tipo de enfoque de la habilidad.</summary>
+
+        /*!
+         * \brief Obtiene el tipo de enfoque de la habilidad.
+         * \return Tipo de enfoque.
+         */
         EnfoqueHabilidad tipoEnfoque() const;
-        /// <summary>Obtiene el tipo de acceso de la habilidad.</summary>
+
+        /*!
+         * \brief Obtiene el tipo de acceso de la habilidad.
+         * \return Tipo de acceso.
+         */
         AccesoHabilidad tipoAcceso() const;
-        /// <summary>Obtiene el antagonista de la habilidad.</summary>
+
+        /*!
+         * \brief Obtiene el antagonista de la habilidad.
+         * \return Antagonista.
+         */
         Antagonista antagonista() const;
 
-        /// <summary>Obtiene la descripción de la habilidad.</summary>
+        /*!
+         * \brief Obtiene la descripción de la habilidad.
+         * \return Descripción.
+         */
         const std::wstring &descripcion() const;
-        /// <summary>Establece la descripción de la habilidad.</summary>
+
+        /*!
+         * \brief Establece la descripción de la habilidad.
+         * \param valor Nueva descripción.
+         */
         void ponDescripcion(const std::wstring &valor);
 
-        /// <summary>Obtiene la ruta del archivo de imagen de la habilidad.</summary>
+        /*!
+         * \brief Obtiene la ruta del archivo de imagen de la habilidad.
+         * \return Ruta del archivo.
+         */
         const std::string &archivoImagen() const;
-        /// <summary>Obtiene la ruta del archivo de fondo de imagen de la habilidad.</summary>
+
+        /*!
+         * \brief Obtiene la ruta del archivo de fondo de imagen de la habilidad.
+         * \return Ruta del archivo.
+         */
         const std::string &archivoFondoImagen() const;
-        /// <summary>Establece los archivos de imagen y fondo de la habilidad.</summary>
+
+        /*!
+         * \brief Establece los archivos de imagen y fondo de la habilidad.
+         * \param archivo_imagen Ruta del archivo de imagen.
+         * \param archivo_fondo Ruta del archivo de fondo.
+         */
         void ponArchivosImagenes(const std::string &archivo_imagen, const std::string &archivo_fondo);
 
-        /// <summary>Obtiene la ruta del archivo de sonido de la habilidad.</summary>
+        /*!
+         * \brief Obtiene la ruta del archivo de sonido de la habilidad.
+         * \return Ruta del archivo.
+         */
         const std::string &archivoSonido() const;
-        /// <summary>Establece el archivo de sonido de la habilidad.</summary>
+
+        /*!
+         * \brief Establece el archivo de sonido de la habilidad.
+         * \param archivo Ruta del archivo.
+         */
         void ponArchivoSonido(const std::string &archivo);
 
-        /// <summary>Obtiene el coste en puntos de acción de la habilidad.</summary>
+        /*!
+         * \brief Obtiene el coste en puntos de acción de la habilidad.
+         * \return Coste en puntos de acción.
+         */
         int coste() const;
-        /// <summary>Establece el coste en puntos de acción de la habilidad.</summary>
+
+        /*!
+         * \brief Establece el coste en puntos de acción de la habilidad.
+         * \param valor Nuevo coste.
+         */
         void ponCoste(int valor);
-        /// <summary>Obtiene el alcance en casillas de la habilidad.</summary>
+
+        /*!
+         * \brief Obtiene el alcance en casillas de la habilidad.
+         * \return Alcance en casillas.
+         */
         int alcance() const;
-        /// <summary>Establece el alcance en casillas de la habilidad.</summary>
+
+        /*!
+         * \brief Establece el alcance en casillas de la habilidad.
+         * \param valor Nuevo alcance.
+         */
         void ponAlcance(int valor);
-        /// <summary>Obtiene el radio de área de la habilidad.</summary>
+
+        /*!
+         * \brief Obtiene el radio de área de la habilidad.
+         * \return Radio de área.
+         */
         int radioAlcance() const;
-        /// <summary>Establece el radio de área de la habilidad.</summary>
+
+        /*!
+         * \brief Establece el radio de área de la habilidad.
+         * \param valor Nuevo radio.
+         */
         void ponRadioAlcance(int valor);
 
-        /// <summary>Obtiene el tipo de ataque asociado.</summary>
+        /*!
+         * \brief Obtiene el tipo de ataque asociado.
+         * \return Puntero al tipo de ataque.
+         */
         TipoAtaque *tipoAtaque() const;
-        /// <summary>Asigna el tipo de ataque a la habilidad.</summary>
+
+        /*!
+         * \brief Asigna el tipo de ataque a la habilidad.
+         * \param tipo_ataque Puntero al tipo de ataque.
+         */
         void asignaAtaque(TipoAtaque *tipo_ataque);
 
-        /// <summary>Obtiene el tipo de defensa asociado.</summary>
+        /*!
+         * \brief Obtiene el tipo de defensa asociado.
+         * \return Puntero al tipo de defensa.
+         */
         TipoDefensa *tipoDefensa() const;
-        /// <summary>Asigna el tipo de defensa a la habilidad.</summary>
+
+        /*!
+         * \brief Asigna el tipo de defensa a la habilidad.
+         * \param tipo_defensa Puntero al tipo de defensa.
+         */
         void asignaDefensa(TipoDefensa *tipo_defensa);
 
-        /// <summary>Obtiene el tipo de daño asociado.</summary>
+        /*!
+         * \brief Obtiene el tipo de daño asociado.
+         * \return Puntero al tipo de daño.
+         */
         TipoDano *tipoDano() const;
-        /// <summary>Obtiene el valor de daño de la habilidad.</summary>
+
+        /*!
+         * \brief Obtiene el valor de daño de la habilidad.
+         * \return Valor de daño.
+         */
         int valorDano() const;
-        /// <summary>Asigna tipo y valor de daño a la habilidad.</summary>
+
+        /*!
+         * \brief Asigna tipo y valor de daño a la habilidad.
+         * \param tipo_dano Puntero al tipo de daño.
+         * \param valor_dano Valor de daño.
+         */
         void asignaDano(TipoDano *tipo_dano, int valor_dano);
 
-        /// <summary>Obtiene el valor de curación de la habilidad.</summary>
+        /*!
+         * \brief Obtiene el valor de curación de la habilidad.
+         * \return Valor de curación.
+         */
         int valorCuracion() const;
-        /// <summary>Asigna el valor de curación de la habilidad.</summary>
+
+        /*!
+         * \brief Asigna el valor de curación de la habilidad.
+         * \param valor Valor de curación.
+         */
         void asignaCuracion(int valor);
 
+        /*!
+         * \brief Tipo para la lista de efectos de ataque.
+         */
         using EfectosAtaque = std::vector<std::pair<TipoAtaque *, int>>;
-        /// <summary>Obtiene la lista de efectos de ataque.</summary>
+
+        /*!
+         * \brief Obtiene la lista de efectos de ataque.
+         * \return Referencia constante a la lista.
+         */
         const EfectosAtaque &efectosAtaque() const;
-        /// <summary>Agrega un efecto de ataque a la habilidad.</summary>
+
+        /*!
+         * \brief Agrega un efecto de ataque a la habilidad.
+         * \param tipo_ataque Puntero al tipo de ataque.
+         * \param valor Valor del efecto.
+         */
         void agregaEfectoAtaque(TipoAtaque *tipo_ataque, int valor);
 
+        /*!
+         * \brief Tipo para la lista de efectos de defensa.
+         */
         using EfectosDefensa = std::vector<std::pair<TipoDefensa *, int>>;
-        /// <summary>Obtiene la lista de efectos de defensa.</summary>
+
+        /*!
+         * \brief Obtiene la lista de efectos de defensa.
+         * \return Referencia constante a la lista.
+         */
         const EfectosDefensa &efectosDefensa() const;
-        /// <summary>Agrega un efecto de defensa a la habilidad.</summary>
+
+        /*!
+         * \brief Agrega un efecto de defensa a la habilidad.
+         * \param tipo_defensa Puntero al tipo de defensa.
+         * \param valor Valor del efecto.
+         */
         void agregaEfectoDefensa(TipoDefensa *tipo_defensa, int valor);
 
-        /// <summary>Obtiene el índice interno de la habilidad.</summary>
+        /*!
+         * \brief Obtiene el índice interno de la habilidad.
+         * \return Índice interno.
+         */
         int indice() const;
-        /// <summary>Establece el índice interno de la habilidad.</summary>
+
+        /*!
+         * \brief Establece el índice interno de la habilidad.
+         * \param valor Nuevo índice.
+         */
         void ponIndice(int valor);
 
     private:

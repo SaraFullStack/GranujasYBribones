@@ -10,7 +10,9 @@ namespace tapete
     class TipoEstadistica
     {
     public:
-        /// <summary>Define la categoría de la estadística (sistemaAtaque, defensa, daño, curación).</summary>
+        /*!
+         * \brief Define la categoría de la estadística (sistemaAtaque, defensa, daño, curación).
+         */
         enum class Categoria
         {
             sistemaAtaque,
@@ -19,59 +21,113 @@ namespace tapete
             curacion
         };
 
-        /// <summary>Devuelve la categoría de la estadística.</summary>
+        /*!
+         * \brief Devuelve la categoría de la estadística.
+         * \return Categoría de la estadística.
+         */
         Categoria categoria() const;
-        /// <summary>Devuelve el nombre descriptivo de la estadística.</summary>
+
+        /*!
+         * \brief Devuelve el nombre descriptivo de la estadística.
+         * \return Nombre de la estadística.
+         */
         const std::wstring &nombre() const;
 
-        /// <summary>Obtiene el índice interno de la estadística.</summary>
+        /*!
+         * \brief Obtiene el índice interno de la estadística.
+         * \return Índice interno.
+         */
         int indice();
-        /// <summary>Establece el índice interno de la estadística.</summary>
+
+        /*!
+         * \brief Establece el índice interno de la estadística.
+         * \param valor Nuevo índice.
+         */
         void ponIndice(int valor);
 
     protected:
-        /// <summary>Constructor protegido que inicializa la estadística con categoría y nombre.</summary>
+        /*!
+         * \brief Constructor protegido que inicializa la estadística con categoría y nombre.
+         * \param categoria Categoría de la estadística.
+         * \param nombre Nombre de la estadística.
+         */
         explicit TipoEstadistica(Categoria categoria, const std::wstring &nombre);
 
     private:
         Categoria categoria_;
         std::wstring nombre_;
-
         int indice_{};
     };
 
+    /*
+     * \class TipoAtaqueDefensa
+     * \brief Clase base para tipos de ataque o defensa.
+     */
     class TipoAtaqueDefensa : public TipoEstadistica
     {
     protected:
-        /// <summary>Constructor protegido para tipos de ataque o defensa con categoría y nombre.</summary>
+        /*!
+         * \brief Constructor protegido para tipos de ataque o defensa con categoría y nombre.
+         * \param categoria Categoría.
+         * \param nombre Nombre.
+         */
         explicit TipoAtaqueDefensa(Categoria categoria, const std::wstring &nombre);
     };
 
+    /*
+     * \class TipoAtaque
+     * \brief Representa un tipo de ataque en el sistema de combate.
+     */
     class TipoAtaque : public TipoAtaqueDefensa
     {
     public:
-        /// <summary>Constructor que crea un tipo de ataque con un nombre.</summary>
+        /*!
+         * \brief Constructor que crea un tipo de ataque con un nombre.
+         * \param nombre Nombre del tipo de ataque.
+         */
         explicit TipoAtaque(const std::wstring &nombre);
     };
 
+    /*
+     * \class TipoDefensa
+     * \brief Representa un tipo de defensa en el sistema de combate.
+     */
     class TipoDefensa : public TipoAtaqueDefensa
     {
     public:
-        /// <summary>Constructor que crea un tipo de defensa con un nombre.</summary>
+        /*!
+         * \brief Constructor que crea un tipo de defensa con un nombre.
+         * \param nombre Nombre del tipo de defensa.
+         */
         explicit TipoDefensa(const std::wstring &nombre);
     };
 
+    /*
+     * \class TipoDanoCuracion
+     * \brief Clase base para tipos de daño o curación.
+     */
     class TipoDanoCuracion : public TipoEstadistica
     {
     protected:
-        /// <summary>Constructor protegido para tipos de daño o curación con categoría y nombre.</summary>
+        /*!
+         * \brief Constructor protegido para tipos de daño o curación con categoría y nombre.
+         * \param categoria Categoría.
+         * \param nombre Nombre.
+         */
         explicit TipoDanoCuracion(Categoria categoria, const std::wstring &nombre);
     };
 
+    /*
+     * \class TipoDano
+     * \brief Representa un tipo de daño en el sistema de combate.
+     */
     class TipoDano : public TipoDanoCuracion
     {
     public:
-        /// <summary>Constructor que crea un tipo de daño con un nombre.</summary>
+        /*!
+         * \brief Constructor que crea un tipo de daño con un nombre.
+         * \param nombre Nombre del tipo de daño.
+         */
         explicit TipoDano(const std::wstring &nombre);
     };
 

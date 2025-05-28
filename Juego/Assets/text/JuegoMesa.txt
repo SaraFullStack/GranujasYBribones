@@ -4,62 +4,118 @@
 
 Características del juego:
 - Mapa generado proceduralmente en cada partida, con simetría equitativa y equilibrio para ambos equipos.
-- Obstáculos (islas) y tesoros distribuidos de forma justa.
+- Obstáculos (islas), tesoros y trampas distribuidos de forma justa.
 
-┌───────────┬──────────┬────────────┬───────────────┬───────────────────────────────┐
-│ Personaje │   Rol    │ Iniciativa │ Puntos Acción │ Habilidad Especial            │
-├───────────┼──────────┼────────────┼───────────────┼───────────────────────────────┤
-│ Edward    │ Carry    │     20     │       9       │ Sangrado Mortal               │
-│ Victoria  │ Carry    │     17     │       9       │ Puño del Corsario             │
-│ Balthazar │ Support  │     17     │       8       │ Oleada de Metralla            │
-│ Luciana   │ Support  │     19     │       8       │ Efecto Tornado                │
-│ Buenavida │ Tanque   │     20     │       6       │ Golpes Devastadores           │
-│ Dorian    │ Tanque   │     19     │       6       │ Golpe de Ancla                │
-└───────────┴──────────┴────────────┴───────────────┴───────────────────────────────┘
+Todas las habilidades especiales son indirectas (pueden atravesar elementos)
+┌───────────┬──────────┬────────────┬────────────┬───────────────┬───────────────────────────────┬──────┐
+│ Personaje │ Rol      │ Iniciativa │   Alcance  │ Puntos Acción │ Habilidad Especial            │ Daño │
+├───────────┼──────────┼────────────┼────────────┼───────────────┼───────────────────────────────┼──────┤
+│ Edward    │ Carry    │     20     │     5      │  Disponibles  │ Sangrado Mortal               │  29  │
+│ Victoria  │ Carry    │     17     │     5      │  Disponibles  │ Puño del Corsario             │  32  │
+│ Balthazar │ Support  │     17     │     5      │  Disponibles  │ Oleada de Metralla            │  38  │
+│ Luciana   │ Support  │     19     │     5      │  Disponibles  │ Efecto Tornado                │  34  │
+│ Buenavida │ Tanque   │     20     │     5      │  Disponibles  │ Golpes Devastadores           │  26  │
+│ Dorian    │ Tanque   │     19     │     5      │  Disponibles  │ Golpe de Ancla                │  27  │
+└───────────┴──────────┴────────────┴────────────┴───────────────┴───────────────────────────────┴──────┘
+[Las habilidades especiales de los equipos suman 39 puntos en ambos]
 
 Habilidades básicas compartidas por todos:
-- **Cañonazo**  
-  • Coste 6, Alcance 12  
-  • Tipo Ataque: A distancia, Tipo Defensa: A distancia  
-  • Daño físico: 40  
-- **Embestida**  
-  • Coste 4, Alcance 1  
-  • Tipo Ataque: Cuerpo a cuerpo, Tipo Defensa: Cuerpo a cuerpo  
-  • Daño físico: 25  
-- **Abordaje**  
-  • Coste 7, Alcance 1  
-  • Tipo Ataque: Cuerpo a cuerpo, Tipo Defensa: Cuerpo a cuerpo  
-  • Daño físico: 50  
-- **Reparación de barco**  
-  • Coste 3  
-  • Efecto defensa cuerpo a cuerpo: +5 puntos  
+Todas las habilidades básicas son directas (no pueden atravesar elementos)
+┌─────────────────────────┬──────────┬─────────┬───────────────────┬─────────────────────┬────────────────────────────────────────┐
+│ Habilidad               │ Coste PA │ Alcance │ Tipo Ataque       │ Tipo Defensa        │ Daño / Efecto                          │
+├─────────────────────────┼──────────┼─────────┼───────────────────┼─────────────────────┼────────────────────────────────────────┤
+│ Cañonazo                │ 8        │ 12      │ A distancia       │ A distancia         │ Daño físico: 40                        │
+│ Embestida               │ 8        │ 1       │ Cuerpo a cuerpo   │ Cuerpo a cuerpo     │ Daño físico: 25                        │
+│ Abordaje                │ 8        │ 1       │ Cuerpo a cuerpo   │ Cuerpo a cuerpo     │ Daño físico: 50                        │
+│ Fortalece barco         │ 8        │ —       │ —                 │ Cuerpo a cuerpo     │ +10 puntos de defensa (cuerpo a cuerpo)│
+└─────────────────────────┴──────────┴─────────┴───────────────────┴─────────────────────┴────────────────────────────────────────┘
 
-Habilidades especiales (recargables cada partida):
-- **Edward – Sangrado Mortal**  
-  • Coste 5, Alcance 5  
-  • Tipo Ataque: A distancia, Tipo Defensa: A distancia  
-  • Daño físico: 29  
-- **Balthazar – Oleada de Metralla**  
-  • Coste 7, Alcance 5, Radio 5  
-  • Tipo Ataque: Cuerpo a cuerpo, Tipo Defensa: Cuerpo a cuerpo  
-  • Daño físico: 38  
-- **Buenavida – Golpes Devastadores**  
-  • Coste 5, Alcance 5, Radio 5  
-  • Tipo Ataque: Cuerpo a cuerpo, Tipo Defensa: Cuerpo a cuerpo  
-  • Daño físico: 26  
-- **Victoria – Puño del Corsario**  
-  • Coste 6, Alcance 45, Radio 5  
-  • Tipo Ataque: Cuerpo a cuerpo, Tipo Defensa: Cuerpo a cuerpo  
-  • Daño físico: 32  
-- **Luciana – Efecto Tornado**  
-  • Coste 6, Alcance 5, Radio 5  
-  • Tipo Ataque: Cuerpo a cuerpo, Tipo Defensa: Cuerpo a cuerpo  
-  • Daño físico: 34  
-- **Dorian – Golpe de Ancla**  
-  • Coste 4, Alcance 5, Radio 5  
-  • Tipo Ataque: Cuerpo a cuerpo, Tipo Defensa: Cuerpo a cuerpo  
-  • Daño físico: 27  
+┌──────────┬───────────────────────────┬──────────────────────────┐
+│ Rol      │ Resistencia al daño       │ Puntos de Acción (PA)    │
+├──────────┼───────────────────────────┼──────────────────────────┤
+│ Tanque   │ Alta (soporta más daño)   │ 8 PA (lento)             │
+│ Support  │ Media (equilibrado)       │ 12 PA (velocidad media)  │
+│ Carry    │ Baja (menos resistente)   │ 14 PA (rápido)           │
+└──────────┴───────────────────────────┴──────────────────────────┘
+
 
 Objetos sorpresa en el mapa (10 tesoros repartidos):
 - 5 Cofres Explosivos: al recogerlos, infligen 20 puntos de daño.  
 - 5 Barriles de Reparación: al recogerlos, restauran 20 puntos de vitalidad.  
+
+Diseño del mapa:
+
+    Celdas válidas (filas = 51, columnas = 49)
+
+      +-----+         +-----+                     +-----+         +-----+  
+     /       \       /       \                   /       \       /       \ 
+    +   1  1  +-----+   1  3  +--             --+   1 47  +-----+   1 49  +
+     \       /       \       /                   \       /       \       / 
+      +-----+   2  2  +-----+                     +-----+   2 48  +-----+  
+     /       \       /       \                   /       \       /       \ 
+    +   3  1  +-----+   3  3  +--             --+   3 47  +-----+   3 49  +
+     \       /       \       /                   \       /       \       / 
+      +-----+   4  2  +-----+                     +-----+   4 48  +-----+  
+     /       \       /       \                   /       \       /       \ 
+    +   5  1  +-----+   5  3  +--             --+   5 47  +-----+   5 49  +
+     \       /       \       /                   \       /       \       / 
+      +-----+         +-----+                     +-----+         +-----+  
+     /       \       /       \                   /       \       /       \ 
+                                                                        
+                                                                        
+                                                                        
+     \       /       \       /                   \       /       \       / 
+      +-----+         +-----+                     +-----+         +-----+  
+     /       \       /       \                   /       \       /       \ 
+    +  47  1  +-----+  47  3  +--             --+  47 47  +-----+  47 49  +
+     \       /       \       /                   \       /       \       / 
+      +-----+  48  2  +-----+                     +-----+  48 48  +-----+  
+     /       \       /       \                   /       \       /       \ 
+    +  49  1  +-----+  49  3  +--             --+  49 47  +-----+  49 49  +
+     \       /       \       /                   \       /       \       / 
+      +-----+  50  2  +-----+                     +-----+  50 48  +-----+  
+     /       \       /       \                   /       \       /       \ 
+    +  51  1  +-----+  51  3  +--             --+  51 47  +-----+  51 49  +
+     \       /       \       /                   \       /       \       / 
+      +-----+         +-----+                     +-----+         +-----+  
+
+
+    Cálculo de la posición de cada celda destino en relación con la celda origen.
+
+      +-----+         +-----+         +-----+         +-----+         +-----+  
+     /       \       /       \       /       \       /       \       /       \ 
+    +         +-----+   6 C   +-----+   1 E   +-----+   1 C   +-----+         +
+     \       /       \       /       \       /       \       /       \       / 
+      +-----+   6 C   +-----+   6 C   +-----+   1 C   +-----+   1 C   +-----+  
+     /       \       /       \       /       \       /       \       /       \ 
+    +         +-----+   6 C   +-----+   1 E   +-----+   1 C   +-----+         +
+     \       /       \       /       \       /       \       /       \       / 
+      +-----+   6 E   +-----+   6 C   +-----+   1 C   +-----+   2 E   +-----+  
+     /       \       /       \       /       \       /       \       /       \ 
+    +         +-----+   6 E   +-----+   1 E   +-----+   2 E   +-----+         +
+     \       /       \       /       \       /       \       /       \       / 
+      +-----+   5 C   +-----+   6 E   +-----+   2 E   +-----+   2 C   +-----+  
+     /       \       /       \       /       \       /       \       /       \ 
+    +         +-----+   5 C   +-----+    O    +-----+   2 C   +-----+         +
+     \       /       \       /       \       /       \       /       \       / 
+      +-----+   5 C   +-----+   5 E   +-----+   3 E   +-----+   2 C   +-----+  
+     /       \       /       \       /       \       /       \       /       \ 
+    +         +-----+   5 E   +-----+   4 E   +-----+   3 E   +-----+         +
+     \       /       \       /       \       /       \       /       \       / 
+      +-----+   5 E   +-----+   4 C   +-----+   3 C   +-----+   3 E   +-----+  
+     /       \       /       \       /       \       /       \       /       \ 
+    +         +-----+   4 C   +-----+   4 E   +-----+   3 C   +-----+         +
+     \       /       \       /       \       /       \       /       \       / 
+      +-----+   4 C   +-----+   4 C   +-----+   3 C   +-----+   3 C   +-----+  
+     /       \       /       \       /       \       /       \       /       \ 
+    +         +-----+   4 C   +-----+   4 E   +-----+   3 C   +-----+         +
+     \       /       \       /       \       /       \       /       \       / 
+      +-----+         +-----+         +-----+         +-----+         +-----+  
+
+    O   : celda origen
+    1 E : dirección exacta 1
+        · · · · · 
+    6 E : dirección exacta 6
+    1 C : dirección cuadrante 1
+        · · · · · 
+    6 C : dirección cuadrante 6

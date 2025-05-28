@@ -307,4 +307,40 @@ namespace tapete
         return poscn;
     }
 
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // métodos para depurar
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    //bool VistaCaminoCeldas::fichaMarcada () {
+    //    return celda_inicio_marcada;
+    //}
+
+
+    //bool VistaCaminoCeldas::caminoArrancado () {
+    //    return camino_arrancado;
+    //}
+
+
+    //bool VistaCaminoCeldas::celdaMarcada () {
+    //    return celda_etapa_marcada;
+    //}
+
+
+    //bool VistaCaminoCeldas::celdaAgregada () {
+    //    return celda_agregada;
+    //}
+
+
+    //int VistaCaminoCeldas::dianasVisibles () {
+    //    return static_cast <int> (imagenes_mdiana.size ());
+    //}
+
+
+    //int VistaCaminoCeldas::dianasFijadas () {
+    //    return imagenes_mdiana_fijadas;
+    //}
+
+
 }

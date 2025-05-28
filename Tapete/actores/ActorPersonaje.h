@@ -19,165 +19,347 @@ namespace tapete
     class ActorPersonaje : public unir2d::ActorBase
     {
     public:
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        /// <param name="juego">Contexto del juego.</param>
-        /// <param name="lado_tablero">Lado del tablero (Izquierda/Derecha).</param>
-        /// <param name="indice_en_equipo">Índice del personaje en su equipo.</param>
-        /// <param name="nombre">Nombre del personaje.</param>
+        /*!
+         * \brief Constructor.
+         * \param juego Contexto del juego.
+         * \param lado_tablero Lado del tablero (Izquierda/Derecha).
+         * \param indice_en_equipo Índice del personaje en su equipo.
+         * \param nombre Nombre del personaje.
+         */
         explicit ActorPersonaje(
             JuegoMesaBase *juego,
             LadoTablero lado_tablero,
             int indice_en_equipo,
             const wstring &nombre);
 
-        /// <summary>
-        /// Destructor.
-        /// </summary>
+        /*!
+         * \brief Destructor.
+         */
         ~ActorPersonaje();
 
-        /// <summary>Obtiene el contexto de juego.</summary>
+        /*! \brief Obtiene el contexto de juego.
+         *  \return Puntero al contexto de juego.
+         */
         JuegoMesaBase *juego();
 
-        /// <summary>Obtiene el lado del tablero.</summary>
+        /*! \brief Obtiene el lado del tablero.
+         *  \return LadoTablero del personaje.
+         */
         LadoTablero ladoTablero() const;
 
-        /// <summary>Obtiene el índice en el equipo.</summary>
+        /*! \brief Obtiene el índice en el equipo.
+         *  \return Índice en el equipo.
+         */
         int indiceEnEquipo() const;
 
-        /// <summary>Obtiene el nombre del personaje.</summary>
+        /*! \brief Obtiene el nombre del personaje.
+         *  \return Nombre del personaje.
+         */
         const wstring &nombre() const;
 
-        /// <summary>Obtiene la ruta al retrato.</summary>
+        /*! \brief Obtiene la ruta al retrato.
+         *  \return Ruta del archivo de retrato.
+         */
         const string &archivoRetrato() const;
-        /// <summary>Asigna la ruta al retrato.</summary>
-        /// <param name="valor">Ruta del archivo de imagen.</param>
+
+        /*!
+         * \brief Asigna la ruta al retrato.
+         * \param valor Ruta del archivo de imagen.
+         */
         void ponArchivoRetrato(const string &valor);
 
-        /// <summary>Obtiene la ruta a la ficha.</summary>
+        /*! \brief Obtiene la ruta a la ficha.
+         *  \return Ruta del archivo de ficha.
+         */
         const string &archivoFicha() const;
-        /// <summary>Asigna la ruta de la ficha.</summary>
-        /// <param name="valor">Ruta del archivo de imagen.</param>
+
+        /*!
+         * \brief Asigna la ruta de la ficha.
+         * \param valor Ruta del archivo de imagen.
+         */
         void ponArchivoFicha(const string &valor);
 
-        /// <summary>Comprueba si el tipo de ataque está registrado.</summary>
-        /// <param name="tipo_ataque">Tipo de ataque.</param>
+        /*!
+         * \brief Comprueba si el tipo de ataque está registrado.
+         * \param tipo_ataque Tipo de ataque.
+         * \return true si está registrado, false en caso contrario.
+         */
         bool apareceAtaque(TipoAtaque *tipo_ataque) const;
-        /// <summary>Obtiene el valor de ataque base.</summary>
-        /// <param name="tipo_ataque">Tipo de ataque.</param>
+
+        /*!
+         * \brief Obtiene el valor de ataque base.
+         * \param tipo_ataque Tipo de ataque.
+         * \return Valor de ataque base.
+         */
         int valorAtaque(TipoAtaque *tipo_ataque) const;
-        /// <summary>Registra un tipo de ataque con valor base.</summary>
-        /// <param name="tipo_ataque">Tipo de ataque.</param>
-        /// <param name="valor_base">Valor inicial.</param>
+
+        /*!
+         * \brief Registra un tipo de ataque con valor base.
+         * \param tipo_ataque Tipo de ataque.
+         * \param valor_base Valor inicial.
+         */
         void agregaAtaque(TipoAtaque *tipo_ataque, int valor_base);
-        /// <summary>Cambia el valor de ataque.</summary>
-        /// <param name="tipo_ataque">Tipo de ataque.</param>
-        /// <param name="valor_cambio">Incremento o decremento.</param>
+
+        /*!
+         * \brief Cambia el valor de ataque.
+         * \param tipo_ataque Tipo de ataque.
+         * \param valor_cambio Incremento o decremento.
+         */
         void cambiaAtaque(TipoAtaque *tipo_ataque, int valor_cambio);
-        /// <summary>Restaura el ataque a su valor inicial.</summary>
-        /// <param name="tipo_ataque">Tipo de ataque.</param>
+
+        /*!
+         * \brief Restaura el ataque a su valor inicial.
+         * \param tipo_ataque Tipo de ataque.
+         */
         void restauraAtaque(TipoAtaque *tipo_ataque);
 
-        /// <summary>Comprueba si el tipo de defensa está registrado.</summary>
+        /*!
+         * \brief Comprueba si el tipo de defensa está registrado.
+         * \param tipo_ataque Tipo de defensa.
+         * \return true si está registrado, false en caso contrario.
+         */
         bool apareceDefensa(TipoDefensa *tipo_ataque) const;
-        /// <summary>Obtiene el valor de defensa base.</summary>
+
+        /*!
+         * \brief Obtiene el valor de defensa base.
+         * \param tipo_ataque Tipo de defensa.
+         * \return Valor de defensa base.
+         */
         int valorDefensa(TipoDefensa *tipo_ataque) const;
-        /// <summary>Registra un tipo de defensa con valor base.</summary>
+
+        /*!
+         * \brief Registra un tipo de defensa con valor base.
+         * \param tipo_defensa Tipo de defensa.
+         * \param valor_base Valor inicial.
+         */
         void agregaDefensa(TipoDefensa *tipo_defensa, int valor_base);
-        /// <summary>Cambia el valor de defensa.</summary>
+
+        /*!
+         * \brief Cambia el valor de defensa.
+         * \param tipo_defensa Tipo de defensa.
+         * \param valor_cambio Incremento o decremento.
+         */
         void cambiaDefensa(TipoDefensa *tipo_defensa, int valor_cambio);
-        /// <summary>Restaura defensa a su valor inicial.</summary>
+
+        /*!
+         * \brief Restaura defensa a su valor inicial.
+         * \param tipo_defensa Tipo de defensa.
+         */
         void restauraDefensa(TipoDefensa *tipo_defensa);
 
-        /// <summary>Comprueba si el tipo de reducción de daño está registrado.</summary>
+        /*!
+         * \brief Comprueba si el tipo de reducción de daño está registrado.
+         * \param tipo_dano Tipo de daño.
+         * \return true si está registrado, false en caso contrario.
+         */
         bool apareceReduceDano(TipoDano *tipo_dano) const;
-        /// <summary>Obtiene el valor de reducción de daño.</summary>
+
+        /*!
+         * \brief Obtiene el valor de reducción de daño.
+         * \param tipo_dano Tipo de daño.
+         * \return Valor de reducción de daño.
+         */
         int valorReduceDano(TipoDano *tipo_dano) const;
-        /// <summary>Registra reducción de daño.</summary>
+
+        /*!
+         * \brief Registra reducción de daño.
+         * \param tipo_dano Tipo de daño.
+         * \param valor Valor de reducción.
+         */
         void agregaReduceDano(TipoDano *tipo_dano, int valor);
 
-        /// <summary>Obtiene la lista de habilidades.</summary>
+        /*!
+         * \brief Obtiene la lista de habilidades.
+         * \return Referencia constante al vector de habilidades.
+         */
         static constexpr int maximoHabilidades = 10;
         const std::vector<Habilidad *> &habilidades() const;
-        /// <summary>Añade una habilidad al personaje.</summary>
+
+        /*!
+         * \brief Añade una habilidad al personaje.
+         * \param elemento Puntero a la habilidad.
+         */
         void agregaHabilidad(Habilidad *elemento);
 
-        /// <summary>Obtiene el índice interno.</summary>
+        /*!
+         * \brief Obtiene el índice interno.
+         * \return Índice interno.
+         */
         int indice();
-        /// <summary>Asigna el índice interno.</summary>
+
+        /*!
+         * \brief Asigna el índice interno.
+         * \param valor Nuevo índice.
+         */
         void ponIndice(int valor);
 
-        /// <summary>Accede a la presencia gráfica del personaje.</summary>
+        /*!
+         * \brief Accede a la presencia gráfica del personaje.
+         * \return Referencia a la presencia gráfica.
+         */
         PresenciaPersonaje &presencia();
 
-        /// <summary>Obtiene la posición de la ficha.</summary>
+        /*!
+         * \brief Obtiene la posición de la ficha.
+         * \return Coordenada de la ficha.
+         */
         Coord sitioFicha() const;
-        /// <summary>Asigna la posición de la ficha.</summary>
+
+        /*!
+         * \brief Asigna la posición de la ficha.
+         * \param valor Nueva coordenada.
+         */
         void ponSitioFicha(Coord valor);
 
-        /// <summary>Obtiene la vitalidad actual.</summary>
+        /*!
+         * \brief Obtiene la vitalidad actual.
+         * \return Vitalidad actual.
+         */
         static constexpr int maximaVitalidad = 100;
         int vitalidad() const;
-        /// <summary>Asigna la vitalidad.</summary>
+
+        /*!
+         * \brief Asigna la vitalidad.
+         * \param valor Nueva vitalidad.
+         */
         void ponVitalidad(int valor);
 
-        /// <summary>Obtiene los puntos de acción.</summary>
+        /*!
+         * \brief Obtiene los puntos de acción.
+         * \return Puntos de acción.
+         */
         static constexpr int maximoPuntosAccion = 20;
         int puntosAccion() const;
-        /// <summary>Asigna puntos de acción.</summary>
+
+        /*!
+         * \brief Asigna puntos de acción.
+         * \param valor Nuevo valor.
+         */
         void ponPuntosAccion(int valor);
 
-        /// <summary>Obtiene iniciativa del personaje.</summary>
+        /*!
+         * \brief Obtiene iniciativa del personaje.
+         * \return Iniciativa.
+         */
         int iniciativa() const;
-        /// <summary>Asigna iniciativa.</summary>
+
+        /*!
+         * \brief Asigna iniciativa.
+         * \param valor Nuevo valor.
+         */
         void ponIniciativa(int valor);
 
-        /// <summary>Obtiene estado de utilizable.</summary>
+        /*!
+         * \brief Obtiene estado de utilizable.
+         * \return Estado de utilizable.
+         */
         int utilizable() const;
-        /// <summary>Asigna estado de utilizable.</summary>
+
+        /*!
+         * \brief Asigna estado de utilizable.
+         * \param valor Nuevo valor.
+         */
         void ponUtilizable(int valor);
 
-        /// <summary>Obtiene puntos de acción restantes en turno.</summary>
+        /*!
+         * \brief Obtiene puntos de acción restantes en turno.
+         * \return Puntos de acción restantes.
+         */
         int puntosAccionEnJuego() const;
-        /// <summary>Asigna puntos de acción restantes.</summary>
+
+        /*!
+         * \brief Asigna puntos de acción restantes.
+         * \param valor Nuevo valor.
+         */
         void ponPuntosAccionEnJuego(int valor);
 
-        /// <summary>Obtiene ruta del archivo SFX de personaje.</summary>
+        /*!
+         * \brief Obtiene ruta del archivo SFX de personaje.
+         * \return Ruta del archivo SFX.
+         */
         const string &archivoPersonajeSFX();
-        /// <summary>Obtiene volumen del SFX de personaje.</summary>
+
+        /*!
+         * \brief Obtiene volumen del SFX de personaje.
+         * \return Volumen.
+         */
         int volumenPersonajeSFX();
-        /// <summary>Asigna SFX de personaje y volumen.</summary>
+
+        /*!
+         * \brief Asigna SFX de personaje y volumen.
+         * \param archivo_establece Ruta del archivo SFX.
+         * \param volumen Volumen.
+         */
         void asignaPersonajeSFX(const string &archivo_establece, int volumen);
-        /// <summary>Emite SFX de personaje.</summary>
+
+        /*!
+         * \brief Emite SFX de personaje.
+         */
         void emitePersonajeSFX();
 
-        /// <summary>Obtiene ruta del SFX de selección.</summary>
+        /*!
+         * \brief Obtiene ruta del SFX de selección.
+         * \return Ruta del archivo SFX.
+         */
         const string &archivoSeleccionSFX();
-        /// <summary>Obtiene volumen del SFX de selección.</summary>
+
+        /*!
+         * \brief Obtiene volumen del SFX de selección.
+         * \return Volumen.
+         */
         int volumenSeleccionSFX();
-        /// <summary>Asigna SFX de selección y volumen.</summary>
+
+        /*!
+         * \brief Asigna SFX de selección y volumen.
+         * \param archivo_establece Ruta del archivo SFX.
+         * \param volumen Volumen.
+         */
         void asignaSeleccionSFX(const string &archivo_establece, int volumen);
-        /// <summary>Emite SFX de selección.</summary>
+
+        /*!
+         * \brief Emite SFX de selección.
+         */
         void emiteSeleccionSFX();
 
-        /// <summary>Obtiene ruta del SFX de desplazamiento.</summary>
+        /*!
+         * \brief Obtiene ruta del SFX de desplazamiento.
+         * \return Ruta del archivo SFX.
+         */
         const string &archivoDesplazamientoSFX();
-        /// <summary>Obtiene volumen de desplazamiento.</summary>
+
+        /*!
+         * \brief Obtiene volumen de desplazamiento.
+         * \return Volumen.
+         */
         int volumenDesplazamientoSFX();
-        /// <summary>Asigna SFX de desplazamiento y volumen.</summary>
+
+        /*!
+         * \brief Asigna SFX de desplazamiento y volumen.
+         * \param archivo_establece Ruta del archivo SFX.
+         * \param volumen Volumen.
+         */
         void asignaDesplazamientoSFX(const string &archivo_establece, int volumen);
-        /// <summary>Emite SFX de desplazamiento.</summary>
+
+        /*!
+         * \brief Emite SFX de desplazamiento.
+         */
         void emiteDesplazamientoSFX();
 
     protected:
-        /// <summary>Inicializa el actor.</summary>
+        /*!
+         * \brief Inicializa el actor.
+         */
         void inicia() override;
 
-        /// <summary>Finaliza el actor.</summary>
+        /*!
+         * \brief Finaliza el actor.
+         */
         void termina() override;
 
-        /// <summary>Actualiza el actor cada fotograma.</summary>
+        /*!
+         * \brief Actualiza el actor cada fotograma.
+         * \param tiempo_seg Tiempo en segundos.
+         */
         void actualiza(double tiempo_seg) override;
 
     private:
@@ -228,20 +410,31 @@ namespace tapete
 
         bool esta_sobre_ficha{false};
 
-        /// <summary>Refresca la representación de la ficha.</summary>
+        /*!
+         * \brief Refresca la representación de la ficha.
+         */
         void refrescaFicha();
-        /// <summary>Gestiona la pulsación sobre el personaje.</summary>
+
+        /*!
+         * \brief Gestiona la pulsación sobre el personaje.
+         */
         void controlPersonajePulsacion();
-        /// <summary>Gestiona el hover sobre la ficha.</summary>
+
+        /*!
+         * \brief Gestiona el hover sobre la ficha.
+         */
         void controlSobreFicha();
-        /// <summary>Gestiona la pulsación sobre la ficha.</summary>
+
+        /*!
+         * \brief Gestiona la pulsación sobre la ficha.
+         */
         void controlFichaPulsacion();
 
-        /// <summary>
-        /// Comprueba una condición y lanza excepción si es falsa.
-        /// </summary>
-        /// <param name="expresion">Expresión a evaluar.</param>
-        /// <param name="mensaje">Mensaje de error.</param>
+        /*!
+         * \brief Comprueba una condición y lanza excepción si es falsa.
+         * \param expresion Expresión a evaluar.
+         * \param mensaje Mensaje de error.
+         */
         static void aserta(bool expresion, const string &mensaje);
 
         friend class CalculoCaminos;

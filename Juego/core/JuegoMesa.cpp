@@ -1,6 +1,7 @@
 ﻿// proyecto: Grupal/Juego
 // archivo   JuegoMesa.cpp
 // versión:  2.1  (Abril-2025)
+
 #include "juego.h"
 #include <array>
 #include <cstdlib>
@@ -37,10 +38,10 @@ namespace juego
         std::srand(std::time(nullptr));
     }
 
-    /// <summary>
-    /// Genera de forma aleatoria la disposición de muros en el tablero.
-    /// </summary>
-    /// <returns>Referencia a un GraficoMuros con la nueva distribución.</returns>
+    /* 
+    * \brief Genera de forma aleatoria la disposición de muros en el tablero.
+    * \return Referencia a un GraficoMuros con la nueva distribución.
+    */
     ActorTablero::GraficoMuros &generaMurosAleatorios()
     {
         static char buf[51][146];
@@ -278,17 +279,17 @@ namespace juego
         abordaje->ponArchivoSonido(
             carpeta_sonidos_juego + "SonidosPirata/Habilidades/Abordaje.wav");
 
-        reparacionBarco = new Habilidad{
-            L"Reparación de barco",
+        fortaleceBarco = new Habilidad{
+            L"Fortalece de barco",
             EnfoqueHabilidad::si_mismo,
             AccesoHabilidad::ninguno,
             Antagonista::si_mismo};
-        reparacionBarco->ponDescripcion(
-            L"Repara pequeños daños en el casco, recuperando 5 puntos de vitalidad.");
-        reparacionBarco->ponArchivosImagenes(
+        fortaleceBarco->ponDescripcion(
+            L"Fortalece el casco proporcionando +5 puntos de defensa cuerpo a cuerpo");
+        fortaleceBarco->ponArchivosImagenes(
             carpeta_habilides_juego + "reparar.png",
             carpeta_habilides_juego + "fondo_5.png");
-        reparacionBarco->ponArchivoSonido(
+        fortaleceBarco->ponArchivoSonido(
             carpeta_sonidos_juego + "SonidosPirata/Habilidades/Reparacion.wav");
 
         sangradoMortal = new Habilidad{
@@ -373,7 +374,7 @@ namespace juego
         agregaHabilidad(canionazo);
         agregaHabilidad(embestida);
         agregaHabilidad(abordaje);
-        agregaHabilidad(reparacionBarco);
+        agregaHabilidad(fortaleceBarco);
         agregaHabilidad(sangradoMortal);
         agregaHabilidad(oleadaMetralla);
         agregaHabilidad(golpeDevastador);
@@ -403,7 +404,7 @@ namespace juego
             personaje->agregaHabilidad(canionazo);
             personaje->agregaHabilidad(embestida);
             personaje->agregaHabilidad(abordaje);
-            personaje->agregaHabilidad(reparacionBarco);
+            personaje->agregaHabilidad(fortaleceBarco);
         }
 
         Edward->agregaHabilidad(sangradoMortal);
@@ -420,22 +421,22 @@ namespace juego
         canionazo->ponAlcance(12);
         canionazo->asignaAtaque(ataqueADistancia);
         canionazo->asignaDefensa(defensaADistancia);
-        canionazo->asignaDano(danoFisico, 40);
+        canionazo->asignaDano(danoFisico, 25);
 
         embestida->ponCoste(8);
         embestida->ponAlcance(1);
         embestida->asignaAtaque(ataqueCuerpoACuerpo);
         embestida->asignaDefensa(defensaCuerpoACuerpo);
-        embestida->asignaDano(danoFisico, 25);
+        embestida->asignaDano(danoFisico, 50);
 
         abordaje->ponCoste(8);
         abordaje->ponAlcance(1);
         abordaje->asignaAtaque(ataqueCuerpoACuerpo);
         abordaje->asignaDefensa(defensaCuerpoACuerpo);
-        abordaje->asignaDano(danoFisico, 50);
+        abordaje->asignaDano(danoFisico, 55);
 
-        reparacionBarco->ponCoste(3);
-        reparacionBarco->agregaEfectoDefensa(defensaCuerpoACuerpo, 5);
+        fortaleceBarco->ponCoste(8);
+        fortaleceBarco->agregaEfectoDefensa(defensaCuerpoACuerpo, 10);
 
         sangradoMortal->ponCoste(1);
         sangradoMortal->ponAlcance(5);
@@ -448,6 +449,7 @@ namespace juego
         oleadaMetralla->asignaAtaque(ataqueCuerpoACuerpo);
         oleadaMetralla->asignaDefensa(defensaCuerpoACuerpo);
         oleadaMetralla->asignaDano(danoFisico, 38);
+
         golpeDevastador->ponCoste(1);
         golpeDevastador->ponAlcance(5);
         golpeDevastador->asignaAtaque(ataqueCuerpoACuerpo);
@@ -459,11 +461,13 @@ namespace juego
         punoCorsario->asignaAtaque(ataqueCuerpoACuerpo);
         punoCorsario->asignaDefensa(defensaCuerpoACuerpo);
         punoCorsario->asignaDano(danoFisico, 32);
+
         tornado->ponCoste(1);
         tornado->ponAlcance(5);
         tornado->asignaAtaque(ataqueCuerpoACuerpo);
         tornado->asignaDefensa(defensaCuerpoACuerpo);
         tornado->asignaDano(danoFisico, 34);
+        
         golpeAncla->ponCoste(1);
         golpeAncla->ponAlcance(5);
         golpeAncla->asignaAtaque(ataqueCuerpoACuerpo);
@@ -653,7 +657,7 @@ namespace juego
         canionazo = nullptr;
         embestida = nullptr;
         abordaje = nullptr;
-        reparacionBarco = nullptr;
+        fortaleceBarco = nullptr;
         sangradoMortal = nullptr;
         oleadaMetralla = nullptr;
         golpeDevastador = nullptr;

@@ -85,7 +85,7 @@ namespace juego
         Habilidad *canionazo{};           /**< Habilidad Cañonazo. */
         Habilidad *embestida{};           /**< Habilidad Embestida. */
         Habilidad *abordaje{};            /**< Habilidad Abordaje. */
-        Habilidad *reparacionBarco{};     /**< Habilidad Reparación de barco. */
+        Habilidad *fortaleceBarco{};     /**< Habilidad Reparación de barco. */
         Habilidad *sangradoMortal{};      /**< Habilidad Sangrado mortal. */
         Habilidad *oleadaMetralla{};      /**< Habilidad Oleada de metralla. */
         Habilidad *golpeDevastador{};     /**< Habilidad Golpes devastadores. */

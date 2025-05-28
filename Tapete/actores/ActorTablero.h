@@ -12,231 +12,279 @@ namespace tapete
     class ActorTablero : public unir2d::ActorBase
     {
     public:
+        /*!
+         * \brief Número de columnas del gráfico de muros.
+         */
         static constexpr int columnasGraficoMuros = RejillaTablero::columnas * 3 - 2;
+
+        /*!
+         * \brief Tipo para el gráfico de muros.
+         */
         using GraficoMuros = std::array<const char[columnasGraficoMuros + 1], RejillaTablero::filas>;
 
-        /// <summary>
-        /// Constructor: inicializa el actor de tablero.
-        /// </summary>
+        /*!
+         * \brief Constructor: inicializa el actor de tablero.
+         * \param juego Contexto del juego.
+         */
         explicit ActorTablero(JuegoMesaBase *juego);
 
-        /// <summary>
-        /// Destructor: libera los recursos gráficos y lógicos.
-        /// </summary>
+        /*!
+         * \brief Destructor: libera los recursos gráficos y lógicos.
+         */
         ~ActorTablero();
 
-        /// <summary>
-        /// Obtiene la ruta del archivo de baldosas.
-        /// </summary>
+        /*!
+         * \brief Obtiene la ruta del archivo de baldosas.
+         * \return Ruta del archivo.
+         */
         const string &archivoBaldosas();
 
-        /// <summary>
-        /// Asigna el archivo de baldosas para el fondo.
-        /// </summary>
+        /*!
+         * \brief Asigna el archivo de baldosas para el fondo.
+         * \param archivo Ruta del archivo.
+         */
         void ponArchivoBaldosas(const string &archivo);
 
-        /// <summary>
-        /// Obtiene el nombre del equipo en un lado del tablero.
-        /// </summary>
+        /*!
+         * \brief Obtiene el nombre del equipo en un lado del tablero.
+         * \param lado_tablero Lado del tablero.
+         * \return Nombre del equipo.
+         */
         const wstring &nombreEquipo(LadoTablero lado_tablero);
 
-        /// <summary>
-        /// Obtiene la ruta del escudo para un equipo.
-        /// </summary>
+        /*!
+         * \brief Obtiene la ruta del escudo para un equipo.
+         * \param lado_tablero Lado del tablero.
+         * \return Ruta del archivo de escudo.
+         */
         const string &ArchivoEscudo(LadoTablero lado_tablero);
 
-        /// <summary>
-        /// Configura nombre y escudo para un equipo.
-        /// </summary>
+        /*!
+         * \brief Configura nombre y escudo para un equipo.
+         * \param lado_tablero Lado del tablero.
+         * \param nombre Nombre del equipo.
+         * \param archivo_escudo Ruta del archivo de escudo.
+         */
         void equipa(LadoTablero lado_tablero, const wstring &nombre, const string &archivo_escudo);
 
-        /// <summary>
-        /// Devuelve las coordenadas de los muros.
-        /// </summary>
+        /*!
+         * \brief Devuelve las coordenadas de los muros.
+         * \return Vector de coordenadas.
+         */
         const std::vector<Coord> &sitiosMuros() const;
 
-        /// <summary>
-        /// Sitúa los muros según un gráfico dado.
-        /// </summary>
+        /*!
+         * \brief Sitúa los muros según un gráfico dado.
+         * \param grafico_muros Gráfico de muros.
+         */
         void situaMuros(const GraficoMuros &grafico_muros);
 
-        /// <summary>
-        /// Valida las dimensiones del gráfico de muros.
-        /// </summary>
+        /*!
+         * \brief Valida las dimensiones del gráfico de muros.
+         */
         void validaGraficoMuros();
 
-        /// <summary>
-        /// Accede a la rejilla del tablero.
-        /// </summary>
+        /*!
+         * \brief Accede a la rejilla del tablero.
+         * \return Referencia a la rejilla.
+         */
         RejillaTablero &rejilla();
 
-        /// <summary>
-        /// Obtiene la presencia de un actor según el lado.
-        /// </summary>
+        /*!
+         * \brief Obtiene la presencia de un actor según el lado.
+         * \param lado Lado del tablero.
+         * \return Referencia a la presencia.
+         */
         PresenciaActuante &presencia(LadoTablero lado);
 
-        /// <summary>
-        /// Obtiene el indicador de información.
-        /// </summary>
+        /*!
+         * \brief Obtiene el indicador de información.
+         * \return Referencia al cuadro indicador.
+         */
         CuadroIndica &indicador();
 
-        /// <summary>
-        /// Obtiene la vista de camino de celdas.
-        /// </summary>
+        /*!
+         * \brief Obtiene la vista de camino de celdas.
+         * \return Referencia a la vista.
+         */
         VistaCaminoCeldas &vistaCamino();
 
-        /// <summary>
-        /// Obtiene el listado de ayuda.
-        /// </summary>
+        /*!
+         * \brief Obtiene el listado de ayuda.
+         * \return Referencia al listado.
+         */
         ListadoAyuda &listadoAyuda();
 
-        /// <summary>
-        /// Muestra mensaje en el monitor de texto.
-        /// </summary>
+        /*!
+         * \brief Muestra mensaje en el monitor de texto.
+         * \param mensaje Vector de líneas de mensaje.
+         * \param indica Vector de líneas de indicación.
+         */
         template <typename S>
         void escribeMonitor(
             const std::vector<S> &mensaje,
             const std::vector<S> &indica);
 
-        /// <summary>
-        /// Muestra un display numérico de dos dígitos.
-        /// </summary>
+        /*!
+         * \brief Muestra un display numérico de dos dígitos.
+         * \param digito_1 Primer dígito.
+         * \param digito_2 Segundo dígito.
+         */
         void muestraDisplay(int digito_1, int digito_2);
 
-        /// <summary>
-        /// Borra el contenido del display.
-        /// </summary>
+        /*!
+         * \brief Borra el contenido del display.
+         */
         void borraDisplay();
 
-        /// <summary>
-        /// Indica un mensaje junto a un personaje.
-        /// </summary>
+        /*!
+         * \brief Indica un mensaje junto a un personaje.
+         * \param lado Lado del tablero.
+         * \param cadena Mensaje a mostrar.
+         */
         void indicaPersonaje(LadoTablero lado, const wstring &cadena);
 
-        /// <summary>
-        /// Indica un mensaje junto a una habilidad.
-        /// </summary>
+        /*!
+         * \brief Indica un mensaje junto a una habilidad.
+         * \param lado Lado del tablero.
+         * \param indice_habilidad Índice de la habilidad.
+         * \param cadena Mensaje a mostrar.
+         */
         void indicaHabilidad(LadoTablero lado, int indice_habilidad, const wstring &cadena);
 
-        /// <summary>
-        /// Limpia todas las indicaciones.
-        /// </summary>
+        /*!
+         * \brief Limpia todas las indicaciones.
+         */
         void desindica();
 
-        /// <summary>
-        /// Obtiene la ruta del sonido de acción.
-        /// </summary>
+        /*!
+         * \brief Obtiene la ruta del sonido de acción.
+         * \return Ruta del archivo.
+         */
         const string &archivoSonidoEstablece();
 
-        /// <summary>
-        /// Obtiene el volumen del sonido de acción.
-        /// </summary>
+        /*!
+         * \brief Obtiene el volumen del sonido de acción.
+         * \return Volumen.
+         */
         int volumenSonidoEstablece();
 
-        /// <summary>
-        /// Asigna sonido de acción y su volumen.
-        /// </summary>
+        /*!
+         * \brief Asigna sonido de acción y su volumen.
+         * \param archivo_establece Ruta del archivo.
+         * \param volumen Volumen.
+         */
         void asignaSonidoEstablece(const string &archivo_establece, int volumen);
 
-        /// <summary>
-        /// Obtiene la ruta del sonido de fracaso.
-        /// </summary>
+        /*!
+         * \brief Obtiene la ruta del sonido de fracaso.
+         * \return Ruta del archivo.
+         */
         const string &archivoSonidoFracaso();
 
-        /// <summary>
-        /// Obtiene el volumen del sonido de fracaso.
-        /// </summary>
+        /*!
+         * \brief Obtiene el volumen del sonido de fracaso.
+         * \return Volumen.
+         */
         int volumenSonidoFracaso();
 
-        /// <summary>
-        /// Asigna sonido de fracaso.
-        /// </summary>
+        /*!
+         * \brief Asigna sonido de fracaso.
+         * \param archivo Ruta del archivo.
+         * \param volumen Volumen.
+         */
         void asignaSonidoFracaso(const string &archivo, int volumen);
 
-        /// <summary>
-        /// Obtiene la ruta del sonido de éxito.
-        /// </summary>
+        /*!
+         * \brief Obtiene la ruta del sonido de éxito.
+         * \return Ruta del archivo.
+         */
         const string &archivoSonidoExito();
 
-        /// <summary>
-        /// Obtiene el volumen del sonido de éxito.
-        /// </summary>
+        /*!
+         * \brief Obtiene el volumen del sonido de éxito.
+         * \return Volumen.
+         */
         int volumenSonidoExito();
 
-        /// <summary>
-        /// Asigna sonido de éxito.
-        /// </summary>
+        /*!
+         * \brief Asigna sonido de éxito.
+         * \param archivo Ruta del archivo.
+         * \param volumen Volumen.
+         */
         void asignaSonidoExito(const string &archivo, int volumen);
 
-        /// <summary>
-        /// Obtiene la ruta del sonido de desplazamiento.
-        /// </summary>
+        /*!
+         * \brief Obtiene la ruta del sonido de desplazamiento.
+         * \return Ruta del archivo.
+         */
         const string &archivoSonidoDesplaza();
 
-        /// <summary>
-        /// Obtiene el volumen del sonido de desplazamiento.
-        /// </summary>
+        /*!
+         * \brief Obtiene el volumen del sonido de desplazamiento.
+         * \return Volumen.
+         */
         int volumenSonidoDesplaza();
 
-        /// <summary>
-        /// Asigna sonido de desplazamiento.
-        /// </summary>
+        /*!
+         * \brief Asigna sonido de desplazamiento.
+         * \param archivo_desplaza Ruta del archivo.
+         * \param volumen Volumen.
+         */
         void asignaSonidoDesplaza(const string &archivo_desplaza, int volumen);
 
-        /// <summary>
-        /// Emite el sonido de acción.
-        /// </summary>
+        /*!
+         * \brief Emite el sonido de acción.
+         */
         void emiteSonidoEstablece();
 
-        /// <summary>
-        /// Emite el sonido de desplazamiento.
-        /// </summary>
+        /*!
+         * \brief Emite el sonido de desplazamiento.
+         */
         void emiteSonidoDesplaza();
 
-        /// <summary>
-        /// Emite el sonido de fracaso.
-        /// </summary>
+        /*!
+         * \brief Emite el sonido de fracaso.
+         */
         void emiteSonidoFracaso();
 
-        /// <summary>
-        /// Emite el sonido de éxito.
-        /// </summary>
+        /*!
+         * \brief Emite el sonido de éxito.
+         */
         void emiteSonidoExito();
 
-        /// <summary>
-        /// Emite el sonido de una habilidad.
-        /// </summary>
+        /*!
+         * \brief Emite el sonido de una habilidad.
+         * \param habilidad Puntero a la habilidad.
+         */
         void emiteSonidoHabilidad(Habilidad *habilidad);
 
     protected:
-        /// <summary>
-        /// Inicializa el actor de tablero.
-        /// </summary>
+        /*!
+         * \brief Inicializa el actor de tablero.
+         */
         void inicia() override;
 
-        /// <summary>
-        /// Termina el actor de tablero.
-        /// </summary>
+        /*!
+         * \brief Termina el actor de tablero.
+         */
         void termina() override;
 
-        /// <summary>
-        /// Actualiza la lógica del tablero cada fotograma.
-        /// </summary>
+        /*!
+         * \brief Actualiza la lógica del tablero cada fotograma.
+         * \param tiempo_seg Tiempo en segundos.
+         */
         void actualiza(double tiempo_seg) override;
 
     private:
         JuegoMesaBase *juego{};
-
         string archivo_baldosas;
-
         wstring nombre_equipo_izqrd{};
         string archivo_escudo_izqrd{};
         wstring nombre_equipo_derch{};
         string archivo_escudo_derch{};
-
         const GraficoMuros *grafico_muros;
         std::vector<Coord> sitios_muros{};
-
         PresenciaTablero presencia_tablero{this};
         RejillaTablero rejilla_tablero{this};
         PresenciaHabilidades presencia_habilidades{this};
@@ -245,7 +293,6 @@ namespace tapete
         CuadroIndica cuadro_indica{this};
         VistaCaminoCeldas vista_camino_celdas{this};
         ListadoAyuda listado_ayuda{this};
-
         string archivo_sonido_establece{};
         int volumen_sonido_establece{};
         string archivo_sonido_desplaza{};
@@ -261,6 +308,7 @@ namespace tapete
             LadoTablero lado{};
         };
         SobreRetrato sobre_retrato{};
+
         struct SobreHabilidad
         {
             bool esta{false};
@@ -268,6 +316,7 @@ namespace tapete
             int indice{};
         };
         SobreHabilidad sobre_habilidad{};
+
         struct SobreCelda
         {
             bool esta{false};
@@ -275,49 +324,51 @@ namespace tapete
         };
         SobreCelda sobre_celda{};
 
-        /// <summary>
-        /// Calcula los lugares de los muros en la rejilla.
-        /// </summary>
+        /*!
+         * \brief Calcula los lugares de los muros en la rejilla.
+         */
         void calculaSitiosMuros();
 
-        /// <summary>
-        /// Gestiona el hover sobre retratos.
-        /// </summary>
+        /*!
+         * \brief Gestiona el hover sobre retratos.
+         */
         void controlSobreRetrato();
 
-        /// <summary>
-        /// Gestiona el hover sobre habilidades.
-        /// </summary>
+        /*!
+         * \brief Gestiona el hover sobre habilidades.
+         */
         void controlSobreHabilidad();
 
-        /// <summary>
-        /// Gestiona la pulsación en retratos.
-        /// </summary>
+        /*!
+         * \brief Gestiona la pulsación en retratos.
+         */
         void controlRetratoPulsacion();
 
-        /// <summary>
-        /// Gestiona la pulsación en habilidades.
-        /// </summary>
+        /*!
+         * \brief Gestiona la pulsación en habilidades.
+         */
         void controlHabilidadPulsacion();
 
-        /// <summary>
-        /// Gestiona el hover sobre celdas.
-        /// </summary>
+        /*!
+         * \brief Gestiona el hover sobre celdas.
+         */
         void controlSobreCelda();
 
-        /// <summary>
-        /// Gestiona la pulsación en celdas.
-        /// </summary>
+        /*!
+         * \brief Gestiona la pulsación en celdas.
+         */
         void controlCeldaPulsacion();
 
-        /// <summary>
-        /// Gestiona la pulsación en ayuda.
-        /// </summary>
+        /*!
+         * \brief Gestiona la pulsación en ayuda.
+         */
         void controlAyudaPulsacion();
 
-        /// <summary>
-        /// Verifica condiciones y lanza excepción si fallan.
-        /// </summary>
+        /*!
+         * \brief Verifica condiciones y lanza excepción si fallan.
+         * \param expresion Expresión a evaluar.
+         * \param mensaje Mensaje de error.
+         */
         static void aserta(bool expresion, const string &mensaje);
 
         friend class PresenciaTablero;

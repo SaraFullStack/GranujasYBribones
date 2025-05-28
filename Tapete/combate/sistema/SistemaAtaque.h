@@ -3,27 +3,53 @@
 // versión:  2.1  (Abril-2025)
 #pragma once
 
-namespace tapete {
+namespace tapete
+{
 
-    class SistemaAtaque {
+    class SistemaAtaque
+    {
     public:
-        /// <summary>Constructor que inicializa el sistema de ataque con una instancia de JuegoMesaBase.</summary>
+        /*!
+         * \brief Constructor que inicializa el sistema de ataque con una instancia de JuegoMesaBase.
+         * \param juego Puntero al contexto del juego.
+         */
         explicit SistemaAtaque(JuegoMesaBase *juego);
-        /// <summary>Destructor de la clase SistemaAtaque.</summary>
+
+        /*!
+         * \brief Destructor de la clase SistemaAtaque.
+         */
         ~SistemaAtaque();
 
-        /// <summary>Obtiene la lista de grados de efectividad registrados.</summary>
+        /*!
+         * \brief Obtiene la lista de grados de efectividad registrados.
+         * \return Vector de punteros a GradoEfectividad.
+         */
         const std::vector<GradoEfectividad *> &efectividades() const;
-        /// <summary>Agrega un nuevo grado de efectividad al sistema.</summary>
+
+        /*!
+         * \brief Agrega un nuevo grado de efectividad al sistema.
+         * \param elemento Puntero al grado de efectividad.
+         */
         void agregaEfectividad(GradoEfectividad *elemento);
 
-        /// <summary>Obtiene el personaje atacante actual.</summary>
+        /*!
+         * \brief Obtiene el personaje atacante actual.
+         * \return Puntero al atacante.
+         */
         ActorPersonaje *atacante() const;
-        /// <summary>Obtiene la habilidad utilizada en el ataque.</summary>
+
+        /*!
+         * \brief Obtiene la habilidad utilizada en el ataque.
+         * \return Puntero a la habilidad.
+         */
         Habilidad *habilidad() const;
 
-        /// <summary>Estructura que almacena información detallada de un ataque a un oponente.</summary>
-        struct AtaqueOponente {
+        /*!
+         * \struct AtaqueOponente
+         * \brief Almacena información detallada de un ataque a un oponente.
+         */
+        struct AtaqueOponente
+        {
             ActorPersonaje *oponente;
             TipoAtaque *tipo_ataque;
             int valor_ataque;
@@ -42,21 +68,37 @@ namespace tapete {
             int vitalidad_origen;
             int vitalidad_final;
         };
-        /// <summary>Obtiene la lista de ataques calculados para los oponentes.</summary>
+
+        /*!
+         * \brief Obtiene la lista de ataques calculados para los oponentes.
+         * \return Vector de AtaqueOponente.
+         */
         const std::vector<AtaqueOponente> &ataquesOponente() const;
 
-        /// <summary>Estructura que almacena información detallada de curaciones a un oponente.</summary>
-        struct CuracionOponente {
+        /*!
+         * \struct CuracionOponente
+         * \brief Almacena información detallada de curaciones a un oponente.
+         */
+        struct CuracionOponente
+        {
             ActorPersonaje *oponente;
             int valor_curacion;
             int vitalidad_origen;
             int vitalidad_final;
         };
-        /// <summary>Obtiene la lista de curaciones calculadas para los oponentes.</summary>
+
+        /*!
+         * \brief Obtiene la lista de curaciones calculadas para los oponentes.
+         * \return Vector de CuracionOponente.
+         */
         const std::vector<CuracionOponente> &curacionesOponente() const;
 
-        /// <summary>Estructura que almacena cambios de efectividad para ataque y defensa.</summary>
-        struct CambioEfecto {
+        /*!
+         * \struct CambioEfecto
+         * \brief Almacena cambios de efectividad para ataque y defensa.
+         */
+        struct CambioEfecto
+        {
             TipoAtaque *tipo_ataque;
             int valor_cambio_ataque;
             int valor_origen_ataque;
@@ -66,22 +108,42 @@ namespace tapete {
             int valor_origen_defensa;
             int valor_final_defensa;
         };
-        /// <summary>Obtiene la lista de cambios de efecto calculados.</summary>
+
+        /*!
+         * \brief Obtiene la lista de cambios de efecto calculados.
+         * \return Vector de CambioEfecto.
+         */
         const std::vector<CambioEfecto> &cambiosEfecto() const;
 
-        /// <summary>Calcula ataques, curaciones y efectos para múltiples oponentes.</summary>
+        /*!
+         * \brief Calcula ataques, curaciones y efectos para múltiples oponentes.
+         * \param atacante Puntero al personaje atacante.
+         * \param habilidad Puntero a la habilidad utilizada.
+         */
         void calcula(
             ActorPersonaje *atacante,
             Habilidad *habilidad);
 
-        /// <summary>Calcula un único ataque especificando un oponente y un valor aleatorio.</summary>
+        /*!
+         * \brief Calcula un único ataque especificando un oponente y un valor aleatorio.
+         * \param atacante Puntero al personaje atacante.
+         * \param habilidad Puntero a la habilidad utilizada.
+         * \param oponente Puntero al oponente.
+         * \param aleatorio_100 Valor aleatorio entre 0 y 100.
+         */
         void calcula(
             ActorPersonaje *atacante,
             Habilidad *habilidad,
             ActorPersonaje *oponente,
             int aleatorio_100);
 
-        /// <summary>Calcula ataques para una lista de oponentes y un valor aleatorio.</summary>
+        /*!
+         * \brief Calcula ataques para una lista de oponentes y un valor aleatorio.
+         * \param atacante Puntero al personaje atacante.
+         * \param habilidad Puntero a la habilidad utilizada.
+         * \param lista_oponentes Vector de punteros a oponentes.
+         * \param aleatorio_100 Valor aleatorio entre 0 y 100.
+         */
         void calcula(
             ActorPersonaje *atacante,
             Habilidad *habilidad,
@@ -99,14 +161,22 @@ namespace tapete {
         std::vector<CuracionOponente> curaciones_oponente{};
         std::vector<CambioEfecto> cambios_efecto{};
 
-        /// <summary>Reinicia los contenedores internos antes de un nuevo cálculo.</summary>
+        /*!
+         * \brief Reinicia los contenedores internos antes de un nuevo cálculo.
+         */
         void reinicia();
 
-        /// <summary>Calcula los detalles de un ataque para un oponente dado.</summary>
+        /*!
+         * \brief Calcula los detalles de un ataque para un oponente dado.
+         * \param oponente Puntero al oponente.
+         * \param aleatorio_100 Valor aleatorio entre 0 y 100.
+         */
         void calculaAtaque(ActorPersonaje *oponente, int aleatorio_100);
-        /// <summary>Calcula los detalles de una curación para un oponente dado.</summary>
+
+        /*!
+         * \brief Calcula los detalles de una curación para un oponente dado.
+         * \param oponente Puntero al oponente.
+         */
         void calculaCuracion(ActorPersonaje *oponente);
-
     };
-
 }

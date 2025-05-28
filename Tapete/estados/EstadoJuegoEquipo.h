@@ -7,30 +7,42 @@
 namespace tapete
 {
 
-    /// <summary>Gestiona los estados de juego específicos por equipo, extendiendo EstadoJuegoComun.</summary>
     class EstadoJuegoEquipo : public EstadoJuegoComun
     {
     public:
-        /// <summary>Código de estado que marca el inicio de una ronda.</summary>
+        /*!
+         * \brief Código de estado que marca el inicio de una ronda.
+         */
         static constexpr int inicioRonda = finalPartida + 1;
 
-        /// <summary>Código de estado que marca el inicio de un turno.</summary>
+        /*!
+         * \brief Código de estado que marca el inicio de un turno.
+         */
         static constexpr int inicioTurno = finalPartida + 2;
 
-        /// <summary>Constructor que inicializa el estado con un código específico.</summary>
+        /*!
+         * \brief Constructor que inicializa el estado con un código específico.
+         * \param codigo Código de estado.
+         */
         EstadoJuegoEquipo(int codigo);
 
-        /// <summary>Realiza la transición de este estado al estado destino.</summary>
-        /// <param name="destino">Estado de equipo al cual transitar.</param>
+        /*!
+         * \brief Realiza la transición de este estado al estado destino.
+         * \param destino Estado de equipo al cual transitar.
+         */
         void transita(const EstadoJuegoEquipo &destino);
 
     private:
-        /// <summary>Valida que la transición al estado destino sea permitida.</summary>
-        /// <param name="destino">Estado común destino a validar.</param>
+        /*!
+         * \brief Valida que la transición al estado destino sea permitida.
+         * \param destino Estado común destino a validar.
+         */
         void valida(const EstadoJuegoComun &destino) override;
 
-        /// <summary>Obtiene el nombre textual del estado para logging.</summary>
-        /// <returns>Nombre del estado.</returns>
+        /*!
+         * \brief Obtiene el nombre textual del estado para logging.
+         * \return Nombre del estado.
+         */
         const string nombre() const override;
     };
 
